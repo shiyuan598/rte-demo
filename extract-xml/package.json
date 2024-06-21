@@ -1,0 +1,18 @@
+{
+  "name": "extract-xml",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "ts-node app.ts",
+    "build:dev": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xml-js": "^1.6.11",
+    "xml-to-json-util": "^1.0.1",
+    "xml2js": "^0.6.2",
+    "nodemon": "^2.0.22"
+  }
+}
