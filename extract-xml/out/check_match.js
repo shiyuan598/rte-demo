@@ -2185,92 +2185,72 @@ let value2 = [
     "0.0"
 ];
 
-value1 = ` {
-    0U, 0U, 0U, 0U, 0U, 0.0, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {
-    0.0F, 0.0F, 0.0F}, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, 0.0, 0U, {
-    0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, 0.0, 0.0, 0.0
-  }`
+// value1 = ` {
+//     0U, 0U, 0U, 0U, 0U, 0.0, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {
+//     0.0F, 0.0F, 0.0F}, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, 0.0, 0U, {
+//     0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, 0.0, 0.0, 0.0
+//   }`;
 
-value2 = [
-    "0U",
-    "0U",
-    "0U",
-    "0U",
-    "0U",
-    "0.0",
-    "0.0F",
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    "0.0F",
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    [
-      "0.0F",
-      "0.0F",
-      "0.0F"
-    ],
-    "0.0",
-    "0U",
-    [
-      "0.0",
-      "0.0",
-      "0.0"
-    ],
-    [
-      "0.0",
-      "0.0",
-      "0.0"
-    ],
-    [
-      "0.0",
-      "0.0",
-      "0.0"
-    ],
-    "0.0",
-    "0.0",
-    "0.0"
-  ]
+// value2 = [
+//     "0U",
+//     "0U",
+//     "0U",
+//     "0U",
+//     "0U",
+//     "0.0",
+//     "0.0F",
+//     ["0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F"],
+//     "0.0F",
+//     ["0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F"],
+//     ["0.0F", "0.0F", "0.0F"],
+//     "0.0",
+//     "0U",
+//     ["0.0", "0.0", "0.0"],
+//     ["0.0", "0.0", "0.0"],
+//     ["0.0", "0.0", "0.0"],
+//     "0.0",
+//     "0.0",
+//     "0.0"
+// ];
 
-const replaceStr = value1.replaceAll(/{/g, "").replace(/}/g, "").replace(/\n/g, "").replace(/\s/g, "");
-console.info(replaceStr);
-const flatArray = value2.flat(Infinity).join(",");
-console.info(flatArray);
+const replaceStr1= value1
+    .replace(/\s+/g, " ") // 将多个空格和换行替换为单个空格
+    .replace(/,\s*/g, ", ") // 确保逗号后只有一个空格
+    .replace(/\{\s*/g, "{") // 移除 { 后的空格
+    .replace(/\s*\}/g, "}") // 移除 } 前的空格
+    .trim(); // 去掉字符串首尾的空格;
+console.info(replaceStr1);
+// const flatArray = value2.flat(Infinity).join(",");
+// console.info(flatArray);
+const convertStr2 = convertArrayToString(value2);
+console.info(convertStr2);
 
-console.info(replaceStr == flatArray);
+console.info(replaceStr1 == convertStr2);
+
+// console.info(value1);
+// console.info(value2.toString() == flatArray);
+
+// let arr = [1, 2, 3, 4, [5, 6]];
+// console.info(arr);
+// console.info(arr.toString());
+
+function convertArrayToString(arr) {
+    function stringify(item) {
+        if (Array.isArray(item)) {
+            return "{" + item.map(stringify).join(", ") + "}";
+        }
+        return item;
+    }
+    return stringify(arr);
+}
+
+let arr = [1, 2, "3", 4, [5, "6"]];
+console.info(arr);
+console.info(arr.toString());
+console.info(convertArrayToString(arr));
