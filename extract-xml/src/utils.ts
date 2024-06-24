@@ -74,21 +74,6 @@ export const parseXML = (xmlString: string): Promise<TransformedNode> => {
     });
 };
 
-export const parseXML2 = (xmlString: string): Promise<TransformedNode> => {
-    console.info("parseXML2");
-    return new Promise((resolve, reject) => {
-        parser.parseString(xmlString, (err: Error, result: any) => {
-            if (err) {
-                reject(err);
-                console.info("err", err);
-            } else {
-                console.info(JSON.stringify(result, null, 4));
-                resolve(result);
-            }
-        });
-    });
-};
-
 export const readFile = (path: string) => {
     return new Promise((resolve, reject) => {
         fs.readFile(path, "utf8", (err: Error, data: string) => {
@@ -128,57 +113,57 @@ const findChildrenByKey: any = (key: string, data: any) => {
     }
 };
 
-const getType = (str:string) => {
-    const types = ["Boolean", "UInt8", "SInt8", "UInt16", "SInt16", "UInt32", "SInt32", "Float", "Double"]
+const getValueType = (str: string) => {
+    const types = ["Boolean", "UInt8", "SInt8", "UInt16", "SInt16", "UInt32", "SInt32", "Float", "Double"];
     for (const type of types) {
         if (str.includes(type)) {
             return type;
         }
     }
-    return ""; // 如果未找到匹配项，返回 null
-}
+    return "";
+};
 
-const  formatValue = (value: string | number, type: string): string => {
+const signValue = (value: string | number, type: string): string => {
     switch (type.toLowerCase()) {
-        case 'uint8':
-        case 'uint16':
-        case 'uint32':
+        case "uint8":
+        case "uint16":
+        case "uint32":
             if (/^\d+$/.test(value.toString())) {
-                return value.toString() + 'U';
+                return value.toString() + "U";
             }
             break;
-        case 'sint8':
-        case 'sint16':
-        case 'sint32':
+        case "sint8":
+        case "sint16":
+        case "sint32":
             if (/^-?\d+$/.test(value.toString())) {
                 return value.toString();
             }
             break;
-        case 'float':
+        case "float":
             const floatString = value.toString();
             if (/^-?\d+(\.\d+)?f?$/i.test(floatString)) {
-                const floatVal = parseFloat(floatString.replace(/f$/i, ''));
+                const floatVal = parseFloat(floatString.replace(/f$/i, ""));
                 if (Number.isInteger(floatVal)) {
-                    return floatVal + '.0F';
+                    return floatVal + ".0F";
                 } else {
-                    return floatVal + 'F';
+                    return floatVal + "F";
                 }
             }
             break;
-        case 'double':
+        case "double":
             const doubleString = value.toString();
             if (/^-?\d+(\.\d+)?$/.test(doubleString)) {
                 const doubleVal = parseFloat(doubleString);
                 if (Number.isInteger(doubleVal)) {
-                    return doubleVal + '.0';
+                    return doubleVal + ".0";
                 } else {
                     return doubleVal.toString();
                 }
             }
             break;
-        case 'boolean':
+        case "boolean":
             if (/^(0|1)$/i.test(value.toString())) {
-                return value.toString() === '1' ? 'TRUE' : 'FALSE';
+                return value.toString() === "1" ? "TRUE" : "FALSE";
             }
             break;
         default:
@@ -188,66 +173,162 @@ const  formatValue = (value: string | number, type: string): string => {
 
     // 默认情况下返回原值的字符串形式
     return value.toString();
-}
+};
+
+const stringLineBreak = (str: string, num = 80) => {
+    let result = "";
+    let currentLineLength = 0;
+
+    // 遍历输入字符串的每个字符
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        result += char;
+        currentLineLength++;
+
+        // 检查当前字符是否为逗号，并且当前行长度是否已经达到指定的长度
+        if (char === "," && currentLineLength >= num) {
+            result += "\n";
+            currentLineLength = 0;
+        }
+    }
+    return result;
+};
+
+const convertArrayToString = (arr: any[]): string => {
+    const stringify = (item: any): string => {
+        if (Array.isArray(item)) {
+            return "{" + item.map(stringify).join(", ") + "}";
+        }
+        return item.toString();
+    };
+    return stringify(arr);
+};
+
+const removeWhitespace = (str: string) => {
+    return str
+        .replace(/\s+/g, " ") // 将多个空格和换行替换为单个空格
+        .replace(/,\s*/g, ", ") // 确保逗号后只有一个空格
+        .replace(/\{\s*/g, "{") // 移除 { 后的空格
+        .replace(/\s*\}/g, "}") // 移除 } 前的空格
+        .trim(); // 去掉字符串首尾的空格;
+};
 
 export const extractSWC = (data: any) => {
-    // 1.SWCName
-    // APPLICATION-SW-COMPONENT-TYPE - SHORT-NAME
-    // findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", data);
-    // let swcObj = findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", arxml2json);
-    // let nameObj = findChildrenByKey("SHORT-NAME", swcObj);
-    // let swcName = nameObj?.attributes?.innerText;
-    // console.info("SWC Name:", swcName);
-    // 2.Events periods
-    // let eventsObj = findChildrenByKey("EVENTS", swcObj);
-    // let periods = eventsObj?.children.map((item: any) => {
-    //     let runnable = findChildrenByKey("START-ON-EVENT-REF", item)?.attributes?.innerText?.split("/")?.pop();
-    //     let period = findChildrenByKey("PERIOD", item)?.attributes?.innerText;
-    //     return {
-    //         runnable,
-    //         period
-    //     };
-    // });
-    // console.info("periods:", JSON.stringify(periods, null, 4));
-    // 3.Ports initValue
-    let portsObj = findChildrenByKey("PORTS", data);
+    // 1.SWCName, 通过APPLICATION-SW-COMPONENT-TYP标签下SHORT-NAME标签
+    findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", data);
+    const swcObj = findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", arxml2json);
+    const nameObj = findChildrenByKey("SHORT-NAME", swcObj);
+    const swcName = nameObj?.attributes?.innerText;
 
-    let i = 0;
+    // 2.Events periods
+    // 通过EVENTS标签
+    const eventsObj = findChildrenByKey("EVENTS", swcObj);
+    const periods = eventsObj?.children.reduce((pre: any, item: any) => {
+        let runnable = findChildrenByKey("START-ON-EVENT-REF", item)?.attributes?.innerText?.split("/")?.at(-1);
+        let period = findChildrenByKey("PERIOD", item)?.attributes?.innerText;
+        pre[runnable] = period;
+        return pre;
+    }, {});
+
+    // 3.Ports initValue
+    // 通过PORTS下FIELDS标签，注意分三类，有嵌套结构
+    const portsObj = findChildrenByKey("PORTS", swcObj);
+
     const getInitValues = (fields: any) => {
-        console.info("fields:", i++, fields);
         return fields?.children.map((item: any) => {
-            let tag = item["tag"];
-            console.info("tag:", i, tag, item);
+            const tag = item["tag"];
             switch (tag) {
                 case "NUMERICAL-VALUE-SPECIFICATION":
                     const dataType = findChildrenByKey("SHORT-LABEL", item)?.attributes?.innerText;
-                    return formatValue(findChildrenByKey("VALUE", item)?.attributes?.innerText, getType(dataType))
+                    return signValue(findChildrenByKey("VALUE", item)?.attributes?.innerText, getValueType(dataType));
                 case "ARRAY-VALUE-SPECIFICATION":
                     return getInitValues(findChildrenByKey("ELEMENTS", item));
                 case "RECORD-VALUE-SPECIFICATION":
-                    console.info("item:", JSON.stringify(item, null, 4));
-                    console.info("match:", JSON.stringify(findChildrenByKey("FIELDs", item), null, 4));
                     return getInitValues(findChildrenByKey("FIELDS", item));
                 default:
                     break;
             }
         });
     };
-
-    let initValues = portsObj?.children.map((item: any) => {
-        let dataElement = findChildrenByKey("DATA-ELEMENT-REF", item)?.attributes?.innerText?.split("/")?.pop();
-        let initValueObj = findChildrenByKey("FIELDS", item);
+    const initValues = portsObj?.children.reduce((pre: any, item: any) => {
+        const dataElement = findChildrenByKey("DATA-ELEMENT-REF", item)?.attributes?.innerText?.split("/")?.at(-1);
+        const initValueObj = findChildrenByKey("FIELDS", item);
         let initValue = getInitValues(initValueObj);
 
+        // 转为字符串
+        initValue = convertArrayToString(initValue);
+        // // 添加换行
+        // initValue = stringLineBreak(initValue);
+        pre[dataElement] = initValue;
+        return pre;
+    }, {});
+
+    // 4.Runnables
+    // 通过RUNNABLES标签
+    // Interface需要解析dataElement、port
+    // IRV需要解析dataElement和读写方向
+    const runnablesObj = findChildrenByKey("RUNNABLES", swcObj);
+    const runnables = runnablesObj?.children?.map((runnable: any) => {
+        const name = findChildrenByKey("SHORT-NAME", runnable)?.attributes?.innerText;
+        const interfaces: any = [];
+        const irvs: any = [];
+        runnable?.children.forEach((dataAccess: any) => {
+            const tag = dataAccess["tag"];
+            switch (tag) {
+                case "DATA-READ-ACCESSS":
+                case "DATA-WRITE-ACCESSS":
+                    dataAccess?.children.forEach((item: any) => {
+                        const textArr = findChildrenByKey(
+                            "TARGET-DATA-PROTOTYPE-REF",
+                            item
+                        )?.attributes?.innerText?.split("/");
+                        const dataElement = textArr.at(-1);
+                        const interfaceName = textArr.at(-2);
+
+                        const portObj = findChildrenByKey("PORT-PROTOTYPE-REF", item);
+                        const portName = portObj?.attributes?.innerText?.split("/").at(-1);
+                        const portType = portObj?.attributes?.DEST?.startsWith("R-PORT") ? "R-PORT" : "P-PORT";
+                        interfaceName && interfaces.push({
+                            name: interfaceName,
+                            dataElement,
+                            port: {
+                                name: portName,
+                                type: portType
+                            }
+                        });
+                    });
+
+                case "READ-LOCAL-VARIABLES":
+                case "WRITTEN-LOCAL-VARIABLES":
+                    dataAccess?.children?.forEach((item: any) => {
+                        const dataElement = findChildrenByKey("LOCAL-VARIABLE-REF", item)?.attributes?.innerText?.split("/")
+                            .at(-1);
+                        const type = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText?.startsWith("WV")
+                            ? "W"
+                            : "R";                        
+                        dataElement && irvs.push({
+                            dataElement,
+                            type
+                        });
+                    });
+                default:
+                    break;
+            }
+        });
+
         return {
-            [dataElement]: initValue
+            name,
+            interfaces,
+            irvs
         };
     });
 
-    console.info(JSON.stringify(initValues, null, 4));
-    writeFile("./out/initvalues.json", JSON.stringify(initValues, null, 2));
-    // 4.Runnables
-    // let runnables = findChildrenByKey("RUNNABLES", swcObj);
+    return {
+        runnables,
+        swcName,
+        periods,
+        initValues
+    };
 };
 
 extractSWC(arxml2json);

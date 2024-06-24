@@ -2180,7 +2180,13 @@ let value2 = [
     "0U",
     "0U",
     "0U",
-    ["0U", "0U", "0U", "0U", "0U"],
+    [
+        "0U",
+        "0U",
+        "0U",
+        "0U",
+        "0U"
+    ],
     "0.0",
     "0.0"
 ];
@@ -2219,7 +2225,7 @@ let value2 = [
 //     "0.0"
 // ];
 
-const replaceStr1= value1
+const replaceStr1 = value1
     .replace(/\s+/g, " ") // 将多个空格和换行替换为单个空格
     .replace(/,\s*/g, ", ") // 确保逗号后只有一个空格
     .replace(/\{\s*/g, "{") // 移除 { 后的空格
@@ -2232,6 +2238,8 @@ const convertStr2 = convertArrayToString(value2);
 console.info(convertStr2);
 
 console.info(replaceStr1 == convertStr2);
+
+console.info(formatString(convertStr2));
 
 // console.info(value1);
 // console.info(value2.toString() == flatArray);
@@ -2250,7 +2258,27 @@ function convertArrayToString(arr) {
     return stringify(arr);
 }
 
-let arr = [1, 2, "3", 4, [5, "6"]];
-console.info(arr);
-console.info(arr.toString());
-console.info(convertArrayToString(arr));
+function formatString(input, num=80) {
+    let result = '';
+    let currentLineLength = 0;
+
+    // 遍历输入字符串的每个字符
+    for (let i = 0; i < input.length; i++) {
+        const char = input[i];
+        result += char;
+        currentLineLength++;
+
+        // 检查当前字符是否为逗号，并且当前行长度是否已经达到指定的长度
+        if (char === ',' && currentLineLength >= num) {
+            result += '\n';
+            currentLineLength = 0;
+        }
+    }
+
+    return result;
+}
+
+// let arr = [1, 2, "3", 4, [5, "6"]];
+// console.info(arr);
+// console.info(arr.toString());
+// console.info(convertArrayToString(arr));
