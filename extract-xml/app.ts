@@ -1,6 +1,7 @@
 // @ts-ignore
-import arxml2json from "./out/control_swc_sweep_component.json";
-import { extractSWC, parseXML, readFile, writeFile } from "./src/utils";
+import componentJson from "./out/control_swc_sweep_component.json";
+import datatypeJson from "./out/control_swc_sweep_datatype.json";
+import { extractDatatype, extractSWC, parseXML, readFile, writeFile } from "./src/utils";
 
 let inPath = "./xml/control_swc_sweep_component.arxml";
 let outPath = "./out/control_swc_sweep_component.json";
@@ -19,8 +20,11 @@ const extractXml = async (inPath: string, outPath: string) => {
 
 // extractXml(inPath, outPath);
 
-const swc = extractSWC(arxml2json);
+const swc = extractSWC(componentJson);
 
 writeFile("./out/swc.json", JSON.stringify(swc, null, 2));
 
+
+const datatype = extractDatatype(datatypeJson);
+writeFile("./out/datatype.json", JSON.stringify(datatype, null, 2));
 

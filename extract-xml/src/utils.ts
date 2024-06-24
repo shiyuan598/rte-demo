@@ -3,7 +3,7 @@ import * as xml2js from "xml2js";
 // @ts-ignore
 import * as fs from "fs";
 // @ts-ignore
-import arxml2json from "../out/control_swc_sweep_component.json";
+// import arxml2json from "../out/control_swc_sweep_component.json";
 
 const parser = new xml2js.Parser({
     explicitArray: false,
@@ -215,8 +215,7 @@ const removeWhitespace = (str: string) => {
 
 export const extractSWC = (data: any) => {
     // 1.SWCName, 通过APPLICATION-SW-COMPONENT-TYP标签下SHORT-NAME标签
-    findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", data);
-    const swcObj = findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", arxml2json);
+    const swcObj = findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", data);
     const nameObj = findChildrenByKey("SHORT-NAME", swcObj);
     const swcName = nameObj?.attributes?.innerText;
 
@@ -282,34 +281,36 @@ export const extractSWC = (data: any) => {
                             "TARGET-DATA-PROTOTYPE-REF",
                             item
                         )?.attributes?.innerText?.split("/");
-                        const dataElement = textArr.at(-1);
-                        const interfaceName = textArr.at(-2);
+                        const dataElement = textArr?.at(-1);
+                        const interfaceName = textArr?.at(-2);
 
                         const portObj = findChildrenByKey("PORT-PROTOTYPE-REF", item);
-                        const portName = portObj?.attributes?.innerText?.split("/").at(-1);
+                        const portName = portObj?.attributes?.innerText?.split("/")?.at(-1);
                         const portType = portObj?.attributes?.DEST?.startsWith("R-PORT") ? "R-PORT" : "P-PORT";
-                        interfaceName && interfaces.push({
-                            name: interfaceName,
-                            dataElement,
-                            port: {
-                                name: portName,
-                                type: portType
-                            }
-                        });
+                        interfaceName &&
+                            interfaces.push({
+                                name: interfaceName,
+                                dataElement,
+                                port: {
+                                    name: portName,
+                                    type: portType
+                                }
+                            });
                     });
 
                 case "READ-LOCAL-VARIABLES":
                 case "WRITTEN-LOCAL-VARIABLES":
                     dataAccess?.children?.forEach((item: any) => {
-                        const dataElement = findChildrenByKey("LOCAL-VARIABLE-REF", item)?.attributes?.innerText?.split("/")
-                            .at(-1);
+                        const dataElement = findChildrenByKey("LOCAL-VARIABLE-REF", item)
+                            ?.attributes?.innerText?.split("/")?.at(-1);
                         const type = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText?.startsWith("WV")
                             ? "W"
-                            : "R";                        
-                        dataElement && irvs.push({
-                            dataElement,
-                            type
-                        });
+                            : "R";
+                        dataElement &&
+                            irvs.push({
+                                dataElement,
+                                type
+                            });
                     });
                 default:
                     break;
@@ -331,4 +332,48 @@ export const extractSWC = (data: any) => {
     };
 };
 
-extractSWC(arxml2json);
+export const extractDatatype = (data: any) => {
+    const getDatatypeInfo = (datatypeObjs: any) => {
+        return datatypeObjs?.children.map((datatype: any) => {
+            const name = findChildrenByKey("SHORT-NAME", datatype)?.attributes?.innerText;
+            const category = findChildrenByKey("CATEGORY", datatype)?.attributes?.innerText;
+            let typeRef = "";
+            switch (category) {
+                case "STRUCTURE":
+                    return {
+                        name,
+                        category,
+                        subElements: getDatatypeInfo(findChildrenByKey("SUB-ELEMENTS", datatype))
+                    };
+                case "ARRAY":
+                    return {
+                        name,
+                        category,
+                        length: findChildrenByKey("ARRAY-SIZE", datatype)?.attributes?.innerText,
+                        subElements: getDatatypeInfo(findChildrenByKey("SUB-ELEMENTS", datatype))
+                    };
+                case "TYPE_REFERENCE":
+                    typeRef = findChildrenByKey("IMPLEMENTATION-DATA-TYPE-REF", datatype)?.attributes?.innerText?.split("/")?.at(-1);
+                    return {
+                        name,
+                        category,
+                        typeRef
+                    };
+                case "VALUE":
+                    typeRef = findChildrenByKey("BASE-TYPE-REF", datatype)?.attributes?.innerText?.split("/")?.at(-1);;
+                    return {
+                        name,
+                        category,
+                        typeRef
+                    };
+                default:
+                    console.info("Category: ", category);
+                    break;
+            }
+        });
+    };
+
+    const datatypeObjs = findChildrenByKey("ELEMENTS", data);
+    const datatypeInfo = getDatatypeInfo(datatypeObjs);
+    return datatypeInfo;
+};
