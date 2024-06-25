@@ -14,7 +14,6 @@ const extractXml = async (inPath: string, outPath: string) => {
     parseXML(xmlString as string)
         .then((result) => {
             writeFile(outPath, JSON.stringify(result, null, 2));
-
         })
         .catch((err) => console.error(err));
 };
@@ -22,12 +21,87 @@ const extractXml = async (inPath: string, outPath: string) => {
 // extractXml(inPath, outPath);
 
 const swc = extractSWC(componentJson);
-// writeFile("./out/swc.json", JSON.stringify(swc, null, 2));
-
+writeFile("./out/swc.json", JSON.stringify(swc, null, 2));
 
 const datatype = extractDatatype(datatypeJson);
-// writeFile("./out/datatype.json", JSON.stringify(datatype, null, 2));
-
+// console.info(datatype.map((item: any) => item.name));
+writeFile("./out/datatype.json", JSON.stringify(datatype, null, 2));
 
 const interfaces = extractInterface(interfaceJson);
+// console.info(interfaces.map((item: any) => `${item.dataElement} - ${item.dataType}`));
 writeFile("./out/interfaces.json", JSON.stringify(interfaces, null, 2));
+
+const DATAELEMENT_INITVALUE = [
+    'J6LCANRxInp',
+    'LocalizationInfo',
+    'PlanningInfo',
+    'ADMInfoSOC2MCU',
+    'ChassisInp',
+    'ADMInfoMCU2SOC',
+    'CtrlDebugInfoMCU2SOC',
+    'J6LCANTxOutp'
+  ]
+
+const DATAELEMENT_DATATYPE = [
+    "J6LCANRxInp - J6L_RxBus",
+    "LocalizationInfo - LocalizationInfo",
+    "PlanningInfo - PlanningInfo",
+    "ADMInfoSOC2MCU - ADMInfoSOC2MCU",
+    "ChassisInp - ChassisInfo",
+    "ADMInfoMCU2SOC - ADMInfoMCU2SOC",
+    "CtrlDebugInfoMCU2SOC - CtrlInfoMCU2SOC",
+    "J6LCANTxOutp - J6L_TxBus"
+];
+
+const DATATYPE = [
+    "J6L_RxBus",
+    "Float",
+    "LocalizationInfo",
+    "UInt32",
+    "Double",
+    "rt_Array_Float_3",
+    "rt_Array_Float_4",
+    "rt_Array_Double_3",
+    "PlanningInfo",
+    "TrajectoryPoint",
+    "rt_Array_Float_100",
+    "PathPoint",
+    "VehicleSignal",
+    "ADMInfoSOC2MCU",
+    "ChassisInfo",
+    "SInt32",
+    "ADMInfoMCU2SOC",
+    "CtrlInfoMCU2SOC",
+    "J6L_TxBus",
+    "BusLatCtrl",
+    "Boolean",
+    "BusEM",
+    "BusCRM",
+    "BusADM",
+    "UInt8",
+    "BusLongCtrl",
+    "BusVSE",
+    "SInt8",
+    "Double_const",
+    "Float_const",
+    "rt_Array_Float_22",
+    "rt_Array_Float_22_const",
+    "rt_Array_Float_292",
+    "rt_Array_Float_292_const",
+    "rt_Array_Float_25",
+    "rt_Array_Float_25_const",
+    "rt_Array_Float_7",
+    "rt_Array_Float_7_const",
+    "rt_Array_Float_5",
+    "rt_Array_Float_5_const",
+    "rt_Array_Float_2",
+    "rt_Array_Float_2_const",
+    "rt_Array_Float_9",
+    "rt_Array_Float_9_const",
+    "rt_Array_Float_8",
+    "rt_Array_Float_8_const",
+    "UInt16",
+    "UInt16_const",
+    "Boolean_const",
+    "UInt8_const"
+];

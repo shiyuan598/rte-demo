@@ -1,0 +1,50 @@
+[
+  {
+    "interfaceName": "J6LCANRxInp",
+    "dataElement": "J6LCANRxInp",
+    "category": "STRUCTURE",
+    "dataType": "J6L_RxBus"
+  },
+  {
+    "interfaceName": "LocalizationInfo",
+    "dataElement": "LocalizationInfo",
+    "category": "STRUCTURE",
+    "dataType": "LocalizationInfo"
+  },
+  {
+    "interfaceName": "PlanningInfo",
+    "dataElement": "PlanningInfo",
+    "category": "STRUCTURE",
+    "dataType": "PlanningInfo"
+  },
+  {
+    "interfaceName": "ADMInfoSOC2MCU",
+    "dataElement": "ADMInfoSOC2MCU",
+    "category": "STRUCTURE",
+    "dataType": "ADMInfoSOC2MCU"
+  },
+  {
+    "interfaceName": "ChassisInp",
+    "dataElement": "ChassisInp",
+    "category": "STRUCTURE",
+    "dataType": "ChassisInfo"
+  },
+  {
+    "interfaceName": "ADMInfoMCU2SOC",
+    "dataElement": "ADMInfoMCU2SOC",
+    "category": "STRUCTURE",
+    "dataType": "ADMInfoMCU2SOC"
+  },
+  {
+    "interfaceName": "CtrlDebugInfoMCU2SOC",
+    "dataElement": "CtrlDebugInfoMCU2SOC",
+    "category": "STRUCTURE",
+    "dataType": "CtrlInfoMCU2SOC"
+  },
+  {
+    "interfaceName": "J6LCANTxOutp",
+    "dataElement": "J6LCANTxOutp",
+    "category": "STRUCTURE",
+    "dataType": "J6L_TxBus"
+  }
+]

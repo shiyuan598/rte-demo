@@ -286,5 +286,37 @@
     "ADMInfoMCU2SOC": "{0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U}",
     "CtrlDebugInfoMCU2SOC": "{0U, 0U, 0U, 0U, 0U, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0U, 0U, 0U, 0U, 0U, 0U, 0U}",
     "J6LCANTxOutp": "{0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F}"
-  }
+  },
+  "IRVs": [
+    {
+      "dataElement": "EMOutp",
+      "dataType": "BusEM",
+      "initValue": "{FALSE, 0U}"
+    },
+    {
+      "dataElement": "ADMOutp",
+      "dataType": "BusADM",
+      "initValue": "{0U, FALSE}"
+    },
+    {
+      "dataElement": "VSEOutp",
+      "dataType": "BusVSE",
+      "initValue": "{0.0F, 0.0F, FALSE, 0.0F, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0U}"
+    },
+    {
+      "dataElement": "CRMOutp",
+      "dataType": "BusCRM",
+      "initValue": "{0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F}"
+    },
+    {
+      "dataElement": "LongCtrlOutp",
+      "dataType": "BusLongCtrl",
+      "initValue": "{0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0U}"
+    },
+    {
+      "dataElement": "LatCtrlOutp",
+      "dataType": "BusLatCtrl",
+      "initValue": "{0.0F, FALSE}"
+    }
+  ]
 }

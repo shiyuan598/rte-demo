@@ -231,8 +231,6 @@ export const extractSWC = (data: any) => {
 
     // 3.Ports initValue
     // 通过PORTS下FIELDS标签，注意分三类，有嵌套结构
-    const portsObj = findChildrenByKey("PORTS", swcObj);
-
     const getInitValues = (fields: any) => {
         return fields?.children.map((item: any) => {
             const tag = item["tag"];
@@ -249,6 +247,8 @@ export const extractSWC = (data: any) => {
             }
         });
     };
+
+    const portsObj = findChildrenByKey("PORTS", swcObj);
     const initValues = portsObj?.children.reduce((pre: any, item: any) => {
         const dataElement = findChildrenByKey("DATA-ELEMENT-REF", item)?.attributes?.innerText?.split("/")?.at(-1);
         const initValueObj = findChildrenByKey("FIELDS", item);
@@ -261,6 +261,22 @@ export const extractSWC = (data: any) => {
         pre[dataElement] = initValue;
         return pre;
     }, {});
+
+    // 3.1 IRV initValues
+    const innerVarObj = findChildrenByKey("IMPLICIT-INTER-RUNNABLE-VARIABLES", swcObj);
+    const IRVs = innerVarObj?.children?.map((item: any) => {
+        const dataElement = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
+        const dataType = findChildrenByKey("TYPE-TREF", item)?.attributes?.innerText?.split("/")?.at(-1);
+        const initValueObj = findChildrenByKey("FIELDS", item);
+        let initValue = getInitValues(initValueObj);
+        // 转为字符串
+        initValue = convertArrayToString(initValue);
+        return {
+            dataElement,
+            dataType,
+            initValue
+        }
+    });
 
     // 4.Runnables
     // 通过RUNNABLES标签
@@ -329,7 +345,8 @@ export const extractSWC = (data: any) => {
         runnables,
         swcName,
         periods,
-        initValues
+        initValues,
+        IRVs
     };
 };
 
@@ -389,7 +406,6 @@ export const extractInterface = (data: any) => {
         const dataElement = findChildrenByKey("SHORT-NAME", datatypeObj)?.attributes?.innerText;
         const dataType = findChildrenByKey("TYPE-TREF", datatypeObj)?.attributes?.innerText?.split("/")?.at(-1);
         const category = findChildrenByKey("CATEGORY", datatypeObj)?.attributes?.innerText;
-        console.info(interfaceName, dataElement, category, dataType);
         return {
             interfaceName,
             dataElement,

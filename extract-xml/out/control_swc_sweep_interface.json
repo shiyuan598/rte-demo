@@ -1,0 +1,720 @@
+{
+  "tag": "AUTOSAR",
+  "children": [
+    {
+      "tag": "AR-PACKAGES",
+      "children": [
+        {
+          "tag": "AR-PACKAGE",
+          "children": [
+            {
+              "tag": "SHORT-NAME",
+              "children": [],
+              "attributes": {
+                "innerText": "Interfaces"
+              }
+            },
+            {
+              "tag": "ELEMENTS",
+              "children": [
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "J6LCANRxInp"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "J6LCANRxInp"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/J6L_RxBus"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "60111d27-4d71-5d6f-cf67-0af92b2438f7"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "524f6b65-8d41-54e5-6d07-175ff67d5698"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "LocalizationInfo"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "LocalizationInfo"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/LocalizationInfo"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "767c7c26-6fdb-5145-7649-8c61d41050be"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "904cf67e-f221-5fa6-b3e9-7467e3c4a340"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "PlanningInfo"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "PlanningInfo"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/PlanningInfo"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "e8f6f3b4-5baf-577c-38b7-84a8fbf6ba79"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "cfa88468-9372-521f-9b39-ba6f46ec2d32"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "ADMInfoSOC2MCU"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "ADMInfoSOC2MCU"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/ADMInfoSOC2MCU"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "9e1820eb-9b32-5e78-e5aa-79f634c3bd58"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "e3160d3b-d8de-5db7-41cd-2fbe29dcad5b"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "ChassisInp"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "ChassisInp"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/ChassisInfo"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "f8cddc3b-9a74-5ce4-54c2-7f215ae4ceb2"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "37dff484-e460-5b1f-4c85-4f2cf9392f80"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "ADMInfoMCU2SOC"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "ADMInfoMCU2SOC"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/ADMInfoMCU2SOC"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "89d43316-aaab-54e7-0503-3bbe28093282"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "7fb38de2-1af3-51cb-d789-0d853f3d2da1"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "CtrlDebugInfoMCU2SOC"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "CtrlDebugInfoMCU2SOC"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/CtrlInfoMCU2SOC"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "08df7a9c-e32c-5eb3-2295-d630de98e6c0"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "68003f0e-bdb9-54bc-0271-a6d77f78b07a"
+                  }
+                },
+                {
+                  "tag": "SENDER-RECEIVER-INTERFACE",
+                  "children": [
+                    {
+                      "tag": "SHORT-NAME",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "J6LCANTxOutp"
+                      }
+                    },
+                    {
+                      "tag": "IS-SERVICE",
+                      "children": [],
+                      "attributes": {
+                        "innerText": "false"
+                      }
+                    },
+                    {
+                      "tag": "DATA-ELEMENTS",
+                      "children": [
+                        {
+                          "tag": "VARIABLE-DATA-PROTOTYPE",
+                          "children": [
+                            {
+                              "tag": "SHORT-NAME",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "J6LCANTxOutp"
+                              }
+                            },
+                            {
+                              "tag": "CATEGORY",
+                              "children": [],
+                              "attributes": {
+                                "innerText": "STRUCTURE"
+                              }
+                            },
+                            {
+                              "tag": "SW-DATA-DEF-PROPS",
+                              "children": [
+                                {
+                                  "tag": "SW-DATA-DEF-PROPS-VARIANTS",
+                                  "children": [
+                                    {
+                                      "tag": "SW-DATA-DEF-PROPS-CONDITIONAL",
+                                      "children": [
+                                        {
+                                          "tag": "SW-CALIBRATION-ACCESS",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "READ-ONLY"
+                                          }
+                                        },
+                                        {
+                                          "tag": "SW-IMPL-POLICY",
+                                          "children": [],
+                                          "attributes": {
+                                            "innerText": "STANDARD"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "tag": "TYPE-TREF",
+                              "children": [],
+                              "attributes": {
+                                "DEST": "IMPLEMENTATION-DATA-TYPE",
+                                "innerText": "/DataTypes/J6L_TxBus"
+                              }
+                            }
+                          ],
+                          "attributes": {
+                            "UUID": "e1b0cca6-b457-52fd-5db5-964f3e3a89a6"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "attributes": {
+                    "UUID": "77391a35-1bbc-5a46-1f54-0720218b6095"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attributes": {
+    "xmlns": "http://autosar.org/schema/r4.0",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://autosar.org/schema/r4.0 AUTOSAR_4-2-2.xsd"
+  }
+}
