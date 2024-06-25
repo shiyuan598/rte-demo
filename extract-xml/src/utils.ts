@@ -302,7 +302,8 @@ export const extractSWC = (data: any) => {
                 case "WRITTEN-LOCAL-VARIABLES":
                     dataAccess?.children?.forEach((item: any) => {
                         const dataElement = findChildrenByKey("LOCAL-VARIABLE-REF", item)
-                            ?.attributes?.innerText?.split("/")?.at(-1);
+                            ?.attributes?.innerText?.split("/")
+                            ?.at(-1);
                         const type = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText?.startsWith("WV")
                             ? "W"
                             : "R";
@@ -353,14 +354,16 @@ export const extractDatatype = (data: any) => {
                         subElements: getDatatypeInfo(findChildrenByKey("SUB-ELEMENTS", datatype))
                     };
                 case "TYPE_REFERENCE":
-                    typeRef = findChildrenByKey("IMPLEMENTATION-DATA-TYPE-REF", datatype)?.attributes?.innerText?.split("/")?.at(-1);
+                    typeRef = findChildrenByKey("IMPLEMENTATION-DATA-TYPE-REF", datatype)
+                        ?.attributes?.innerText?.split("/")
+                        ?.at(-1);
                     return {
                         name,
                         category,
                         typeRef
                     };
                 case "VALUE":
-                    typeRef = findChildrenByKey("BASE-TYPE-REF", datatype)?.attributes?.innerText?.split("/")?.at(-1);;
+                    typeRef = findChildrenByKey("BASE-TYPE-REF", datatype)?.attributes?.innerText?.split("/")?.at(-1);
                     return {
                         name,
                         category,
@@ -376,4 +379,22 @@ export const extractDatatype = (data: any) => {
     const datatypeObjs = findChildrenByKey("ELEMENTS", data);
     const datatypeInfo = getDatatypeInfo(datatypeObjs);
     return datatypeInfo;
+};
+
+export const extractInterface = (data: any) => {
+    const interfaceObjs = findChildrenByKey("ELEMENTS", data);
+    return interfaceObjs?.children.map((item: any) => {
+        const interfaceName = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
+        const datatypeObj = findChildrenByKey("DATA-ELEMENTS", item);
+        const dataElement = findChildrenByKey("SHORT-NAME", datatypeObj)?.attributes?.innerText;
+        const dataType = findChildrenByKey("TYPE-TREF", datatypeObj)?.attributes?.innerText?.split("/")?.at(-1);
+        const category = findChildrenByKey("CATEGORY", datatypeObj)?.attributes?.innerText;
+        console.info(interfaceName, dataElement, category, dataType);
+        return {
+            interfaceName,
+            dataElement,
+            category,
+            dataType
+        };
+    });
 };
