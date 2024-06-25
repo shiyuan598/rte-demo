@@ -2,7 +2,7 @@
 import componentJson from "./out/control_swc_sweep_component.json";
 import datatypeJson from "./out/control_swc_sweep_datatype.json";
 import interfaceJson from "./out/control_swc_sweep_interface.json";
-import { extractDatatype, extractInterface, extractSWC, parseXML, readFile, writeFile } from "./src/utils";
+import { extractDatatype, extractDatatypeInterface, extractSWC, parseXML, readFile, writeFile } from "./src/utils";
 
 let inPath = "./xml/control_swc_sweep_interface.arxml";
 let outPath = "./out/control_swc_sweep_interface.json";
@@ -27,9 +27,9 @@ const datatype = extractDatatype(datatypeJson);
 // console.info(datatype.map((item: any) => item.name));
 writeFile("./out/datatype.json", JSON.stringify(datatype, null, 2));
 
-const interfaces = extractInterface(interfaceJson);
+const interfaces = extractDatatypeInterface(interfaceJson);
 // console.info(interfaces.map((item: any) => `${item.dataElement} - ${item.dataType}`));
-writeFile("./out/interfaces.json", JSON.stringify(interfaces, null, 2));
+writeFile("./out/datatypeInterfaces.json", JSON.stringify(interfaces, null, 2));
 
 const DATAELEMENT_INITVALUE = [
     'J6LCANRxInp',

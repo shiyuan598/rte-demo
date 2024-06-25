@@ -222,7 +222,7 @@ export const extractSWC = (data: any) => {
     // 2.Events periods
     // 通过EVENTS标签
     const eventsObj = findChildrenByKey("EVENTS", swcObj);
-    const periods = eventsObj?.children.reduce((pre: any, item: any) => {
+    const periods = eventsObj?.children?.reduce((pre: any, item: any) => {
         let runnable = findChildrenByKey("START-ON-EVENT-REF", item)?.attributes?.innerText?.split("/")?.at(-1);
         let period = findChildrenByKey("PERIOD", item)?.attributes?.innerText;
         pre[runnable] = period;
@@ -232,7 +232,7 @@ export const extractSWC = (data: any) => {
     // 3.Ports initValue
     // 通过PORTS下FIELDS标签，注意分三类，有嵌套结构
     const getInitValues = (fields: any) => {
-        return fields?.children.map((item: any) => {
+        return fields?.children?.map((item: any) => {
             const tag = item["tag"];
             switch (tag) {
                 case "NUMERICAL-VALUE-SPECIFICATION":
@@ -249,7 +249,7 @@ export const extractSWC = (data: any) => {
     };
 
     const portsObj = findChildrenByKey("PORTS", swcObj);
-    const initValues = portsObj?.children.reduce((pre: any, item: any) => {
+    const initValues = portsObj?.children?.reduce((pre: any, item: any) => {
         const dataElement = findChildrenByKey("DATA-ELEMENT-REF", item)?.attributes?.innerText?.split("/")?.at(-1);
         const initValueObj = findChildrenByKey("FIELDS", item);
         let initValue = getInitValues(initValueObj);
@@ -264,19 +264,20 @@ export const extractSWC = (data: any) => {
 
     // 3.1 IRV initValues
     const innerVarObj = findChildrenByKey("IMPLICIT-INTER-RUNNABLE-VARIABLES", swcObj);
-    const IRVs = innerVarObj?.children?.map((item: any) => {
-        const dataElement = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
-        const dataType = findChildrenByKey("TYPE-TREF", item)?.attributes?.innerText?.split("/")?.at(-1);
-        const initValueObj = findChildrenByKey("FIELDS", item);
-        let initValue = getInitValues(initValueObj);
-        // 转为字符串
-        initValue = convertArrayToString(initValue);
-        return {
-            dataElement,
-            dataType,
-            initValue
-        }
-    });
+    const IRVs = innerVarObj?.children?.reduce(
+        (pre: any, item: any) => {
+            const dataElement = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
+            const dataType = findChildrenByKey("TYPE-TREF", item)?.attributes?.innerText?.split("/")?.at(-1);
+            const initValueObj = findChildrenByKey("FIELDS", item);
+            let initValue = getInitValues(initValueObj);
+            // 转为字符串
+            initValue = convertArrayToString(initValue);
+            pre.datatypeInterfaces[dataElement] = dataType;
+            pre.initValues[dataElement] = initValue;
+            return pre;
+        },
+        { datatypeInterfaces: {}, initValues: {} }
+    );
 
     // 4.Runnables
     // 通过RUNNABLES标签
@@ -398,19 +399,15 @@ export const extractDatatype = (data: any) => {
     return datatypeInfo;
 };
 
-export const extractInterface = (data: any) => {
+export const extractDatatypeInterface = (data: any) => {
     const interfaceObjs = findChildrenByKey("ELEMENTS", data);
-    return interfaceObjs?.children.map((item: any) => {
+    return interfaceObjs?.children?.reduce((pre: any, item: any) => {
         const interfaceName = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
         const datatypeObj = findChildrenByKey("DATA-ELEMENTS", item);
         const dataElement = findChildrenByKey("SHORT-NAME", datatypeObj)?.attributes?.innerText;
         const dataType = findChildrenByKey("TYPE-TREF", datatypeObj)?.attributes?.innerText?.split("/")?.at(-1);
         const category = findChildrenByKey("CATEGORY", datatypeObj)?.attributes?.innerText;
-        return {
-            interfaceName,
-            dataElement,
-            category,
-            dataType
-        };
-    });
+        pre[dataElement] = dataType;
+        return pre;
+    }, {});
 };

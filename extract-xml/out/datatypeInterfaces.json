@@ -1,0 +1,10 @@
+{
+  "J6LCANRxInp": "J6L_RxBus",
+  "LocalizationInfo": "LocalizationInfo",
+  "PlanningInfo": "PlanningInfo",
+  "ADMInfoSOC2MCU": "ADMInfoSOC2MCU",
+  "ChassisInp": "ChassisInfo",
+  "ADMInfoMCU2SOC": "ADMInfoMCU2SOC",
+  "CtrlDebugInfoMCU2SOC": "CtrlInfoMCU2SOC",
+  "J6LCANTxOutp": "J6L_TxBus"
+}
