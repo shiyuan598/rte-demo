@@ -42,4 +42,130 @@ extern VAR(BusLatCtrl, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_LatCtrlOu
 extern VAR(BusLongCtrl, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_LongCtrlOutp_oLongCtrlOutp;
 
 #define Rte_IRead_EM_20ms_ADMInfoSOC2MCU_ADMInfoSOC2MCU()  \
-  (&Rte_con
+  (&Rte_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU)
+
+#define Rte_IRead_ADM_20ms_ADMInfoSOC2MCU_ADMInfoSOC2MCU()  \
+  (&Rte_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU)
+
+#define Rte_IRead_EM_20ms_ChassisInp_ChassisInp()  \
+  (&Rte_control_swc_sweep_ChassisInp_oChassisInp)
+
+#define Rte_IRead_ADM_20ms_ChassisInp_ChassisInp()  \
+  (&Rte_control_swc_sweep_ChassisInp_oChassisInp)
+
+#define Rte_IRead_VSE_20ms_ChassisInp_ChassisInp()  \
+  (&Rte_control_swc_sweep_ChassisInp_oChassisInp)
+
+#define Rte_IRead_LongCtrl_20ms_ChassisInp_ChassisInp()  \
+  (&Rte_control_swc_sweep_ChassisInp_oChassisInp)
+
+#define Rte_IRead_EM_20ms_J6LCANRxInp_J6LCANRxInp()  \
+  (&Rte_control_swc_sweep_J6LCANRxInp_oJ6LCANRxInp)
+
+#define Rte_IRead_ADM_20ms_J6LCANRxInp_J6LCANRxInp()  \
+  (&Rte_control_swc_sweep_J6LCANRxInp_oJ6LCANRxInp)
+
+#define Rte_IRead_ADM_20ms_PlanningInfo_PlanningInfo()  \
+  (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
+
+#define Rte_IRead_CRM_20ms_PlanningInfo_PlanningInfo()  \
+  (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
+
+#define Rte_IRead_LongCtrl_20ms_PlanningInfo_PlanningInfo()  \
+  (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
+
+#define Rte_IRead_LatCtrl_20ms_PlanningInfo_PlanningInfo()  \
+  (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
+
+#define Rte_IRead_EM_20ms_PlanningInfo_PlanningInfo()  \
+  (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
+
+#define Rte_IRead_Tx_20ms_PlanningInfo_PlanningInfo()  \
+  (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
+
+#define Rte_IRead_EM_20ms_LocalizationInfo_LocalizationInfo()  \
+  (&Rte_control_swc_sweep_LocalizationInfo_oLocalizationInfo)
+
+#define Rte_IRead_VSE_20ms_LocalizationInfo_LocalizationInfo()  \
+  (&Rte_control_swc_sweep_LocalizationInfo_oLocalizationInfo)
+
+#define Rte_IWrite_Tx_20ms_J6LCANTxOutp_J6LCANTxOutp(data)  \
+(  \
+  Rte_control_swc_sweep_J6LCANTxOutp_oJ6LCANTxOutp = *(data) \
+)
+
+#define Rte_IWrite_Tx_20ms_ADMInfoMCU2SOC_ADMInfoMCU2SOC(data)  \
+(  \
+  Rte_control_swc_sweep_ADMInfoMCU2SOC_oADMInfoMCU2SOC = *(data) \
+)
+
+#define Rte_IWrite_Tx_20ms_CtrlDebugInfoMCU2SOC_CtrlDebugInfoMCU2SOC(data)  \
+(  \
+  Rte_control_swc_sweep_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC = *(data) \
+)
+
+#define Rte_IrvIWrite_EM_20ms_EMOutp(data)  \
+(  \
+  Rte_Irv_control_swc_sweep_EMOutp_oEMOutp = *(data) \
+)
+
+#define Rte_IrvIRead_ADM_20ms_EMOutp()  \
+  (&Rte_Irv_control_swc_sweep_EMOutp_oEMOutp)
+
+#define Rte_IrvIWrite_ADM_20ms_ADMOutp(data)  \
+(  \
+  Rte_Irv_control_swc_sweep_ADMOutp_oADMOutp = *(data) \
+)
+
+#define Rte_IrvIRead_LongCtrl_20ms_ADMOutp()  \
+  (&Rte_Irv_control_swc_sweep_ADMOutp_oADMOutp)
+
+#define Rte_IrvIRead_LatCtrl_20ms_ADMOutp()  \
+  (&Rte_Irv_control_swc_sweep_ADMOutp_oADMOutp)
+
+#define Rte_IrvIRead_Tx_20ms_ADMOutp()  \
+  (&Rte_Irv_control_swc_sweep_ADMOutp_oADMOutp)
+
+#define Rte_IrvIWrite_VSE_20ms_VSEOutp(data)  \
+(  \
+  Rte_Irv_control_swc_sweep_VSEOutp_oVSEOutp = *(data) \
+)
+
+#define Rte_IrvIRead_CRM_20ms_VSEOutp()  \
+  (&Rte_Irv_control_swc_sweep_VSEOutp_oVSEOutp)
+
+#define Rte_IrvIRead_LongCtrl_20ms_VSEOutp()  \
+  (&Rte_Irv_control_swc_sweep_VSEOutp_oVSEOutp)
+
+#define Rte_IrvIRead_LatCtrl_20ms_VSEOutp()  \
+  (&Rte_Irv_control_swc_sweep_VSEOutp_oVSEOutp)
+
+#define Rte_IrvIWrite_CRM_20ms_CRMOutp(data)  \
+(  \
+  Rte_Irv_control_swc_sweep_CRMOutp_oCRMOutp = *(data) \
+)
+
+#define Rte_IrvIRead_LongCtrl_20ms_CRMOutp()  \
+  (&Rte_Irv_control_swc_sweep_CRMOutp_oCRMOutp)
+
+#define Rte_IrvIRead_LatCtrl_20ms_CRMOutp()  \
+  (&Rte_Irv_control_swc_sweep_CRMOutp_oCRMOutp)
+
+#define Rte_IrvIWrite_LatCtrl_20ms_LatCtrlOutp(data)  \
+(  \
+  Rte_Irv_control_swc_sweep_LatCtrlOutp_oLatCtrlOutp = *(data) \
+)
+
+#define Rte_IrvIRead_Tx_20ms_LatCtrlOutp()  \
+  (&Rte_Irv_control_swc_sweep_LatCtrlOutp_oLatCtrlOutp)
+
+#define Rte_IrvIWrite_LongCtrl_20ms_LongCtrlOutp(data)  \
+(  \
+  Rte_Irv_control_swc_sweep_LongCtrlOutp_oLongCtrlOutp = *(data) \
+)
+
+#define Rte_IrvIRead_Tx_20ms_LongCtrlOutp()  \
+  (&Rte_Irv_control_swc_sweep_LongCtrlOutp_oLongCtrlOutp)
+
+
+#endif

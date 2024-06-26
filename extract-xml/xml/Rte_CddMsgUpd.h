@@ -99,4 +99,43 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_EBC1_oRx_Flag_Arr_
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_EBC2_oRx_Flag_Arr_EBC2(Rx_Flag_Type* data);
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_EEC2_oRx_Flag_Arr_EEC2(Rx_Flag_Type* data);
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_EPB1_oRx_Flag_Arr_EPB1(Rx_Flag_Type* data);
-FUNC(Std_Retu
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_EPS2_oRx_Flag_Arr_EPS2(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_ETC2_oRx_Flag_Arr_ETC2(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_LC_oRx_Flag_Arr_LC(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_MCU1_oRx_Flag_Arr_MCU1(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_PS1_oRx_Flag_Arr_PS1(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_VCU_Status_oRx_Flag_Arr_VCU_Status(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Flag_Arr_VDC2_oRx_Flag_Arr_VDC2(Rx_Flag_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_CCVS1_oRx_SigStat_Arr_CCVS1(CCVS1_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_EBC1_oRx_SigStat_Arr_EBC1(EBC1_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_EBC2_oRx_SigStat_Arr_EBC2(EBC2_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_EEC2_oRx_SigStat_Arr_EEC2(EEC2_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_EPB1_oRx_SigStat_Arr_EPB1(EPB1_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_EPS2_oRx_SigStat_Arr_EPS2(EPS2_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_ETC2_oRx_SigStat_Arr_ETC2(ETC2_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_LC_oRx_SigStat_Arr_LC(LC_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_MCU1_oRx_SigStat_Arr_MCU1(MCU1_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_PS1_oRx_SigStat_Arr_PS1(PS1_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_VCU_Status_oRx_SigStat_Arr_VCU_Status(VCU_Status_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_SigStat_Arr_VDC2_oRx_SigStat_Arr_VDC2(VDC2_SigStatusType* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_CCVS1_oRx_Time_Arr_CCVS1(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_EBC1_oRx_Time_Arr_EBC1(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_EBC2_oRx_Time_Arr_EBC2(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_EEC2_oRx_Time_Arr_EEC2(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_EPB1_oRx_Time_Arr_EPB1(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_EPS2_oRx_Time_Arr_EPS2(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_ETC2_oRx_Time_Arr_ETC2(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_LC_oRx_Time_Arr_LC(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_MCU1_oRx_Time_Arr_MCU1(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_PS1_oRx_Time_Arr_PS1(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_VCU_Status_oRx_Time_Arr_VCU_Status(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Time_Arr_VDC2_oRx_Time_Arr_VDC2(uint64* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_chassis_info_ochassis_info(Chassis_Info_Type* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Rx_Pro_Cnt_LC_oRx_Pro_Cnt_LC(uint8* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_Rx_Cur_Pro_Cnt_LC_oRx_Cur_Pro_Cnt_LC(uint8* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_Core3TimeStamp_oCore3TimeStamp(uint8* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_ChassisInp_oChassisInp(ChassisInfo* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_J6LCANRxInp_oJ6LCANRxInp(J6L_RxBus* data);
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_J6LCANTxOutp_oJ6LCANTxOutp(J6L_TxBus* data);
+
+#endif

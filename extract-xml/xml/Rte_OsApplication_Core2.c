@@ -209,4 +209,130 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_GpsPPS_Core2TimeStamp_oCore2TimeStamp(ui
   return ret;
 }
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Writ
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_GpsPPS_PpsStatus_oPpsStatus(uint8* data)
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  Rte_DisableOSInterrupts();
+  (void)GetSpinlock(Rte_Spinlock_PpsStatus_oPpsStatus);
+  (void)memcpy(Rte_PpsStatus_oPpsStatus,data,sizeof(rt_Array_uint8_200));
+  (void)ReleaseSpinlock(Rte_Spinlock_PpsStatus_oPpsStatus);
+  Rte_EnableOSInterrupts();
+
+  return ret;
+}
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_PowMgr_PowerMngComData_oPowerMngComData(uint8* data)
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  Rte_DisableOSInterrupts();
+  (void)GetSpinlock(Rte_Spinlock_PowerMngComData_oPowerMngComData);
+  (void)memcpy(Rte_PowerMngComData_oPowerMngComData,data,sizeof(rt_Array_uint8_1024));
+  (void)ReleaseSpinlock(Rte_Spinlock_PowerMngComData_oPowerMngComData);
+  Rte_EnableOSInterrupts();
+
+  return ret;
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_Init_Task_Core2)
+ {
+    Core[2][0]++;
+    Tm_Start(20);
+    EcuM_StartupTwo();
+    Rte_Start();  
+    Uart_Init( &Uart_Config  );
+    ztuart_Init();
+    zt_adc_init();
+    CDD_Uart_Init();
+    SWC_NvShell_Init();
+    zt_uart_multicore_Init();
+    PowerManager_Init();
+    CGI610_Init();
+    ZtSftyMon_Init();
+    PPS_Init();
+    while (((volatile uint8)Rte_InitState) != RTE_STATE_INIT)
+    {
+
+    }
+    Tm_Stop(20);
+    TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_P1ms_Task_Core2)
+ {
+ 	 Core[2][1]++;
+   Tm_Start(21);
+   CGI610_MainFunction();
+   Tm_Stop(21);
+   TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_P5ms_Task_Core2)
+ {
+ 	  Core[2][2]++;
+    Tm_Start(22);
+    Tm_Stop(22);
+    TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_P10ms_Task_Core2)
+ {
+ 	  Core[2][3]++;
+    Tm_Start(23);
+    EcuM_MainFunction();      
+    zt_uart_multicore_Mainfunction();
+    SWC_NvShell_ProcessCmd();
+    PowerManager_MainFunction();
+    Spi_MainFunction_Handling();
+    zt_adc_mainfunction();
+    ZtSftyMon_MainFunction_10ms();
+    Tm_Stop(23);
+    TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_P100ms_Task_Core2)
+ {
+   Core[2][4]++;
+   Tm_Start(24);
+   Clm_runnable_100ms();
+   Tm_Stop(24);
+   TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+void idle_hook_core2(void);
+void idle_hook_core2(void)
+{
+  idle_hook_body();
+}
+
+
+#if (defined(__TASKING__))
+#define OS_CORE2_STOP_SEC_CODE
+#include "Os_MemMap.h"
+#endif
+

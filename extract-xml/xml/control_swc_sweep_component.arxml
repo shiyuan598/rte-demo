@@ -1889,7 +1889,7 @@ Model Checksum               : 3759493343 503406638 166127120 1450419933
                                                                 </NUMERICAL-VALUE-SPECIFICATION>
                                                                 <NUMERICAL-VALUE-SPECIFICATION>
                                                                     <SHORT-LABEL>DefaultInitValue_rt_Array_Float_100_rt_Array_Float_100_17</SHORT-LABEL>
-                                                                    <VALUE>0</VALUE>trajectory_point_num
+                                                                    <VALUE>0</VALUE>
                                                                 </NUMERICAL-VALUE-SPECIFICATION>
                                                                 <NUMERICAL-VALUE-SPECIFICATION>
                                                                     <SHORT-LABEL>DefaultInitValue_rt_Array_Float_100_rt_Array_Float_100_18</SHORT-LABEL>

@@ -2253,4 +2253,130 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_IDC_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoM
   {
     (void)memcpy(data,&Rte_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC,sizeof(CtrlInfoMCU2SOC));
   }
- 
+  else
+  {
+    *data = Rte_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC;
+  }
+
+  return ret;
+}
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_control_swc_sweep_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC(void)
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  Rte_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC = Rte_control_swc_sweep_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC;
+
+  return ret;
+}
+
+void idle_hook_core3(void);
+void idle_hook_core3(void)
+{
+  idle_hook_body();
+}
+extern uint8_t Core[6][10];
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_Init_Task_Core3)
+ {
+   Core[3][0]++;
+   Tm_Start(30);
+   EcuM_StartupTwo(); 
+   Rte_Start();    
+   CddMsgUpd_Init();
+   SwcAppC1_Init();
+   IDC_Init();
+   while (((volatile uint8)Rte_InitState) != RTE_STATE_INIT)
+    {
+
+    }
+   Tm_Stop(30);
+   TerminateTask();
+ }
+ /**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P1ms_Task_Core3)
+{
+	Core[3][1]++;
+  Tm_Start(31);
+  Tm_Stop(31);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P5ms_Task_Core3)
+{
+	Core[3][2]++;
+  Tm_Start(32);
+  Tm_Stop(32);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P10ms_Task_Core3)
+{
+	Core[3][3]++;
+  Tm_Start(33);
+  EcuM_MainFunction();  
+  IDC_MainFunctionRx();
+  IDC_MainFunctionTx();
+  Tm_Stop(33);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P20ms_Task_Core3)
+{
+	Core[3][5]++;
+  Tm_Start(35);
+  CddMsgUpd_MainFunctionRx();
+  CddMsgUpd_MainFunction_20ms();
+  (void)Rte_Read_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU();
+  (void)Rte_Read_control_swc_sweep_ChassisInp_oChassisInp();
+  (void)Rte_Read_control_swc_sweep_J6LCANRxInp_oJ6LCANRxInp();
+  (void)Rte_Read_control_swc_sweep_PlanningInfo_oPlanningInfo();
+  (void)Rte_Read_control_swc_sweep_LocalizationInfo_oLocalizationInfo();
+  SwcAppC1_MainFunction_20ms();
+  (void)Rte_Write_control_swc_sweep_J6LCANTxOutp_oJ6LCANTxOutp();
+  (void)Rte_Write_control_swc_sweep_ADMInfoMCU2SOC_oADMInfoMCU2SOC();
+  (void)Rte_Write_control_swc_sweep_CtrlDebugInfoMCU2SOC_oCtrlDebugInfoMCU2SOC();
+  CddMsgUpd_MainFunctionTx();
+  Tm_Stop(35);
+  TerminateTask();
+}
+
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P100ms_Task_Core3)
+{
+  Core[3][4]++;
+  Tm_Start(34);
+  Clm_runnable_100ms();
+  Tm_Stop(34);
+  TerminateTask();
+}
+
+#if (defined(__TASKING__))
+#define OS_CORE3_STOP_SEC_CODE
+#include "Os_MemMap.h"
+#endif
+

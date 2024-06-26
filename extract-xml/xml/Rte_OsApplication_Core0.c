@@ -3495,4 +3495,131 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_MSDC_Callout_Core0TimeStamp_oCore0TimeSt
 /**********************************************************************************************************************
  * Task:     Bsw_QM_Event_Task_Core0
  * Priority: 170
- * Schedul
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P1ms_Task_Core0)
+{
+	Core[0][1]++;
+	Tm_Start(1);  
+	Can_17_McmCan_MainFunction_Write();
+	Can_17_McmCan_MainFunction_Read();
+//  MSDC_MainFunction_1ms();
+  Tm_Stop(1);
+  TerminateTask();
+}
+
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P5ms_Task_Core0)
+{
+	Core[0][2]++;
+  Tm_Start(2);
+  ComProxy_MainFunctionRx_5ms();
+  ComProxy_MainFunctionTx_5ms();
+  //MSDC_MainFunction_5ms();
+  Can_17_McmCan_MainFunction_BusOff();
+  Com_MainFunctionTx();
+  NvProxy_MainFunction();
+  CanTp_MainFunction();
+  Tm_Stop(2);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P10ms_Task_Core0)
+{
+	Core[0][3]++;
+  Tm_Start(3);
+  EcuM_MainFunction();
+  Fee_MainFunction();
+  Fls_17_Dmu_MainFunction();
+  NvM_MainFunction();
+  BswM_MainFunction();
+  CanXcp_MainFunction();
+  Appl_TestFunctionC0();
+  Dem_MasterMainFunction();
+  Dem_SatelliteMainFunction();
+  FiM_MainFunction(); 
+  Dcm_MainFunction();
+  EMR_MainFunction();
+  CanSM_MainFunction();
+  ComM_MainFunction_0();
+  ComM_MainFunction_1();
+  ComM_MainFunction_2();
+  
+  ComM_MainFunction_3();
+  ComM_MainFunction_4();
+  ComM_MainFunction_5();
+  ComM_MainFunction_6();
+
+  Xcp_Daq_Cyclic10ms();
+  Tm_Stop(3);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P100ms_Task_Core0)
+{
+  Core[0][4]++;
+  Tm_Start(4);
+  Tm_MainFunction();  
+  Clm_runnable_100ms();
+  DevCan_MainFunction_Tx();
+  Tm_Stop(4);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_Alarm_Task_Core0)
+{
+  Core[0][5]++;
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(TaskMaster)
+{
+  Core[0][6]++;
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(TaskCpu0Remote)
+{
+  /* Cleanly terminate the Task */
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+void idle_hook_core0(void);
+void idle_hook_core0(void)
+{
+   idle_hook_body();
+}
+
+#if (defined(__TASKING__))
+#define OS_CORE0_STOP_SEC_CODE
+#include "Os_MemMap.h"
+#endif
+

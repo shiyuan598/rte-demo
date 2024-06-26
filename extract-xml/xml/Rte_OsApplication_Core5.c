@@ -500,4 +500,129 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Write_MSDC_ARS430_ETH_Tx_Flag_oARS430_ETH_Tx_
   return ret;
 }
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Write_MSDC_GNSS_Info_ETH_o
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_MSDC_GNSS_Info_ETH_oGNSS_Info_ETH(uint8* data)
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  Rte_DisableOSInterrupts();
+  (void)GetSpinlock(Rte_Spinlock_GNSS_Info_ETH_oGNSS_Info_ETH);
+  (void)memcpy(Rte_GNSS_Info_ETH_oGNSS_Info_ETH,data,sizeof(rt_Array_uint8_224));
+  (void)ReleaseSpinlock(Rte_Spinlock_GNSS_Info_ETH_oGNSS_Info_ETH);
+  Rte_EnableOSInterrupts();
+
+  return ret;
+}
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_MSDC_GNSS_ETH_Tx_Flag_oGNSS_ETH_Tx_Flag(boolean* data)
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  Rte_DisableOSInterrupts();
+  (void)GetSpinlock(Rte_Spinlock_GNSS_ETH_Tx_Flag_oGNSS_ETH_Tx_Flag);
+  Rte_GNSS_ETH_Tx_Flag_oGNSS_ETH_Tx_Flag = *data;
+  (void)ReleaseSpinlock(Rte_Spinlock_GNSS_ETH_Tx_Flag_oGNSS_ETH_Tx_Flag);
+  Rte_EnableOSInterrupts();
+
+  return ret;
+}
+
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_MSDC_Core5TimeStamp_oCore5TimeStamp(uint8* data)
+{
+  Std_ReturnType ret = RTE_E_OK;
+
+  Rte_DisableOSInterrupts();
+  (void)GetSpinlock(Rte_Spinlock_Core5TimeStamp_oCore5TimeStamp);
+  (void)memcpy(data,Rte_Core5TimeStamp_oCore5TimeStamp,sizeof(rt_Array_uint8_12));
+  (void)ReleaseSpinlock(Rte_Spinlock_Core5TimeStamp_oCore5TimeStamp);
+  Rte_EnableOSInterrupts();
+
+  return ret;
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+void idle_hook_core5(void);
+void idle_hook_core5(void)
+{
+  idle_hook_body();
+}
+extern uint8_t Core[6][10];
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_Init_Task_Core5)
+ {
+   Core[5][0]++;
+   Tm_Start(50);
+   MSDC_Init();  
+   EcuM_StartupTwo();
+   Rte_Start();     
+   while (((volatile uint8)Rte_InitState) != RTE_STATE_INIT)
+   {
+
+    }
+   Tm_Stop(50);
+   TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P1ms_Task_Core5)
+{
+	Core[5][1]++;
+  Tm_Start(51);
+  MSDC_MainFunction_1ms();
+  Tm_Stop(51);    
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P5ms_Task_Core5)
+{
+	Core[5][2]++;
+  Tm_Start(52);
+  MSDC_MainFunction_5ms();
+  Tm_Stop(52);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P10ms_Task_Core5)
+{  
+	Core[5][3]++;
+  Tm_Start(53);
+  EcuM_MainFunction();  
+  Tm_Stop(53);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_QM_Event_Task_Core0
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P100ms_Task_Core5)
+{
+  Core[5][4]++;
+  Tm_Start(54);
+  Clm_runnable_100ms();
+  Tm_Stop(54);
+  TerminateTask();
+}
+
+#if (defined(__TASKING__))
+#define OS_CORE6_STOP_SEC_CODE
+#include "Os_MemMap.h"
+#endif
+

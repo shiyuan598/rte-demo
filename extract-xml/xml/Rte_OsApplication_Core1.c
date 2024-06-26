@@ -401,4 +401,139 @@ void idle_hook_core1(void)
   idle_hook_body();
 }
 extern uint8_t Core[6][10];
-/********************************************************************************************************************
+/**********************************************************************************************************************
+ * Task:     Bsw_P1ms_Task_Core1
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+ TASK(Bsw_Init_Task_Core1)
+ {
+   Core[1][0]++;
+   Tm_Start(10);
+   EcuM_StartupTwo();
+   Rte_Start();
+   Eth_17_GEthMac_Init(&Eth_17_GEthMac_Config);
+   EthIf_Init(EthIf_Config_Ptr);
+   EthSM_Init(EthSM_Config_Ptr);
+   Lwip_Appl_init();
+   SoAd_Init();
+   Rtps_Init();
+   PowerManager_Proxy_Init();
+   PPS_Proxy_Core1_Init();
+   DoIP_InitMemory();
+   DoIP_Init(NULL_PTR);
+   while (((volatile uint8)Rte_InitState) != RTE_STATE_INIT)
+    {
+
+    }
+   Tm_Stop(10);
+   TerminateTask();
+ }
+/**********************************************************************************************************************
+ * Task:     Bsw_P1ms_Task_Core1
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P1ms_Task_Core1)
+{
+	Core[1][1]++;
+  Tm_Start(11);
+  Lwip_MainFunction();
+  Rtps_MainFunction();
+  TIM_MainFunction();
+  SomeIpTp_MainFunctionTx();
+  SomeIpTp_MainFunctionRx();
+  MSDCProxy_MainFunction_Core1_1ms();
+  CGI610_Proxy_MainFunction_Core1_1ms();
+  PowerManager_Proxy_MainFunction_Core1_1ms();
+  PPS_Proxy_MainFunction_Core1_1ms();
+  RE_OTA_MainFunction();
+  Tm_Stop(11);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_P5ms_Task_Core1
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P5ms_Task_Core1)
+{
+	Core[1][2]++;
+  Tm_Start(12);
+  EthIf_MainFunctionRx();
+  EthIf_MainFunctionTx(); 
+  EthTSyn_MainFunction();
+  StbM_MainFunction();
+  IDC_Proxy_MainFunction_core1_5ms();
+  DoIP_MainFunction();
+  Tm_Stop(12);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_P10ms_Task_Core1
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P10ms_Task_Core1)
+{
+  Core[1][3]++;
+  Tm_Start(13);
+  EcuM_MainFunction();
+  Appl_TestFunctionC1_10ms();
+  ExternalPhyInit();
+  EthConfigureCheck();
+  Xcp_MainFunction();
+  TcpIpXcp_MainFunction();
+  XcpCallout_MainFunction();
+  PowerManager_Proxy_MainFunction_Core1_10ms();
+  EthIf_MainFunctionState();
+  EthSM_MainFunction();
+  Tm_Stop(13);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_P100ms_Task_Core1
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_P100ms_Task_Core1)
+{
+  Core[1][4]++;
+  Tm_Start(14);
+  User_SoAd_IfTransmit();
+  Clm_runnable_100ms();
+  DEV_MainFunction();
+  phy2221_MainFunc();
+  Tm_Stop(14);
+  TerminateTask();
+}
+/**********************************************************************************************************************
+ * Task:     Bsw_Event_Task_Core1
+ * Priority: 170
+ * Schedule: FULL
+ *********************************************************************************************************************/
+TASK(Bsw_Event_Task_Core1)
+{
+  EventMaskType ev;
+  while (1) {
+  WaitEvent(Core1RemotePhyInitEvent|Core1UpdateEvent );
+  GetEvent(Bsw_Event_Task_Core1, &ev);
+  ClearEvent( ev & (Core1RemotePhyInitEvent|Core1UpdateEvent));
+  if ((ev & Core1RemotePhyInitEvent) != (EventMaskType)0)
+  {
+      Core[1][5]++;
+  }
+  if ((ev & Core1UpdateEvent) != (EventMaskType)0)
+  {
+      Core[1][6]++;
+      RE_OTA_TegraA();
+  }
+
+  }
+}
+
+#if (defined(__TASKING__))
+#define OS_CORE1_STOP_SEC_CODE
+#include "Os_MemMap.h"
+#endif
+
