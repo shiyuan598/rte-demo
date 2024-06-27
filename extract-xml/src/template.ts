@@ -1,18 +1,14 @@
 import dayjs from "dayjs";
 
 const getDateTime = () => {
-   
-    return  dayjs().format("YYYY-MM-DD HH:mm:ss");
-}
+    return dayjs().format("YYYY-MM-DD HH:mm:ss");
+};
 
-export const Rte_OsApplication_Corex_c = () => {
-    const coreId = 3;
-    const rteVariables:any = []
-    const visitedRteVariables:any = []
-    const irvVariables:any = []
-    const readFuncs:any = []
-    const writeFuncs:any = []
-
+/**
+ * 生成Rte_OsApplication_Core[Id].c
+ * desc: 1.定义Rte变量，2.定义访问的Rte变量，3.定义Irv变量，4.定义SWC中读写Rte变量的函数，5.定义CDD中读写Rte变量的函数
+ */
+export const Rte_OsApplication_CoreX_c = ({coreId = 3, rteVariables=[],vRteVariables=[], irvVariables=[], readFuncs=[], writeFuncs=[]}) => {
     return `
 /**
  * ********************************************************************************************************************
@@ -30,59 +26,129 @@ export const Rte_OsApplication_Corex_c = () => {
 #include "Rte_${"CddMsgUpd"}.h"
 #include "ee_oo_api_osek.h"
 
-${rteVariables.map((item:any) => {
-    const {dataType, swcName, port, dataElement, initValue} = item;
-    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${port}_o${dataElement} = ${initValue};\n`;
+${/*Rte变量*/""}
+${rteVariables.map((item: any) => {
+    const { dataType, swc, portName, dataElement, initValue } = item;
+    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swc}_${portName}_o${dataElement} = ${initValue};\n`;
 })}
 
-${visitedRteVariables.map((item:any) => {
-    const {dataType, swcName, port, dataElement, initValue} = item;
-    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${port}_o${dataElement} = ${initValue};\n`;
+${/*访问的Rte变量*/""}
+${vRteVariables.map((item: any) => {
+    const { dataType, swc, portName, dataElement, initValue } = item;
+    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement} = ${initValue};\n`;
 })}
 
-${irvVariables.map((item:any) => {
-    const {dataType, swcName, port, dataElement, initValue} = item;
-    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swcName}_${port}_o${dataElement} = ${initValue};\n`;
+${/*IRV变量*/''}
+${irvVariables.map((item: any) => {
+    const { dataType, swc, dataElement, initValue } = item;
+    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swc}_${dataElement}_o${dataElement} = ${initValue};\n`;
 })}
 
-${readFuncs.map((item:any) => {
-    const {dataType, swcName, port, dataElement, initValue} = item;
-    return `FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_J6L_ADUCAN_RxSignal_SG_VDC2_sg(SG_VDC2_sg* data)
-    {
-      Std_ReturnType ret = RTE_E_OK;
-    
-      Rte_DisableOSInterrupts();
-      (void)GetSpinlock(Rte_Spinlock_SG_VDC2_sg_oVDC2_oJ6L_ADUCAN_Rx);
-      *(data) = Rte_SG_VDC2_sg_oVDC2_oJ6L_ADUCAN_Rx;
-      (void)ReleaseSpinlock(Rte_Spinlock_SG_VDC2_sg_oVDC2_oJ6L_ADUCAN_Rx);
-      Rte_EnableOSInterrupts();
-    
-      return ret;
-    }\n`;
+${/*SWC中读Rte变量*/''}
+${readFuncs.map((item: any) => {
+    const { dataType, swc, portName, dataElement, isLock } = item;
+    return `
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swc}_${portName}_o${dataElement}(void)
+{
+    Std_ReturnType ret = RTE_E_OK;
+${
+    isLock
+        ? `
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    (void)memcpy(&Rte_${swc}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();
+    `
+        : `
+    (void)memcpy(&Rte_${swc}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));
+    `
+}
+    return ret;
+}\n`;
 })}
 
-${irvVariables.map((item:any) => {
-    const {dataType, swcName, port, dataElement, initValue} = item;
-    return `FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_J6L_ADUCAN_TxSignal_SG_LC_ADU_sg(SG_LC_ADU_sg* data)
-    {
-      Std_ReturnType ret = RTE_E_OK;
-    
-      Rte_DisableOSInterrupts();
-      (void)GetSpinlock(Rte_Spinlock_SG_LC_ADU_sg_oLC_ADU_oJ6L_ADUCAN_Tx);
-      Rte_SG_LC_ADU_sg_oLC_ADU_oJ6L_ADUCAN_Tx = *(data);
-      (void)ReleaseSpinlock(Rte_Spinlock_SG_LC_ADU_sg_oLC_ADU_oJ6L_ADUCAN_Tx);
-      Rte_EnableOSInterrupts();
-    
-      return ret;
-    }\n`;
+${/*SWC中写Rte变量*/''}
+${readFuncs.map((item: any) => {
+    const { dataType, swc, portName, dataElement, isLock } = item;
+    return `
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swc}_${portName}_o${dataElement}(void)
+{
+    Std_ReturnType ret = RTE_E_OK;
+${
+    isLock
+        ? `
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swc}_${portName}_o${dataElement}, sizeof(${dataType}));
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();
+    `
+        : `
+    (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swc}_${portName}_o${dataElement}, sizeof(${dataType}));
+    `
+}
+    return ret;
+}\n`;
+})}
+
+${/*CDD组件中读Rte变量*/''}
+${readFuncs.map((item: any) => {
+    const { dataType, swc, portName, dataElement, isLock } = item;
+    return `
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swc}_${portName}_o${dataElement}(${dataType}* data)
+{
+    Std_ReturnType ret = RTE_E_OK;
+${
+    isLock
+        ? `
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    (void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));
+    *(data) = Rte_${portName}_o${dataElement};
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();
+    `
+        : `
+    (void)memcpy(data, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));
+    `
+}
+    return ret;
+}\n`;
+})}
+
+${/*CDD组件中写Rte变量*/''}
+${writeFuncs.map((item: any) => {
+    const { dataType, cdd, portName, dataElement, isLock } = item;
+    return `
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${cdd}_${portName}_o${dataElement}(${dataType}* data)
+{
+    Std_ReturnType ret = RTE_E_OK;
+${
+    isLock
+        ? `
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_${portName}_o${dataElement} = *(data);
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();
+    `
+        : `
+    (void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));
+    `
+}
+    return ret;
+}\n`;
 })}
 
 `;
 };
 
-
-export const Rte_Type_h = () => {
-    const dataTypesByPorts:any = []
+/**
+ * 生成Rte_Type.h
+ * desc: 1.定义类型，2.声明访问的Rte变量 -- 根据coreX确定是否需要声明
+ */
+export const Rte_Type_h = ({dataTypesByPorts=[], dataTypesByIRVs=[], vRteVariables=[]}) => {
     return `
 /**
  * ********************************************************************************************************************
@@ -96,7 +162,8 @@ export const Rte_Type_h = () => {
  */
 #ifndef RTE_TYPE_H
 # define RTE_TYPE_H
-
+${/*固定的内容*/''}
+${`
 #include "Platform_Types.h"
 #include "Std_Types.h"
 #include "ee_spinlock_Lcfg.h"
@@ -168,9 +235,19 @@ extern volatile VAR(uint8, RTE_VAR_ZERO_INIT_NOCACHE) Rte_InitState_5;
 
 # define RTE_STOP_SEC_VAR_GLOBALSHARED_NOCACHE_ZERO_INIT_8BIT
 # include "MemMap.h"
+`}
 
-${dataTypesByPorts.map((item:any) => {
+${dataTypesByPorts.map((item: any) => {
     return `${item}\n`;
+})}
+
+${dataTypesByIRVs.map((item: any) => {
+    return `${item}\n`;
+})}
+
+${vRteVariables.map((item: any) => {
+    const { dataType, portName, dataElement } = item;
+    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
 })}
 
 
@@ -178,7 +255,11 @@ ${dataTypesByPorts.map((item:any) => {
 `;
 };
 
-export const Rte_SWC_h = () => {
+/**
+ * 生成Rte_[SWC].h
+ * desc: 1.声明Rte变量，2.声明Irv变量，3.定义Rte变量读写接口，4.定义Irv变量读写接口
+ */
+export const Rte_SWC_h = ({Rtes=[], IRVs=[]}) => {
     const swc = "control_swc_sweep";
     return `
 /**
@@ -196,41 +277,72 @@ export const Rte_SWC_h = () => {
 
 #include "Rte_Type.h"
 
+${/*Rte变量声明*/''}
+${Rtes.map((item: any) => {
+    const { dataType, swc, portName, dataElement } = item;
+    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swc}_${portName}_o${dataElement};\n`;
+})}
+
+${/*IRV变量声明*/''}
 ${
-    "rte vars"
-    // extern VAR(ADMInfoSOC2MCU, RTE_VAR_NOINIT_NOCACHE) Rte_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU;    
+    IRVs.map((item:any)=> {
+        const {swc, dataElement, dataType} = item;
+        return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swc}_${dataElement}_o${dataElement};\n`;
+    })
 }
 
+${/*定义Rte变量读写接口*/''}
 ${
-    "irvs"
-    // extern VAR(BusEM, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_EMOutp_oEMOutp;
+    Rtes.map((item:any)=> {
+        const { swc, runnable, portName, portType, dataElement } = item;
+        if (portType === "R-Port") {
+            return `
+#define Rte_IRead_${runnable}_${dataElement}_o${dataElement}()  \\
+(&Rte_Irv_${swc}_${portName}_o${dataElement})\n
+            `;
+        } else {
+            return `
+#define Rte_IWrite_${runnable}_${dataElement}_o${dataElement}(data)  \\
+( \\
+    Rte_Irv_${swc}_${portName}_o${dataElement} = *(data) \\
+)\n
+            `;
+        }
+    })
 }
 
-#define Rte_IRead_LatCtrl_20ms_PlanningInfo_PlanningInfo()  \
-    (&Rte_control_swc_sweep_PlanningInfo_oPlanningInfo)
-
-#define Rte_IWrite_Tx_20ms_ADMInfoMCU2SOC_ADMInfoMCU2SOC(data)  \
-    (  \
-        Rte_control_swc_sweep_ADMInfoMCU2SOC_oADMInfoMCU2SOC = *(data) \
-    )
-
-#define Rte_IrvIWrite_EM_20ms_EMOutp(data)  \
-(  \
-    Rte_Irv_control_swc_sweep_EMOutp_oEMOutp = *(data) \
-)
-
-#define Rte_IrvIRead_ADM_20ms_EMOutp()  \
-    (&Rte_Irv_control_swc_sweep_EMOutp_oEMOutp)
+${/*定义IRV变量读写接口*/''}
+${
+    IRVs.map((item:any)=> {
+        const {swc, runnable, type, dataElement} = item;
+        if (type === "R") {
+            return `
+#define Rte_IrvIRead_${runnable}_${dataElement}()  \\
+(&Rte_Irv_${swc}_${dataElement}_o${dataElement})\n
+            `;
+        } else {
+            return `
+#define Rte_IrvIWrite_${runnable}_${dataElement}(data)  \\
+(  \\
+    Rte_Irv_${swc}_${dataElement}_o${dataElement} = *(data) \\
+)\n
+            `;
+        }
+    })
+}
 
 #endif
-    
-
 `;
 };
 
-
+/**
+ * 生成Rte_[CDD].h
+ * desc: 声明CDD访问Rte实体函数
+ */
 export const Rte_CDD_h = () => {
     const cdd = "CddMsgUpd";
+    const readFuncs: any = [];
+    const writeFuncs: any = [];
     return `
 /**
  * ********************************************************************************************************************
@@ -247,10 +359,19 @@ export const Rte_CDD_h = () => {
 
 #include "Rte_Type.h"
 
-FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_ChassisInp_oChassisInp(ChassisInfo* data);
-FUNC(Std_ReturnType, RTE_CODE) Rte_Write_CddMsgUpd_J6LCANRxInp_oJ6LCANRxInp(J6L_RxBus* data);
-FUNC(Std_ReturnType, RTE_CODE) Rte_Read_CddMsgUpd_J6LCANTxOutp_oJ6LCANTxOutp(J6L_TxBus* data);
+${/*CDD组件使用的Rte函数实体*/''}
+${readFuncs.map((item: any) => {
+    const { dataType, swcName, port, dataElement } = item;
+    return `
+FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${port}_o${dataElement}(${dataType}* data);\n`
+})}
+
+${writeFuncs.map((item: any) => {
+    const { dataType, swcName, port, dataElement } = item;
+    return `
+FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${port}_o${dataElement}(${dataType}* data);\n`
+})}
 
 #endif        
-`
-}
+`;
+};
