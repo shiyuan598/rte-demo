@@ -23,7 +23,7 @@ const getDateTime = () => {
 
 // 【1.4定义SWC中读写Rte变量的函数】
 
-// 三、CDD连接数据
+// 三、CDD连接数据 - 参考SWC Ports
 // source: {cdd, portType, dataElement, dataType, task-coreId }, target: {cdd / swc, portType, dataElement, dataType, task-coreId }
 // 【1.5定义CDD中读写Rte变量的函数】
 
@@ -383,8 +383,8 @@ ${IRVs.map((item: any) => {
  */
 export const Rte_CDD_h = () => {
     const cdd = "CddMsgUpd";
-    const readFuncs: any = [];
-    const writeFuncs: any = [];
+    const readFuncs: any = [{dataType: "SG_CCVS1_sg", swcName: "CddMsgUpd", port: "J6L_ADUCAN_RxSignal", dataElement: "SG_CCVS1_sg"}];
+    const writeFuncs: any = [{dataType: "SG_CCVS1_sg", swcName: "CddMsgUpd", port: "J6L_ADUCAN_RxSignal", dataElement: "SG_CCVS1_sg"}];
     return `
 ${`
 /**

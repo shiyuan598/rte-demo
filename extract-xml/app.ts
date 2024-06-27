@@ -106,3 +106,8 @@ const DATATYPE = [
     "Boolean_const",
     "UInt8_const"
 ];
+
+
+const re = Rte_CDD_h();
+
+console.info(re);
