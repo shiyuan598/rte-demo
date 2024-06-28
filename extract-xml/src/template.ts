@@ -4,18 +4,18 @@ const getDateTime = () => {
     return dayjs().format("YYYY-MM-DD HH:mm:ss");
 };
 
-// 一、Ports数组
+// 一、Ports、runnableMapping
 // 【1.1定义Rte变量】:
 // 来源于Ports: swc, runnable(portName, portType, dataElement, dataType, initValue, runnable, connection: [{cdd01, TASK_COREID}, {cdd02, TASK_COREID}]), task-coreId
 // VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swc}_${portName}_o${dataElement} = ${initValue};
 
 // 数据：Ports数组.connected
 // source: {swc, portType, dataElement, dataType, task-coreId }, target: {cdd, portType, dataElement, dataType, TASK_COREID }
+// 或者： [{cdd, portType, dataElement, dataType, TASK_COREID }]
 // 【1.2定义访问的Rte变量】:
 // 来源于Ports: P-Port时查看connection，定义在和coreId相同的文件中, 如何确定接收、发送同核以确定是否需要在Rte_type.h声明？
 
-// -- Task来源于Runnable的配置
-// runnableMapping
+// -- Task来源于Runnable的配置runnableMapping
 
 // 二、IRVs数组
 // 【1.3定义Irv变量】
@@ -24,8 +24,10 @@ const getDateTime = () => {
 // 【1.4定义SWC中读写Rte变量的函数】
 
 // 三、CDD连接数据 - 参考SWC Ports
-// source: {cdd, portType, dataElement, dataType, task-coreId }, target: {cdd / swc, portType, dataElement, dataType, task-coreId }
 // 【1.5定义CDD中读写Rte变量的函数】
+// 连接：swc - cdd
+// cdd - swc 以及cdd - cdd
+
 
 // 生成Rte_OsApplication_Core[Id].c时将Ports按照task-coreId分组 ！！
 
@@ -75,19 +77,19 @@ ${/*Rte变量*/ ""}
 ${rteVariables.map((item: any) => {
     const { dataType, swc, portName, dataElement, initValue } = item;
     return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swc}_${portName}_o${dataElement} = ${initValue};\n`;
-})}
+}).join("\n")}
 
 ${/*访问的Rte变量*/ ""}
 ${vRteVariables.map((item: any) => {
     const { dataType, swc, portName, dataElement, initValue } = item;
     return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement} = ${initValue};\n`;
-})}
+}).join("\n")}
 
 ${/*IRV变量*/ ""}
 ${irvVariables.map((item: any) => {
     const { dataType, swc, dataElement, initValue } = item;
     return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swc}_${dataElement}_o${dataElement} = ${initValue};\n`;
-})}
+}).join("\n")}
 
 ${/*SWC中读Rte变量*/ ""}
 ${readFuncs.map((item: any) => {
@@ -111,7 +113,7 @@ ${
 }
     return ret;
 }\n`;
-})}
+}).join("\n")}
 
 ${/*SWC中写Rte变量*/ ""}
 ${readFuncs.map((item: any) => {
@@ -135,7 +137,7 @@ ${
 }
     return ret;
 }\n`;
-})}
+}).join("\n")}
 
 ${/*CDD组件中读Rte变量*/ ""}
 ${readFuncs.map((item: any) => {
@@ -160,7 +162,7 @@ ${
 }
     return ret;
 }\n`;
-})}
+}).join("\n")}
 
 ${/*CDD组件中写Rte变量*/ ""}
 ${writeFuncs.map((item: any) => {
@@ -184,7 +186,7 @@ ${
 }
     return ret;
 }\n`;
-})}
+}).join("\n")}
 
 `;
 };
@@ -286,16 +288,16 @@ extern volatile VAR(uint8, RTE_VAR_ZERO_INIT_NOCACHE) Rte_InitState_5;
 
 ${dataTypesByPorts.map((item: any) => {
     return `${item}\n`;
-})}
+}).join("\n")}
 
 ${dataTypesByIRVs.map((item: any) => {
     return `${item}\n`;
-})}
+}).join("\n")}
 
 ${vRteVariables.map((item: any) => {
     const { dataType, portName, dataElement } = item;
     return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
-})}
+}).join("\n")}
 
 
 #endif
@@ -329,13 +331,13 @@ ${/*Rte变量声明*/ ""}
 ${Rtes.map((item: any) => {
     const { dataType, swc, portName, dataElement } = item;
     return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swc}_${portName}_o${dataElement};\n`;
-})}
+}).join("\n")}
 
 ${/*IRV变量声明*/ ""}
 ${IRVs.map((item: any) => {
     const { swc, dataElement, dataType } = item;
     return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swc}_${dataElement}_o${dataElement};\n`;
-})}
+}).join("\n")}
 
 ${/*定义Rte变量读写接口*/ ""}
 ${Rtes.map((item: any) => {
@@ -353,7 +355,7 @@ ${Rtes.map((item: any) => {
 )\n
             `;
     }
-})}
+}).join("\n")}
 
 ${/*定义IRV变量读写接口*/ ""}
 ${IRVs.map((item: any) => {
@@ -371,7 +373,7 @@ ${IRVs.map((item: any) => {
 )\n
             `;
     }
-})}
+}).join("\n")}
 
 #endif
 `;

@@ -2,7 +2,7 @@
 import componentJson from "./out/control_swc_sweep_component.json";
 import datatypeJson from "./out/control_swc_sweep_datatype.json";
 import interfaceJson from "./out/control_swc_sweep_interface.json";
-import { Rte_CDD_h } from "./src/template";
+import { Rte_CDD_h, Rte_OsApplication_CoreX_c } from "./src/template";
 import { extractDatatype, extractDatatypeInterface, extractSWC, parseXML, readFile, writeFile } from "./src/utils";
 
 let inPath = "./xml/control_swc_sweep_interface.arxml";
@@ -22,26 +22,26 @@ const extractXml = async (inPath: string, outPath: string) => {
 // extractXml(inPath, outPath);
 
 const swc = extractSWC(componentJson);
-writeFile("./out/swc.json", JSON.stringify(swc, null, 2));
+// writeFile("./out/swc.json", JSON.stringify(swc, null, 2));
 
 const datatype = extractDatatype(datatypeJson);
 // console.info(datatype.map((item: any) => item.name));
-writeFile("./out/datatype.json", JSON.stringify(datatype, null, 2));
+// writeFile("./out/datatype.json", JSON.stringify(datatype, null, 2));
 
 const interfaces = extractDatatypeInterface(interfaceJson);
 // console.info(interfaces.map((item: any) => `${item.dataElement} - ${item.dataType}`));
-writeFile("./out/datatypeInterfaces.json", JSON.stringify(interfaces, null, 2));
+// writeFile("./out/datatypeInterfaces.json", JSON.stringify(interfaces, null, 2));
 
 const DATAELEMENT_INITVALUE = [
-    'J6LCANRxInp',
-    'LocalizationInfo',
-    'PlanningInfo',
-    'ADMInfoSOC2MCU',
-    'ChassisInp',
-    'ADMInfoMCU2SOC',
-    'CtrlDebugInfoMCU2SOC',
-    'J6LCANTxOutp'
-  ]
+    "J6LCANRxInp",
+    "LocalizationInfo",
+    "PlanningInfo",
+    "ADMInfoSOC2MCU",
+    "ChassisInp",
+    "ADMInfoMCU2SOC",
+    "CtrlDebugInfoMCU2SOC",
+    "J6LCANTxOutp"
+];
 
 const DATAELEMENT_DATATYPE = [
     "J6LCANRxInp - J6L_RxBus",
@@ -107,7 +107,32 @@ const DATATYPE = [
     "UInt8_const"
 ];
 
-
 const re = Rte_CDD_h();
+// console.info(re);
 
-console.info(re);
+const { swcName, runnables, initValues } = swc;
+const rteVariables:any[] = [];
+
+runnables.forEach((item: any) => {
+    const rtes = item["interfaces"].map((inter: any) => {
+        const {
+            dataElement,
+            port: { name: portName, type: portType }
+        } = inter;
+        return {
+            swc: swcName,
+            portName,
+            dataElement,
+            dataType: interfaces[dataElement],
+            initValue: initValues[dataElement]
+        };
+    });
+    rteVariables.push(...rtes);
+});
+// const { swc, portName, dataElement, dataType, initValue } = item;
+// console.info(rteVariables);
+
+// @ts-ignore
+const codes = Rte_OsApplication_CoreX_c({rteVariables});
+console.info(codes);
+writeFile("./out/Rte_OsApplication_Core3.c", codes);

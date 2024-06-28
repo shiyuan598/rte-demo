@@ -175,7 +175,21 @@ const signValue = (value: string | number, type: string): string => {
     return value.toString();
 };
 
-const stringLineBreak = (str: string, num = 80) => {
+const stringLineBreak = (str: string, num = 120) => {
+    if (str.length < num) {
+        return str;
+    } else {
+        // 如果第一个字符是 '{'，替换为 '{\n  '
+        if (str.startsWith("{")) {
+            str = "{\n  " + str.slice(1);
+        }
+
+        // 如果最后一个字符是 '}'，替换为 '\n}'
+        if (str.endsWith("}")) {
+            str = str.slice(0, -1) + "\n}";
+        }
+    }
+
     let result = "";
     let currentLineLength = 0;
 
@@ -187,7 +201,7 @@ const stringLineBreak = (str: string, num = 80) => {
 
         // 检查当前字符是否为逗号，并且当前行长度是否已经达到指定的长度
         if (char === "," && currentLineLength >= num) {
-            result += "\n";
+            result += "\n ";
             currentLineLength = 0;
         }
     }
@@ -257,7 +271,7 @@ export const extractSWC = (data: any) => {
         // 转为字符串
         initValue = convertArrayToString(initValue);
         // // 添加换行
-        // initValue = stringLineBreak(initValue);
+        initValue = stringLineBreak(initValue);
         pre[dataElement] = initValue;
         return pre;
     }, {});
@@ -411,4 +425,3 @@ export const extractDatatypeInterface = (data: any) => {
         return pre;
     }, {});
 };
-
