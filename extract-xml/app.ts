@@ -112,6 +112,7 @@ const re = Rte_CDD_h();
 
 const ordered = orderDataType(datatype);
 console.info(JSON.stringify(ordered, null, 2));
+writeFile("./out/ordered_datatype.json", JSON.stringify(ordered, null, 2));
 
 
 // 测试转换rte变量

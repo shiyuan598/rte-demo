@@ -386,7 +386,7 @@ export const orderDataType = (datatypeInfo: any[]) => {
         const deps = findDataTypeDeps(item);
         deps.push(item);
         deps.forEach((datatype: any) => {
-            if (result.find((i) => i.name === datatype.name)) {
+            if (!result.find((i) => i.name === datatype.name)) {
                 result.push(datatype);
             }
         });
