@@ -365,6 +365,35 @@ export const extractSWC = (data: any) => {
     };
 };
 
+export const orderDataType = (datatypeInfo: any[]) => {
+    const result: any[] = [];
+    const findDataTypeDeps = (datatype: any): any => {
+        const deps: any = [];
+        const { category, typeRef, subElements } = datatype;
+        if (category === "VALUE") {
+            return deps;
+        } else {
+            if (subElements) {
+                return subElements.map((item: any) => {
+                    return findDataTypeDeps(item);
+                });
+            } else {
+                return findDataTypeDeps(datatypeInfo.filter((item) => item.name === typeRef)[0]);
+            }
+        }
+    };
+    datatypeInfo.forEach((item) => {
+        const deps = findDataTypeDeps(item);
+        deps.push(item);
+        deps.forEach((datatype: any) => {
+            if (result.find((i) => i.name === datatype.name)) {
+                result.push(datatype);
+            }
+        });
+    });
+    return result;
+};
+
 export const extractDatatype = (data: any) => {
     const getDatatypeInfo = (datatypeObjs: any) => {
         return datatypeObjs?.children.map((datatype: any) => {

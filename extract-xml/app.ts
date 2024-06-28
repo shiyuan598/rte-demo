@@ -3,7 +3,7 @@ import componentJson from "./out/control_swc_sweep_component.json";
 import datatypeJson from "./out/control_swc_sweep_datatype.json";
 import interfaceJson from "./out/control_swc_sweep_interface.json";
 import { Rte_CDD_h, Rte_OsApplication_CoreX_c } from "./src/template";
-import { extractDatatype, extractDatatypeInterface, extractSWC, parseXML, readFile, writeFile } from "./src/utils";
+import { extractDatatype, extractDatatypeInterface, extractSWC, orderDataType, parseXML, readFile, writeFile } from "./src/utils";
 
 let inPath = "./xml/control_swc_sweep_interface.arxml";
 let outPath = "./out/control_swc_sweep_interface.json";
@@ -110,6 +110,11 @@ const DATATYPE = [
 const re = Rte_CDD_h();
 // console.info(re);
 
+const ordered = orderDataType(datatype);
+console.info(JSON.stringify(ordered, null, 2));
+
+
+// 测试转换rte变量
 const { swcName, runnables, initValues } = swc;
 const rteVariables:any[] = [];
 
@@ -129,10 +134,8 @@ runnables.forEach((item: any) => {
     });
     rteVariables.push(...rtes);
 });
-// const { swc, portName, dataElement, dataType, initValue } = item;
-// console.info(rteVariables);
 
 // @ts-ignore
-const codes = Rte_OsApplication_CoreX_c({rteVariables});
-console.info(codes);
-writeFile("./out/Rte_OsApplication_Core3.c", codes);
+// const codes = Rte_OsApplication_CoreX_c({rteVariables});
+// console.info(codes);
+// writeFile("./out/Rte_OsApplication_Core3.c", codes);

@@ -294,6 +294,7 @@ ${dataTypesByIRVs.map((item: any) => {
     return `${item}\n`;
 }).join("\n")}
 
+${/*声明访问的Rte变量*/''}
 ${vRteVariables.map((item: any) => {
     const { dataType, portName, dataElement } = item;
     return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
