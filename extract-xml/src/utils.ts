@@ -367,20 +367,26 @@ export const extractSWC = (data: any) => {
 
 export const orderDataType = (datatypeInfo: any[]) => {
     const result: any[] = [];
+    const types = ["boolean", "uint8", "sint8", "uint16", "sint16", "uint32", "sint32", "float", "double"];
+
     const findDataTypeDeps = (datatype: any): any => {
         const deps: any = [];
-        const { category, typeRef, subElements } = datatype;
-        if (category === "VALUE") {
-            return null;
+        const { typeRef, subElements } = datatype;
+        // 1.查看typeRef
+        if (typeRef) {
+            if (types.includes(typeRef)) {
+                return deps;
+            } else {
+                deps.push(datatypeInfo.filter(item => item.name === typeRef)[0]);                
+            }
         } else {
             if (subElements) {
-                return subElements.map((item: any) => {
-                    return findDataTypeDeps(item);
+                subElements.map((item: any) => {
+                    deps.push(...findDataTypeDeps(item));
                 });
-            } else {
-                return findDataTypeDeps(datatypeInfo.filter((item) => item.name === typeRef)[0]);
             }
         }
+        return deps;
     };
     datatypeInfo.forEach((item) => {
         const deps = findDataTypeDeps(item);

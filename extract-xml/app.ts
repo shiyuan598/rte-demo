@@ -110,9 +110,14 @@ const DATATYPE = [
 const re = Rte_CDD_h();
 // console.info(re);
 
+datatype.map((item: any) => console.info(item.name))
+
 const ordered = orderDataType(datatype);
-console.info(JSON.stringify(ordered, null, 2));
+// console.info(JSON.stringify(ordered, null, 2));
 writeFile("./out/ordered_datatype.json", JSON.stringify(ordered, null, 2));
+
+console.info("*********************************************************");
+ordered.map((item: any) => console.info(item.name))
 
 
 // 测试转换rte变量

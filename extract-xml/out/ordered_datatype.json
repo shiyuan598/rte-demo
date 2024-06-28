@@ -1,5 +1,10 @@
 [
   {
+    "name": "Float",
+    "category": "VALUE",
+    "typeRef": "float32"
+  },
+  {
     "name": "J6L_RxBus",
     "category": "STRUCTURE",
     "subElements": [
@@ -1811,13 +1816,51 @@
     ]
   },
   {
-    "name": "Float",
+    "name": "UInt32",
     "category": "VALUE",
-    "typeRef": "float32"
+    "typeRef": "uint32"
   },
-  [
-    null
-  ],
+  {
+    "name": "Double",
+    "category": "VALUE",
+    "typeRef": "float64"
+  },
+  {
+    "name": "rt_Array_Float_3",
+    "category": "ARRAY",
+    "length": "3",
+    "subElements": [
+      {
+        "name": "rt_Array_Float_3",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "Float"
+      }
+    ]
+  },
+  {
+    "name": "rt_Array_Float_4",
+    "category": "ARRAY",
+    "length": "4",
+    "subElements": [
+      {
+        "name": "rt_Array_Float_4",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "Float"
+      }
+    ]
+  },
+  {
+    "name": "rt_Array_Double_3",
+    "category": "ARRAY",
+    "length": "3",
+    "subElements": [
+      {
+        "name": "rt_Array_Double_3",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "Double"
+      }
+    ]
+  },
   {
     "name": "LocalizationInfo",
     "category": "STRUCTURE",
@@ -1950,48 +1993,145 @@
     ]
   },
   {
-    "name": "UInt32",
-    "category": "VALUE",
-    "typeRef": "uint32"
-  },
-  {
-    "name": "Double",
-    "category": "VALUE",
-    "typeRef": "float64"
-  },
-  {
-    "name": "rt_Array_Float_3",
-    "category": "ARRAY",
-    "length": "3",
+    "name": "TrajectoryPoint",
+    "category": "STRUCTURE",
     "subElements": [
       {
-        "name": "rt_Array_Float_3",
+        "name": "x",
         "category": "TYPE_REFERENCE",
-        "typeRef": "Float"
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "y",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "z",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "theta",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "kappa",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "s",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "dkappa",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "ddkappa",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "v",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "a",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "relative_time",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "da",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "slope",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
       }
     ]
   },
   {
-    "name": "rt_Array_Float_4",
-    "category": "ARRAY",
-    "length": "4",
+    "name": "PathPoint",
+    "category": "STRUCTURE",
     "subElements": [
       {
-        "name": "rt_Array_Float_4",
+        "name": "x",
         "category": "TYPE_REFERENCE",
-        "typeRef": "Float"
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "y",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "z",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "theta",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "kappa",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "s",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
+      },
+      {
+        "name": "dkappa",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "rt_Array_Float_100"
       }
     ]
   },
   {
-    "name": "rt_Array_Double_3",
-    "category": "ARRAY",
-    "length": "3",
+    "name": "VehicleSignal",
+    "category": "STRUCTURE",
     "subElements": [
       {
-        "name": "rt_Array_Double_3",
+        "name": "turn_signal",
         "category": "TYPE_REFERENCE",
-        "typeRef": "Double"
+        "typeRef": "UInt32"
+      },
+      {
+        "name": "high_beam",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "UInt32"
+      },
+      {
+        "name": "low_beam",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "UInt32"
+      },
+      {
+        "name": "horn",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "UInt32"
+      },
+      {
+        "name": "emergency_light",
+        "category": "TYPE_REFERENCE",
+        "typeRef": "UInt32"
       }
     ]
   },
@@ -2152,77 +2292,6 @@
     ]
   },
   {
-    "name": "TrajectoryPoint",
-    "category": "STRUCTURE",
-    "subElements": [
-      {
-        "name": "x",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "y",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "z",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "theta",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "kappa",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "s",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "dkappa",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "ddkappa",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "v",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "a",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "relative_time",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "da",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "slope",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      }
-    ]
-  },
-  {
     "name": "rt_Array_Float_100",
     "category": "ARRAY",
     "length": "100",
@@ -2231,78 +2300,6 @@
         "name": "rt_Array_Float_100",
         "category": "TYPE_REFERENCE",
         "typeRef": "Float"
-      }
-    ]
-  },
-  {
-    "name": "PathPoint",
-    "category": "STRUCTURE",
-    "subElements": [
-      {
-        "name": "x",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "y",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "z",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "theta",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "kappa",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "s",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      },
-      {
-        "name": "dkappa",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "rt_Array_Float_100"
-      }
-    ]
-  },
-  {
-    "name": "VehicleSignal",
-    "category": "STRUCTURE",
-    "subElements": [
-      {
-        "name": "turn_signal",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "UInt32"
-      },
-      {
-        "name": "high_beam",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "UInt32"
-      },
-      {
-        "name": "low_beam",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "UInt32"
-      },
-      {
-        "name": "horn",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "UInt32"
-      },
-      {
-        "name": "emergency_light",
-        "category": "TYPE_REFERENCE",
-        "typeRef": "UInt32"
       }
     ]
   },
@@ -2446,6 +2443,11 @@
         "typeRef": "UInt32"
       }
     ]
+  },
+  {
+    "name": "SInt32",
+    "category": "VALUE",
+    "typeRef": "sint32"
   },
   {
     "name": "ChassisInfo",
@@ -3107,11 +3109,6 @@
         "typeRef": "Float"
       }
     ]
-  },
-  {
-    "name": "SInt32",
-    "category": "VALUE",
-    "typeRef": "sint32"
   },
   {
     "name": "ADMInfoMCU2SOC",
@@ -3917,6 +3914,11 @@
     ]
   },
   {
+    "name": "Boolean",
+    "category": "VALUE",
+    "typeRef": "boolean"
+  },
+  {
     "name": "BusLatCtrl",
     "category": "STRUCTURE",
     "subElements": [
@@ -3931,11 +3933,6 @@
         "typeRef": "Boolean"
       }
     ]
-  },
-  {
-    "name": "Boolean",
-    "category": "VALUE",
-    "typeRef": "boolean"
   },
   {
     "name": "BusEM",
@@ -4000,6 +3997,11 @@
     ]
   },
   {
+    "name": "UInt8",
+    "category": "VALUE",
+    "typeRef": "uint8"
+  },
+  {
     "name": "BusADM",
     "category": "STRUCTURE",
     "subElements": [
@@ -4014,11 +4016,6 @@
         "typeRef": "Boolean"
       }
     ]
-  },
-  {
-    "name": "UInt8",
-    "category": "VALUE",
-    "typeRef": "uint8"
   },
   {
     "name": "BusLongCtrl",
@@ -4132,6 +4129,11 @@
     ]
   },
   {
+    "name": "SInt8",
+    "category": "VALUE",
+    "typeRef": "sint8"
+  },
+  {
     "name": "BusVSE",
     "category": "STRUCTURE",
     "subElements": [
@@ -4236,11 +4238,6 @@
         "typeRef": "UInt8"
       }
     ]
-  },
-  {
-    "name": "SInt8",
-    "category": "VALUE",
-    "typeRef": "sint8"
   },
   {
     "name": "Double_const",
