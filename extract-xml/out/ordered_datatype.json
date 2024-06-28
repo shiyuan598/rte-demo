@@ -1,5 +1,4 @@
 [
-  [],
   {
     "name": "J6L_RxBus",
     "category": "STRUCTURE",
@@ -1816,6 +1815,9 @@
     "category": "VALUE",
     "typeRef": "float32"
   },
+  [
+    null
+  ],
   {
     "name": "LocalizationInfo",
     "category": "STRUCTURE",

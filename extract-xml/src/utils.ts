@@ -371,7 +371,7 @@ export const orderDataType = (datatypeInfo: any[]) => {
         const deps: any = [];
         const { category, typeRef, subElements } = datatype;
         if (category === "VALUE") {
-            return deps;
+            return null;
         } else {
             if (subElements) {
                 return subElements.map((item: any) => {
@@ -384,12 +384,18 @@ export const orderDataType = (datatypeInfo: any[]) => {
     };
     datatypeInfo.forEach((item) => {
         const deps = findDataTypeDeps(item);
-        deps.push(item);
-        deps.forEach((datatype: any) => {
-            if (!result.find((i) => i.name === datatype.name)) {
-                result.push(datatype);
+        if (!deps) {
+            if (!result.find((i) => i.name === item.name)) {
+                result.push(item);
             }
-        });
+        } else {
+            deps.push(item);
+            deps.forEach((datatype: any) => {
+                if (datatype && !result.find((i) => i.name === datatype.name)) {
+                    result.push(datatype);
+                }
+            });
+        }
     });
     return result;
 };
