@@ -365,17 +365,18 @@ export const extractComponent = (data: any) => {
 
 export const orderDataType = (dataTypeInfo: any[]) => {
     const result: any[] = [];
-    const types = ["boolean", "uint8", "sint8", "uint16", "sint16", "uint32", "sint32", "float", "double"];
+    const types = ["boolean", "uint8", "sint8", "uint16", "sint16", "uint32", "sint32", "float32", "float64"];
 
     const findDataTypeDeps = (dataType: any): any => {
         const deps: any = [];
         const { typeRef, subElements } = dataType;
         // 1.查看typeRef
         if (typeRef) {
-            if (types.includes(typeRef)) {
+            if (types.includes(typeRef.toLowerCase())) {
                 return deps;
             } else {
-                deps.push(dataTypeInfo.filter((item) => item.name === typeRef)[0]);
+                const match = dataTypeInfo.filter((item) => item.name === typeRef)[0];
+                match && deps.push(...findDataTypeDeps(match), match);
             }
         } else {
             if (subElements) {

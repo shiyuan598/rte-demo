@@ -195,7 +195,7 @@ ${
  * 生成Rte_Type.h
  * desc: 1.定义所有类型，2.声明访问的Rte变量 -- 根据coreX确定是否需要声明
  */
-export const Rte_Type_h = ({ dataTypesByPorts = [], dataTypesByIRVs = [], vRteVariables = [] }) => {
+export const Rte_Type_h = ({ dataTypes = [], vRteVariables = [] }:{dataTypes?: any[];vRteVariables?:any[]}) => {
     return `
 ${`
 /**
@@ -209,10 +209,11 @@ ${`
  * ********************************************************************************************************************
  */
 `}
-#ifndef RTE_TYPE_H
-# define RTE_TYPE_H
 ${/*固定的内容*/ ""}
 ${`
+#ifndef RTE_TYPE_H
+# define RTE_TYPE_H
+
 #include "Platform_Types.h"
 #include "Std_Types.h"
 #include "ee_spinlock_Lcfg.h"
@@ -284,15 +285,217 @@ extern volatile VAR(uint8, RTE_VAR_ZERO_INIT_NOCACHE) Rte_InitState_5;
 
 # define RTE_STOP_SEC_VAR_GLOBALSHARED_NOCACHE_ZERO_INIT_8BIT
 # include "MemMap.h"
+
+# define Rte_TypeDef_ComM_InhibitionStatusType
+typedef uint8 ComM_InhibitionStatusType;
+
+# define Rte_TypeDef_ComM_UserHandleType
+typedef uint8 ComM_UserHandleType;
+
+# define Rte_TypeDef_Csm_ConfigIdType
+typedef uint16 Csm_ConfigIdType;
+
+# define Rte_TypeDef_Dlt_ApplicationIDType
+typedef uint32 Dlt_ApplicationIDType;
+
+# define Rte_TypeDef_Dlt_ContextIDType
+typedef uint32 Dlt_ContextIDType;
+
+# define Rte_TypeDef_Dlt_MessageOptionsType
+typedef uint8 Dlt_MessageOptionsType;
+
+# define Rte_TypeDef_Dlt_SessionIDType
+typedef uint32 Dlt_SessionIDType;
+
+# define Rte_TypeDef_EcuM_TimeType
+typedef uint32 EcuM_TimeType;
+
+# define Rte_TypeDef_EcuM_UserType
+typedef uint8 EcuM_UserType;
+
+# define Rte_TypeDef_FiM_FunctionIdType
+typedef uint8 FiM_FunctionIdType;
+
+# define Rte_TypeDef_Serial_Num
+typedef uint32 Serial_Num;
+
+# define Rte_TypeDef_TimeInMicrosecondsType
+typedef uint32 TimeInMicrosecondsType;
+
+# define Rte_TypeDef_WdgM_CheckpointIdType
+typedef uint16 WdgM_CheckpointIdType;
+
+# define Rte_TypeDef_WdgM_ModeType
+typedef uint8 WdgM_ModeType;
+
+# define Rte_TypeDef_WdgM_SupervisedEntityIdType
+typedef uint16 WdgM_SupervisedEntityIdType;
+
+# define Rte_TypeDef_BswM_ESH_Mode
+typedef uint8 BswM_ESH_Mode;
+
+# define Rte_TypeDef_BswM_ESH_RunRequest
+typedef uint8 BswM_ESH_RunRequest;
+
+# define Rte_TypeDef_ComM_ModeType
+typedef uint8 ComM_ModeType;
+
+# define Rte_TypeDef_Crypto_KeyElementType
+typedef uint32 Crypto_KeyElementType;
+
+# define Rte_TypeDef_Crypto_OperationModeType
+typedef uint8 Crypto_OperationModeType;
+
+# define Rte_TypeDef_Crypto_VerifyResultType
+typedef uint8 Crypto_VerifyResultType;
+
+# define Rte_TypeDef_Csm_ResultType
+typedef uint8 Csm_ResultType;
+
+# define Rte_TypeDef_Csm_VerifyResultType
+typedef uint8 Csm_VerifyResultType;
+
+# define Rte_TypeDef_Dcm_CommunicationModeType
+typedef uint8 Dcm_CommunicationModeType;
+
+# define Rte_TypeDef_Dcm_ConfirmationStatusType
+typedef uint8 Dcm_ConfirmationStatusType;
+
+# define Rte_TypeDef_Dcm_ControlDtcSettingType
+typedef uint8 Dcm_ControlDtcSettingType;
+
+# define Rte_TypeDef_Dcm_DiagnosticSessionControlType
+typedef uint8 Dcm_DiagnosticSessionControlType;
+
+# define Rte_TypeDef_Dcm_EcuResetType
+typedef uint8 Dcm_EcuResetType;
+
+# define Rte_TypeDef_Dcm_NegativeResponseCodeType
+typedef uint8 Dcm_NegativeResponseCodeType;
+
+# define Rte_TypeDef_Dcm_OpStatusType
+typedef uint8 Dcm_OpStatusType;
+
+# define Rte_TypeDef_Dcm_ProtocolType
+typedef uint8 Dcm_ProtocolType;
+
+# define Rte_TypeDef_Dcm_RequestKindType
+typedef uint8 Dcm_RequestKindType;
+
+# define Rte_TypeDef_Dcm_SecLevelType
+typedef uint8 Dcm_SecLevelType;
+
+# define Rte_TypeDef_Dcm_SesCtrlType
+typedef uint8 Dcm_SesCtrlType;
+
+# define Rte_TypeDef_Dlt_GlobalStateType
+typedef uint8 Dlt_GlobalStateType;
+
+# define Rte_TypeDef_Dlt_MessageLogLevelType
+typedef uint8 Dlt_MessageLogLevelType;
+
+# define Rte_TypeDef_EcuM_BootTargetType
+typedef uint8 EcuM_BootTargetType;
+# define Rte_TypeDef_EcuM_ModeType
+typedef uint8 EcuM_ModeType;
+# define Rte_TypeDef_EcuM_ShutdownCauseType
+typedef uint8 EcuM_ShutdownCauseType;
+# define Rte_TypeDef_EcuM_StateType
+typedef uint8 EcuM_StateType;
+
+# define Rte_TypeDef_Double
+typedef float64 Double;
+# define Rte_TypeDef_Float
+typedef float32 Float;
+# define Rte_TypeDef_SInt16
+typedef sint16 SInt16;
+# define Rte_TypeDef_SInt32
+typedef sint32 SInt32;
+# define Rte_TypeDef_SInt8
+typedef sint8 SInt8;
+# define Rte_TypeDef_UInt16
+typedef uint16 UInt16;
+# define Rte_TypeDef_UInt32
+typedef uint32 UInt32;
+# define Rte_TypeDef_UInt8
+typedef uint8 UInt8;
+# define Rte_TypeDef_ByteDataBuffer
+typedef struct
+{
+  uint16 DataBufferSize;
+  uint32 DataBufferPtr;
+} ByteDataBuffer;
+
+typedef unsigned int Rte_BitType;
+typedef struct
+{
+  Rte_BitType Rte_ModeSwitchAck_BswM_Switch_ESH_ModeSwitch_BswM_MDGP_ESH_Mode_Ack : 1;
+  Rte_BitType Rte_ModeSwitchAck_Dcm_DcmControlDtcSetting_DcmControlDtcSetting_Ack : 1;
+  Rte_BitType Rte_ModeSwitchAck_Dcm_DcmDiagnosticSessionControl_DcmDiagnosticSessionControl_Ack : 1;
+  Rte_BitType Rte_ModeSwitchAck_Dcm_DcmEcuReset_DcmEcuReset_Ack : 1;
+} Rte_OsApplication_NonTrusted_Core0_AckFlagsType;
+
 `}
 
-${dataTypesByPorts.map((item: any) => {
-    return `${item}\n`;
-}).join("\n")}
+${dataTypes.map((item: any) => {
+    const {name, category, typeRef, length, subElements} = item;
+    const typeMapping: any = {
+        Boolean: "boolean",
+        UInt8: "uint8",
+        SInt8: "sint8",
+        UInt16: "uint16", 
+        SInt16: "sint16", 
+        UInt32: "uint32",
+        SInt32: "sint32",
+        Float: "float32",
+        Double: "float64"
+    };
+    
+    switch (category) {
+        case "VALUE":
+            const types = ["boolean", "uint8", "sint8", "uint16", "sint16", "uint32", "sint32", "float32", "float64"];
+            if (types.includes(typeRef)) {
+                return;
+            } else {
+                return `
+# define Rte_TypeDef_${name}
+typedef ${typeMapping[typeRef]} ${name};
+`;
+            }
+        case "ARRAY":
+            return `
+# define Rte_TypeDef_${name}
+typedef ${typeMapping[subElements[0].typeRef]} ${name}[${length}];
+`;
+        case "STRUCTURE":
+            return `
+# define Rte_TypeDef_${name}
+typedef struct
+{
+${
+    subElements.map((ele:any) => {
+        const {name, typeRef} = ele;
+        if (typeMapping[typeRef]) {
+            return `  ${typeMapping[typeRef]} ${name};`;
+        } else {
+            const match = dataTypes.filter(item => item.name === typeRef)[0];
+            console.info("match:", match, name);
+            const {category, length, subElements} = match;
+            if (category === "STRUCTURE") {
+                return `  ${typeRef} ${name};`;
+            } else {
+                return `  ${typeMapping[subElements[0].typeRef]} ${name}[${length}];`;
+            }
+        }
+    }).join("\n")
+}            
+} ${name};
+`;
+        default:
+            break;
+    }
+}).join("")}
 
-${dataTypesByIRVs.map((item: any) => {
-    return `${item}\n`;
-}).join("\n")}
 
 ${/*声明访问的Rte变量*/''}
 ${vRteVariables.map((item: any) => {
