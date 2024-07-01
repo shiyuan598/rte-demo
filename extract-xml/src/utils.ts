@@ -2,8 +2,6 @@
 import * as xml2js from "xml2js";
 // @ts-ignore
 import * as fs from "fs";
-// @ts-ignore
-// import arxml2json from "../out/control_swc_sweep_component.json";
 
 const parser = new xml2js.Parser({
     explicitArray: false,
@@ -74,7 +72,7 @@ export const parseXML = (xmlString: string): Promise<TransformedNode> => {
     });
 };
 
-export const readFile = (path: string) => {
+export const readFile = (path: string): Promise<string> => {
     return new Promise((resolve, reject) => {
         fs.readFile(path, "utf8", (err: Error, data: string) => {
             if (err) {
@@ -227,7 +225,7 @@ const removeWhitespace = (str: string) => {
         .trim(); // 去掉字符串首尾的空格;
 };
 
-export const extractSWC = (data: any) => {
+export const extractComponent = (data: any) => {
     // 1.SWCName, 通过APPLICATION-SW-COMPONENT-TYP标签下SHORT-NAME标签
     const swcObj = findChildrenByKey("APPLICATION-SW-COMPONENT-TYPE", data);
     const nameObj = findChildrenByKey("SHORT-NAME", swcObj);
@@ -278,7 +276,7 @@ export const extractSWC = (data: any) => {
 
     // 3.1 IRV initValues
     const innerVarObj = findChildrenByKey("IMPLICIT-INTER-RUNNABLE-VARIABLES", swcObj);
-    const IRVs = innerVarObj?.children?.reduce(
+    const IRVMeta = innerVarObj?.children?.reduce(
         (pre: any, item: any) => {
             const dataElement = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
             const dataType = findChildrenByKey("TYPE-TREF", item)?.attributes?.innerText?.split("/")?.at(-1);
@@ -286,11 +284,11 @@ export const extractSWC = (data: any) => {
             let initValue = getInitValues(initValueObj);
             // 转为字符串
             initValue = convertArrayToString(initValue);
-            pre.datatypeInterfaces[dataElement] = dataType;
+            pre.dataTypeMeta[dataElement] = dataType;
             pre.initValues[dataElement] = initValue;
             return pre;
         },
-        { datatypeInterfaces: {}, initValues: {} }
+        { dataTypeMeta: {}, initValues: {} }
     );
 
     // 4.Runnables
@@ -361,23 +359,23 @@ export const extractSWC = (data: any) => {
         swcName,
         periods,
         initValues,
-        IRVs
+        IRVMeta
     };
 };
 
-export const orderDataType = (datatypeInfo: any[]) => {
+export const orderDataType = (dataTypeInfo: any[]) => {
     const result: any[] = [];
     const types = ["boolean", "uint8", "sint8", "uint16", "sint16", "uint32", "sint32", "float", "double"];
 
-    const findDataTypeDeps = (datatype: any): any => {
+    const findDataTypeDeps = (dataType: any): any => {
         const deps: any = [];
-        const { typeRef, subElements } = datatype;
+        const { typeRef, subElements } = dataType;
         // 1.查看typeRef
         if (typeRef) {
             if (types.includes(typeRef)) {
                 return deps;
             } else {
-                deps.push(datatypeInfo.filter(item => item.name === typeRef)[0]);                
+                deps.push(dataTypeInfo.filter((item) => item.name === typeRef)[0]);
             }
         } else {
             if (subElements) {
@@ -388,7 +386,7 @@ export const orderDataType = (datatypeInfo: any[]) => {
         }
         return deps;
     };
-    datatypeInfo.forEach((item) => {
+    dataTypeInfo.forEach((item) => {
         const deps = findDataTypeDeps(item);
         if (!deps) {
             if (!result.find((i) => i.name === item.name)) {
@@ -396,9 +394,9 @@ export const orderDataType = (datatypeInfo: any[]) => {
             }
         } else {
             deps.push(item);
-            deps.forEach((datatype: any) => {
-                if (datatype && !result.find((i) => i.name === datatype.name)) {
-                    result.push(datatype);
+            deps.forEach((dataType: any) => {
+                if (dataType && !result.find((i) => i.name === dataType.name)) {
+                    result.push(dataType);
                 }
             });
         }
@@ -406,9 +404,9 @@ export const orderDataType = (datatypeInfo: any[]) => {
     return result;
 };
 
-export const extractDatatype = (data: any) => {
-    const getDatatypeInfo = (datatypeObjs: any) => {
-        return datatypeObjs?.children.map((datatype: any) => {
+export const extractDataType = (data: any) => {
+    const getDatatypeInfo = (dataTypeObjs: any) => {
+        return dataTypeObjs?.children.map((datatype: any) => {
             const name = findChildrenByKey("SHORT-NAME", datatype)?.attributes?.innerText;
             const category = findChildrenByKey("CATEGORY", datatype)?.attributes?.innerText;
             let typeRef = "";
@@ -449,20 +447,100 @@ export const extractDatatype = (data: any) => {
         });
     };
 
-    const datatypeObjs = findChildrenByKey("ELEMENTS", data);
-    const datatypeInfo = getDatatypeInfo(datatypeObjs);
-    return datatypeInfo;
+    const dataTypeObjs = findChildrenByKey("ELEMENTS", data);
+    const dataTypeInfo = getDatatypeInfo(dataTypeObjs);
+    return orderDataType(dataTypeInfo);
 };
 
-export const extractDatatypeInterface = (data: any) => {
+export const extractDataTypeMeta = (data: any) => {
     const interfaceObjs = findChildrenByKey("ELEMENTS", data);
     return interfaceObjs?.children?.reduce((pre: any, item: any) => {
         const interfaceName = findChildrenByKey("SHORT-NAME", item)?.attributes?.innerText;
-        const datatypeObj = findChildrenByKey("DATA-ELEMENTS", item);
-        const dataElement = findChildrenByKey("SHORT-NAME", datatypeObj)?.attributes?.innerText;
-        const dataType = findChildrenByKey("TYPE-TREF", datatypeObj)?.attributes?.innerText?.split("/")?.at(-1);
-        const category = findChildrenByKey("CATEGORY", datatypeObj)?.attributes?.innerText;
+        const dataTypeObj = findChildrenByKey("DATA-ELEMENTS", item);
+        const dataElement = findChildrenByKey("SHORT-NAME", dataTypeObj)?.attributes?.innerText;
+        const dataType = findChildrenByKey("TYPE-TREF", dataTypeObj)?.attributes?.innerText?.split("/")?.at(-1);
+        const category = findChildrenByKey("CATEGORY", dataTypeObj)?.attributes?.innerText;
         pre[dataElement] = dataType;
         return pre;
     }, {});
+};
+
+const transformComponent = (data: any, dataTypeMeta: any) => {
+    const { swcName, runnables, periods, initValues, IRVMeta } = data;
+    const appPorts: any[] = [];
+    const runnableMapping: any[] = [];
+    const IRVs: any[] = [];
+    runnables.forEach((runnable: any) => {
+        const { name, interfaces, irvs } = runnable;
+        runnableMapping.push({
+            name,
+            trigger: periods[name] ? "Period" : "Init",
+            periodValue: periods[name],
+            task: ""
+        });
+        interfaces.forEach((item: any) => {
+            const { dataElement, port } = item;
+            appPorts.push({
+                swcName,
+                runnable: name,
+                portName: port.name,
+                portType: port.type,
+                dataElement,
+                dataType: dataTypeMeta[dataElement],
+                // initValue: initValues[dataElement],
+                connections: [
+                    {
+                        target: "",
+                        connected: false
+                    }
+                ]
+            });
+        });
+
+        irvs.forEach((item: any) => {
+            const { dataElement, type } = item;
+            IRVs.push({
+                swcName,
+                runnable: name,
+                type,
+                dataElement,
+                dataType: IRVMeta.dataTypeMeta[dataElement],
+                initValue: IRVMeta.initValues[dataElement]
+            });
+        });
+    });
+    return {
+        appPorts,
+        runnableMapping,
+        IRVs
+    };
+};
+
+export const extractSwcs = async (
+    paths: [
+        {
+            interfaceFile: string;
+            dataTypeFile: string;
+            componentFile: string;
+        }
+    ]
+) => {
+    const swcs = await Promise.all(paths.map(async (pathGroup) => {
+        const { interfaceFile, dataTypeFile: datatypeFile, componentFile } = pathGroup;
+        const jsonDatas = await Promise.all([
+            readFile(interfaceFile).then(parseXML),
+            readFile(datatypeFile).then(parseXML),
+            readFile(componentFile).then(parseXML)
+        ]);
+        const [interfaceJson, dataTypeJson, componentJson] = jsonDatas;
+        const dataTypeMeta = extractDataTypeMeta(interfaceJson);
+        const dataType = extractDataType(dataTypeJson);
+        const component = extractComponent(componentJson);
+        const swc = transformComponent(component, dataTypeMeta);
+        return {
+            dataType,
+            swc
+        };
+    }));
+    return swcs;
 };
