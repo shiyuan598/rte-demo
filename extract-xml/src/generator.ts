@@ -64,7 +64,7 @@ const addCoreId = (swc: any, targetComps: any[]) => {
     };
 };
 
-const prepare = (swcs: any, cdds: any, task: any, dataType: any) => {
+const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
     // 1.每个组件中的ports及IRVs按照coreId分组，不用挂在runnable下
     const swcsCoreId = swcs.map((item: any) => addCoreId(item, cdds));
     const cddsCoreId = cdds.map((item: any) => addCoreId(item, swcs));
@@ -78,22 +78,36 @@ const prepare = (swcs: any, cdds: any, task: any, dataType: any) => {
 
     // 生成代码
     // 1.生成OsApplicaton_CoreX.c -- 所有组件共用
+    // {
+    //     "coreId1": {
+    //         "appPorts": [],
+    //         "IRVs": [],
+    //         "CDDPorts": []
+    //     },
+    //     "coreId2": {
+    //         "appPorts": [],
+    //         "IRVs": [],
+    //         "CDDPorts": []
+    //     }
+    // }
 
-    // // 2.生成Rte_Type.h -- 所有组件共用
-    // Rte_Type_h({
-    //     dataTypes: dataType,
-    //     vRteVariables: AllProts.filter(item => item.coreId !== item.connection.coreId)
-    // });
+    // 2.生成Rte_Type.h -- 所有组件共用？
+    const rteTypeCodes = Rte_Type_h({
+        dataTypes,
+        appPorts: swcsCoreId.reduce((pre:any[], cur: {appPorts:any}) => {
+            pre.push(...cur.appPorts);
+            return pre;
+        }, [])
+    });
+    writeFile(`../out/mock/Rte_Type.h`, rteTypeCodes);
 
-    // // 3.生成Rte_SWC.h -- 根据组件名称会生成多个文件
-    // swcsCoreId.forEach((swc:any) => {
-    //     const codes = Rte_SWC_h({
-    //         swc: swc.name,
-    //         Rtes: swc.appPorts,
-    //         IRVs: swc.IRVs
-    //     });
-    //     console.info(codes);
-    // });
+    // Done!
+    // 3.生成Rte_SWC.h -- 根据组件名称会生成多个文件
+    swcsCoreId.forEach((swc:any) => {
+        const codes = Rte_SWC_h(swc);
+        // console.info(codes);
+        writeFile(`../out/mock/Rte_${swc.name}.h`, codes);
+    });
 
     // Done!
     // 4.生成Rte_CDD.h -- 根据组件名称会生成多个文件

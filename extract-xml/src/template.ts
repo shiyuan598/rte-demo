@@ -195,7 +195,7 @@ ${
  * 2.生成Rte_Type.h
  * desc: 1.定义所有类型，2.声明访问的Rte变量 -- 根据coreX确定是否需要声明
  */
-export const Rte_Type_h = ({ dataTypes = [], vRteVariables = [] }:{dataTypes?: any[];vRteVariables?:any[]}) => {
+export const Rte_Type_h = ({ dataTypes = [], appPorts=[] }:{dataTypes?: any[];appPorts?:any[]}) => {
     return `
 ${`
 /**
@@ -496,13 +496,17 @@ ${
     }
 }).join("")}
 
-
 ${/*声明访问的Rte变量*/''}
-${vRteVariables.map((item: any) => {
-    const { dataType, portName, dataElement } = item;
-    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
-}).join("\n")}
-
+${
+    appPorts.map((item: any) => {
+        const { dataType, swcName, portName, portType, coreId, dataElement, connections } = item;
+        return connections.map((conn: any) => {
+            if (conn.connected && coreId !== conn.coreId) {
+                return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
+            }
+        }).join("");
+    }).join("")
+}
 
 #endif
 `;
@@ -512,13 +516,14 @@ ${vRteVariables.map((item: any) => {
  * 3.生成Rte_[SWC].h
  * desc: 1.声明Rte变量，2.声明Irv变量，3.定义Rte变量读写接口，4.定义Irv变量读写接口
  */
-export const Rte_SWC_h = ({ swc = "control_swc_sweep", Rtes = [], IRVs = [] }) => {
+export const Rte_SWC_h = ({ 
+    name = "control_swc_sweep", appPorts = [], IRVs = [] }) => {
     return `
 ${`
 /**
  * ********************************************************************************************************************
- * @file Rte_${swc}.h
- * @brief Rte Interface for ${swc}.
+ * @file Rte_${name}.h
+ * @brief Rte Interface for ${name}.
  * @author zhito 
  * @version 1.0.0
  * @date ${getDateTime()}
@@ -526,56 +531,48 @@ ${`
  * ********************************************************************************************************************
  */
 `}
-#ifndef RTE_${swc.toUpperCase()}_H
-#define RTE_${swc.toUpperCase()}_H
+#ifndef RTE_${name.toUpperCase()}_H
+#define RTE_${name.toUpperCase()}_H
 
 #include "Rte_Type.h"
 
 ${/*Rte变量声明*/ ""}
-${Rtes.map((item: any) => {
-    const { dataType, swc, portName, dataElement } = item;
-    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swc}_${portName}_o${dataElement};\n`;
-}).join("\n")}
+${appPorts.map((item: any) => {
+    const { dataType, swcName, portName, dataElement } = item;
+    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
+}).join("")}
 
 ${/*IRV变量声明*/ ""}
 ${IRVs.map((item: any) => {
-    const { swc, dataElement, dataType } = item;
-    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swc}_${dataElement}_o${dataElement};\n`;
-}).join("\n")}
+    const { swcName, dataElement, dataType } = item;
+    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swcName}_${dataElement}_o${dataElement};\n`;
+}).join("")}
 
 ${/*定义Rte变量读写接口*/ ""}
-${Rtes.map((item: any) => {
-    const { swc, runnable, portName, portType, dataElement } = item;
-    if (portType === "R-Port") {
-        return `
-#define Rte_IRead_${runnable}_${dataElement}_o${dataElement}()  \\
-(&Rte_Irv_${swc}_${portName}_o${dataElement})\n
-            `;
+${appPorts.map((item: any) => {
+    const { swcName, runnable, portName, portType, dataElement } = item;
+    if (portType === "R-PORT") {
+        return `#define Rte_IRead_${runnable}_${dataElement}_o${dataElement}()  \\
+  (&Rte_Irv_${swcName}_${portName}_o${dataElement})\n`;
     } else {
-        return `
-#define Rte_IWrite_${runnable}_${dataElement}_o${dataElement}(data)  \\
+        return `#define Rte_IWrite_${runnable}_${dataElement}_o${dataElement}(data)  \\
 ( \\
-    Rte_Irv_${swc}_${portName}_o${dataElement} = *(data) \\
-)\n
-            `;
+  Rte_Irv_${swcName}_${portName}_o${dataElement} = *(data) \\
+)\n`;
     }
 }).join("\n")}
 
 ${/*定义IRV变量读写接口*/ ""}
 ${IRVs.map((item: any) => {
-    const { swc, runnable, type, dataElement } = item;
+    const { swcName, runnable, type, dataElement } = item;
     if (type === "R") {
-        return `
-#define Rte_IrvIRead_${runnable}_${dataElement}()  \\
-(&Rte_Irv_${swc}_${dataElement}_o${dataElement})\n
-            `;
+        return `#define Rte_IrvIRead_${runnable}_${dataElement}()  \\
+  (&Rte_Irv_${swcName}_${dataElement}_o${dataElement})\n`;
     } else {
-        return `
-#define Rte_IrvIWrite_${runnable}_${dataElement}(data)  \\
+        return `#define Rte_IrvIWrite_${runnable}_${dataElement}(data)  \\
 (  \\
-    Rte_Irv_${swc}_${dataElement}_o${dataElement} = *(data) \\
-)\n
-            `;
+  Rte_Irv_${swcName}_${dataElement}_o${dataElement} = *(data) \\
+)\n`;
     }
 }).join("\n")}
 
@@ -588,8 +585,6 @@ ${IRVs.map((item: any) => {
  * desc: 声明CDD访问Rte实体函数
  */
 export const Rte_CDD_h = ({name ="", appPorts=[] }:{name:string;appPorts:any[] }) => {
-    const readFuncs: any = [{dataType: "SG_CCVS1_sg", swcName: "CddMsgUpd", port: "J6L_ADUCAN_RxSignal", dataElement: "SG_CCVS1_sg"}];
-    const writeFuncs: any = [{dataType: "SG_CCVS1_sg", swcName: "CddMsgUpd", port: "J6L_ADUCAN_RxSignal", dataElement: "SG_CCVS1_sg"}];
     return `
 ${`
 /**
