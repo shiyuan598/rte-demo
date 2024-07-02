@@ -587,16 +587,15 @@ ${IRVs.map((item: any) => {
  * 4.生成Rte_[CDD].h
  * desc: 声明CDD访问Rte实体函数
  */
-export const Rte_CDD_h = () => {
-    const cdd = "CddMsgUpd";
+export const Rte_CDD_h = ({name ="", appPorts=[] }:{name:string;appPorts:any[] }) => {
     const readFuncs: any = [{dataType: "SG_CCVS1_sg", swcName: "CddMsgUpd", port: "J6L_ADUCAN_RxSignal", dataElement: "SG_CCVS1_sg"}];
     const writeFuncs: any = [{dataType: "SG_CCVS1_sg", swcName: "CddMsgUpd", port: "J6L_ADUCAN_RxSignal", dataElement: "SG_CCVS1_sg"}];
     return `
 ${`
 /**
  * ********************************************************************************************************************
- * @file Rte_${cdd}.h
- * @brief Rte Interface for ${cdd}.
+ * @file Rte_${name}.h
+ * @brief Rte Interface for ${name}.
  * @author zhito 
  * @version 1.0.0
  * @date ${getDateTime()}
@@ -604,24 +603,26 @@ ${`
  * ********************************************************************************************************************
  */
 `}
-#ifndef RTE_${cdd.toUpperCase()}_H
-#define RTE_${cdd.toUpperCase()}_H
+#ifndef RTE_${name.toUpperCase()}_H
+#define RTE_${name.toUpperCase()}_H
 
 #include "Rte_Type.h"
 
 ${/*CDD组件使用的Rte函数实体*/ ""}
-${readFuncs.map((item: any) => {
-    const { dataType, swcName, port, dataElement } = item;
-    return `
-FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${port}_o${dataElement}(${dataType}* data);\n`;
-})}
-
-${writeFuncs.map((item: any) => {
-    const { dataType, swcName, port, dataElement } = item;
-    return `
-FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${port}_o${dataElement}(${dataType}* data);\n`;
-})}
-
+${
+    appPorts.map((item: any) => {
+        const { dataType, swcName, portName, portType, dataElement, connections } = item;
+        return connections.map((conn: any) => {
+            if (conn.connected) {
+                if (portType === "R-PORT") {
+                    return `FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(${dataType}* data);\n`;
+                } else {
+                    return `FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${portName}_o${dataElement}(${dataType}* data);\n`;
+                }
+            }
+        }).join("");
+    }).join("")
+}
 #endif        
 `;
 };

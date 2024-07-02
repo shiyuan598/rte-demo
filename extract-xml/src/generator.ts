@@ -1,9 +1,11 @@
+import { Rte_CDD_h, Rte_SWC_h } from './template';
 // @ts-ignore
 import swcJson from "../out/mock/swcs.json";
 import cddJson from "../out/mock/cdds.json";
 import taskJson from "../out/mock/task.json";
 import dataTypeJson from "../out/mock/datatype.json";
 import { writeFile } from "./utils";
+import { Rte_Type_h } from "./template";
 
 const findCoreId = (taskName: string) => {
     // @ts-ignore
@@ -14,64 +16,96 @@ const findTask = (runnable: string, runnables: { name: string; task: string }[])
 };
 
 const findCoreIdByRunnable = (runnable: string, runnables: { name: string; task: string }[]) => {
-    const task = findTask(runnable, runnables)
+    const task = findTask(runnable, runnables);
     if (task) {
-        return findCoreId(task)
+        return findCoreId(task);
     }
     return undefined;
-}
+};
 
+// 加上coreId, 并按照coreId分组
 const addCoreId = (swc: any, targetComps: any[]) => {
     const { name, appPorts, runnableMapping, IRVs } = swc;
 
-    const newAppPorts = appPorts.map((item:any) => {
-        item["coreId"] = findCoreIdByRunnable(item.runnable, runnableMapping);
-        item["connections"] = item["connections"].map((conn:any) => {
-            const target = targetComps.find(item => item.name === conn.target);
-            conn["coreId"] = findCoreIdByRunnable(item.runnable, target.runnableMapping)
-            return {...conn};
+    // const newAppPorts: { [prop: string]: any } = {};
+    const newAppPorts = appPorts.map((item: any) => {
+        const coreId = findCoreIdByRunnable(item.runnable, runnableMapping);
+        item["coreId"] = coreId;
+        item["connections"] = item["connections"].map((conn: any) => {
+            const target = targetComps.find((item) => item.name === conn.target);
+            conn["coreId"] = findCoreIdByRunnable(item.runnable, target.runnableMapping);
+            return { ...conn };
         });
-        return {...item};
+        return {...item}
+        // if (newAppPorts[coreId]) {
+        //     newAppPorts[coreId].push({ ...item });
+        // } else {
+        //     newAppPorts[coreId] = [{ ...item }];
+        // }
     });
 
-    const newIRVs = IRVs?.map((item:any) => {
-        item["coreId"] = findCoreIdByRunnable(item.runnable, runnableMapping);
-        return {...item};
+    // const newIRVs: { [prop: string]: any } = {};
+    const newIRVs = IRVs?.map((item: any) => {
+        const coreId = findCoreIdByRunnable(item.runnable, runnableMapping);
+        item["coreId"] = coreId;
+        return { ...item }
+        // if (newIRVs[coreId]) {
+        //     newIRVs[coreId].push({ ...item });
+        // } else {
+        //     newIRVs[coreId] = [{ ...item }];
+        // }
     });
-
-    // 按照coreId分组
-
 
     return {
         name,
         appPorts: newAppPorts,
         IRVs: newIRVs,
         runnableMapping
-    }
-}
+    };
+};
 
-const prepare = (swcs:any, cdds:any, task:any, dataType:any) => {
-    const swcsCoreId = swcs.map((item:any) => addCoreId(item, cdds));
-    const cddsCoreId = cdds.map((item:any) => addCoreId(item, swcs));
+const prepare = (swcs: any, cdds: any, task: any, dataType: any) => {
+    // 1.每个组件中的ports及IRVs按照coreId分组，不用挂在runnable下
+    const swcsCoreId = swcs.map((item: any) => addCoreId(item, cdds));
+    const cddsCoreId = cdds.map((item: any) => addCoreId(item, swcs));
+
+    // console.info("swcsCoreId:", JSON.stringify(swcsCoreId, null, 2));
+
+    // writeFile("../out/mock/swcsCoreId.json", JSON.stringify(swcsCoreId, null, 2));
+    // writeFile("../out/mock/cddsCoreId.json", JSON.stringify(cddsCoreId, null, 2));
+
+    // 2.把所有组件的ports及IRVs按照coreId分组，不用挂在组件下
+
+    // 生成代码
+    // 1.生成OsApplicaton_CoreX.c -- 所有组件共用
+
+    // // 2.生成Rte_Type.h -- 所有组件共用
+    // Rte_Type_h({
+    //     dataTypes: dataType,
+    //     vRteVariables: AllProts.filter(item => item.coreId !== item.connection.coreId)
+    // });
+
+    // // 3.生成Rte_SWC.h -- 根据组件名称会生成多个文件
+    // swcsCoreId.forEach((swc:any) => {
+    //     const codes = Rte_SWC_h({
+    //         swc: swc.name,
+    //         Rtes: swc.appPorts,
+    //         IRVs: swc.IRVs
+    //     });
+    //     console.info(codes);
+    // });
+
+    // Done!
+    // 4.生成Rte_CDD.h -- 根据组件名称会生成多个文件
+    cddsCoreId.forEach((cdd:any) => {
+        const codes = Rte_CDD_h(cdd);
+        // console.info(codes);
+        writeFile(`../out/mock/Rte_${cdd.name}.h`, codes);
+    });
 
 
-    console.info("swcsCoreId:", JSON.stringify(swcsCoreId, null, 2));
+    
 
-    // 按照coreId分组
-
-
-    writeFile("../out/swcsCoreId.json", JSON.stringify(swcsCoreId, null, 2));
-    writeFile("../out/cddsCoreId.json", JSON.stringify(cddsCoreId, null, 2));
-}
+};
 
 prepare(swcJson, cddJson, taskJson, dataTypeJson);
-
-const separateSwcByCore = (swc: any) => {
-    const { name, appPorts, runnableMapping, IRVs } = swc;
-
-    const portCoreMap: {[prop:string]: any[]} = {}
-
-    appPorts.forEach((port: any) => {
-
-    });
-};
