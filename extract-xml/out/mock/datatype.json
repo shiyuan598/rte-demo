@@ -1,0 +1,4464 @@
+[
+    {
+      "name": "Float",
+      "category": "VALUE",
+      "typeRef": "float32"
+    },
+    {
+      "name": "J6L_RxBus",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "ATR_FM_AntiTheftCmdStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATR_FM_AntiTheftDesireExitMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATR_FM_AntiTheftEncryIndicatStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATR_FM_AntiTheftPassword",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATS_PS_AntiTheftComponentStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATS_PS_AntiTheftEncrySeedIndicat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATS_PS_AntiTheftModifyPassword",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATS_PS_AntiTheftPasswordValid",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ATS_PS_AntiTheftRandomNumber",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCM_Status_BCMRespStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCM_Status_BackBrakeLightStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCM_Status_HornStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCM_Status_WiperStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCU_DriverSeatBeltAlert",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCU_IgnitionPstn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BCU_PassengerSeatBeltAlert",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_MsgChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_MsgCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattChargeReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattChargeStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattCurrent",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattHeatStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattSOC",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattSysStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS1_PowerBattVolt",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_BMSMainNgtvCoilDrvStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_BattPackHeatCtrlCmdNgtv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_BattPackHeatCtrlCmdPstv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_ChargePlug2ConnectionStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_ChargePlugConnectionStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_ChargeRelayStatNgtv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_ChargeRelayStatPstv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_MainNgtvRelayDisconnectReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_MainNgtvRelayStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "BMS5_PowerBattSOH",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_BrakeSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_ClutchSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_CruiseCtrlEnbSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_CruiseCtrlPauseSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_CruiseCtrlResumeSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_CruiseCtrlSetSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_CruiseCtrlSetSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_CruiseCtrlState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_PBSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_PTOManagmentState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CCVS1_WheelBasedVehSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CruiseCtrlActive",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CVW_GrossCombineVehWeight",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CVW_PoweredVehWeight",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DC2_LockStatOfDoor1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DC2_LockStatOfDoor2",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DC2_OpenStatOfDoor1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DC2_OpenStatOfDoor2",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_MalfunctionIndicatorLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_ProtectLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_SPN8_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_ABS_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_SPN_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_APCU_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_SPN8_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BCM_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_SPN8_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_BMS_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_SPNMmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_SPN_LeastSgnificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_DCDC2_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_MalfunctionIndicatorLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_ProtectLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_SPN8_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPB_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_MalfunctionIndicatorLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_ProtectLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_SPN8_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_EPS_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_SPN8_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_PTU_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_AmberWarningLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_FMI",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_MalfunctionLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_OccurrenceCount",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_ProtectLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_RedStopLamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_SAELamp_Reserved",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_SPN3MmostSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_SPNConversionMethod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_SPN_LeastSignificantBit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "DM1_TPMS_SPN_secondByteOfSPN",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ABSActive",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ABSFullyOperational",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ABSOffroadSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ABSOrEBSAmberWarnSignal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ASRBrakeCtrlActive",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ASREngCtrlActive",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ASRHillHolderSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ASROffroadSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_ATCOrASRInfoSignal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_BrakePedalPstn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_EBSBrakeSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_EBSRedWarnSignal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_SourceAddressOfCtrlDevice",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC1_TractorMountTrailerABSWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_FrontAxleSpeed",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_RelativeSpdFrontAxleLWhl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_RelativeSpdFrontAxleRWhl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_RelativeSpdRearAxle1LWhl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_RelativeSpdRearAxle1RWhl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_RelativeSpdRearAxle2LWhl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC2_RelativeSpdRearAxle2RWhl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_BrakeTempWarning",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_EmergencyBrakeActive",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_FoundationBrakeUse",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_HaltBrakeMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_HillHolderMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_XBRAccelLim",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_XBRActiveCtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EBC5_XBRSysState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EC_EM1_EngReferenceTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EC_EM1_EngSpdAtPoint1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EC_EM1_SupportVariableRateTSC1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EEC2_AccelPedal1LowIdleSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EEC2_AccelPedalKickdownSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EEC2_AccelPedalPstn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EEC2_PercentLoadAtCurrentSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ENGSC_FM_EngStartAbortReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ENGSC_FM_EngStartReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ENGSC_FM_MsgChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ENGSC_FM_MsgCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_AmberWarnLampStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_EPBHCUInParkState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_EPBHCUInReleaseState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_PressOfSpringBrakeChamber",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_PstnOfEPBHCU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_ReasonForInhibitOfApply",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_ReasonForInhibitOfRelease",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_RedStopLampStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_StateOfEPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_StateOfInhibitOfEPBApply",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_StateOfInhibitOfEPBRelease",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_TrailerTestActivationState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB1_WorkModeOfEPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_ColumnTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_ColumnTrqQF",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_ColumnVelocity",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_ColumnVelocityQF",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_HandsOffDetected",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_HandsOnDetected",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_IgnitionState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS1_PullCompensation",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_AbsSteerPstn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_AbsSteerPstnQF",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_ActualMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_ExtInputCmdEcho",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_ReqMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPS2_StatusOrError",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_AmberWarnLampStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_ElectricalSteerSupRedLv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_EmergencySteerStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_RedStopLampState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_SteerAng",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_SteerAngSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO1_SysState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_DriverTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_ExtCtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_HandsOffProbability",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_MotorTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSO2_SteerWheelVibrationMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_ActualInnerWheelSteerAng",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_AxleLocation",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_AxleLoweringInhibit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_StatOfSteerAxle",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_SteerType",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_TypeOfSteerForces",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ESC1_TypeOfSteerTrans",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ETC2_TransActualGearRatio",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ETC2_TransCurrentGear",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ETC2_TransSelectedGear",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_BackMirrorAdjustSwch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_BackMirrorHeatSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_BackMirrorSelectSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_CabDoorsLockSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_DriverCtrlPasgrWindowSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_DriverWindowSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_LockOrUnlockSuccessAlert",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_PassengerWindowSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_RMKeyBattStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_RmtLightInspectCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_RmtSearchVehCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "FBCM_VehAntiTheftStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "HCU_BMS_EnduranceMileage",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "HCU_BMS_HCUSysStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "HCU_BMS_HighVoltSysFailStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "HCU_BMS_PermitCharge",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "HCU_BMS_ReadyToDriveStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "HCU_BMS_SleepCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_BackUpLightAndAlarmHornCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_CenterStopLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_DriverSideDomeLight",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_HighBeamHeadLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ImplementMarkerLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_LeftTurnSignalLightsCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_LowBeamHeadLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_PassengerSideDomeLight",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_RearFogLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_RightTurnSignalLightsCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_RunLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_TractorFrontFogLightsCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_BackUpLightAndAlarmHorn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_CenterStopLight",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_FrontFogLights",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_HighBeamHeadLightData",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_ImplementMarkerLightData",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_LeftTurnSignalLights",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_LowBeamHeadLightData",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_RearFogLights",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_RightTurnSignalLights",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LD_RunLight",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_ActualMotorTrqHR",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_HighVoltOffPermit",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MaxOutputMotorTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MaxOutputMotorTrqHR",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorDischargeStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorFaliureStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorRotateDirection",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorSysStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MotorWorkMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MsgChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "MCU1_MsgCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "OWW_FrontOperatorWasherSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "OWW_FrontOperatorWiperSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_ESCLNotLockWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_ESCLNotUnlockWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_EngRmtStartAndStopStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_IgnitionPstn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_IgnitionRmtCtrlStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_NoLegalSmartKeyIDWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_NoLegalSmartKeyInsideVehWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_PowerMainSwchNotClosed",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_PowerOffBeforeLeaveVehWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_RmtLightInspectionCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_RmtLockOrUnlockStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_RmtSearchVehCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_RmtSearchVehStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_SmartKeyBattStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_SmartStartConditionWarn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_TurnLightCtrlCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "PS1_VehRmtCtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_AutoLightCtrlSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_CabDoorWarnOFFSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_FCWSwitchStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_HornSelectionSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_HornSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_IGOffPostnLightAlert",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_IndoorLightSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_LDWSwitchStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_RearWorkLampSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_ReverseGearSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "SC_SleepAreaLightSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_AirLeakageRate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_ExtendTirePressSupport",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_Location",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_Press",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_PressThresholdDetect",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_Stat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE1_Temp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE2_Location",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE2_PressExtendRange",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE2_ReqTirePress",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE3_TireLocation",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE3_TireSensorElectricalFault",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE3_TireSensorMatchStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE3_TireSensorSelfLearningStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TIRE3_TireTemThresholdDetection",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_BCM",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_BMS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_EBS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_EPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_EPS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_TPMS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_BCM",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_BMS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_EBS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_EPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_EPS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_TPMS",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VCU_Status_ActualMaxDrivePctTrq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VCU_Status_ManualAccelPedalPstn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VCU_Status_ManualBrakeSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VCU_Status_VCUAutoToManualTips",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VCU_Status_VCUMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VD_TotalVehDistance",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VD_TripDistance",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VDC2_LateralAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VDC2_LongitudinalAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VDC2_SteerWheelAng",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VDC2_SteerWheelAngSensorType",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VDC2_SteerWheelTurnCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VDC2_YawRate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "Double",
+      "category": "VALUE",
+      "typeRef": "float64"
+    },
+    {
+      "name": "rt_Array_Float_3",
+      "category": "ARRAY",
+      "length": "3",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_3",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_4",
+      "category": "ARRAY",
+      "length": "4",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_4",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Double_3",
+      "category": "ARRAY",
+      "length": "3",
+      "subElements": [
+        {
+          "name": "rt_Array_Double_3",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        }
+      ]
+    },
+    {
+      "name": "LocalizationInfo",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "Rolling_Count",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "timestamp_sec",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "sequence_num",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "position",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "orientation",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_4"
+        },
+        {
+          "name": "linear_velocity",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "linear_acceleration",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "angular_velocity",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "heading",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "linear_acceleration_vrf",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "angular_velocity_vrf",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "euler_angles",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "linear_velocity_vrf",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_3"
+        },
+        {
+          "name": "measurement_time",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "pos_llh",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Double_3"
+        },
+        {
+          "name": "origin_llh",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Double_3"
+        },
+        {
+          "name": "global_offset",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Double_3"
+        },
+        {
+          "name": "mileage",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "relative_distance",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "relative_heading",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        }
+      ]
+    },
+    {
+      "name": "UInt32",
+      "category": "VALUE",
+      "typeRef": "uint32"
+    },
+    {
+      "name": "rt_Array_Float_100",
+      "category": "ARRAY",
+      "length": "100",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_100",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "TrajectoryPoint",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "x",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "y",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "z",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "theta",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "kappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "s",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "dkappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "ddkappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "v",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "a",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "relative_time",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "da",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "slope",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        }
+      ]
+    },
+    {
+      "name": "PathPoint",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "x",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "y",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "z",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "theta",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "kappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "s",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        },
+        {
+          "name": "dkappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "rt_Array_Float_100"
+        }
+      ]
+    },
+    {
+      "name": "VehicleSignal",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "turn_signal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "high_beam",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "low_beam",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "horn",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "emergency_light",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        }
+      ]
+    },
+    {
+      "name": "PlanningInfo",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "Rolling_Count",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "timestamp_sec",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "sequence_num",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "total_path_length",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "total_path_time",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "trajectory_point_num",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "trajectory_point",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "TrajectoryPoint"
+        },
+        {
+          "name": "path_point_num",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "path_point",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "PathPoint"
+        },
+        {
+          "name": "is_estop",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "estop_reason",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_replan",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "replan_reason",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "gear",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "right_of_way_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "decision",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "task",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "lon_trajectory_type",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "lat_trajectory_type",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "scenario_type",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "driving_state",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "planning_state",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "working_mode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "vehicle_signal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "VehicleSignal"
+        },
+        {
+          "name": "loc_timestamp_sec",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "chassis_timestamp_sec",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        }
+      ]
+    },
+    {
+      "name": "ADMInfoSOC2MCU",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "Rolling_Count",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "soc_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "soc_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "zloc_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "zloc_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "zmap_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "zmap_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "zloc_lidar_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "zloc_lidar_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_radar_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_radar_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_camera_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_camera_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_lidar_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_lidar_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_fusion_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "perception_fusion_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "prediction_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "prediction_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "planning_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "planning_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "routing_sts",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "routing_reserv_1",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        }
+      ]
+    },
+    {
+      "name": "ChassisInfo",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "Rolling_Count",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "speed_mps",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "speed_mps_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "speed_mps_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_fl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "wheel_spd_fl_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_fl_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_fr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "wheel_spd_fr_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_fr_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_rl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "wheel_spd_rl_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_rl_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_rr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "wheel_spd_rr_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wheel_spd_rr_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "longitude_acc",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longitude_acc_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "longitude_acc_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "lateral_acc",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "lateral_acc_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "lateral_acc_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "accel_pedal_position",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "accel_pedal_position_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "accel_pedal_position_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "brake_pedal_position",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "brake_pedal_position_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "brake_pedal_position_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "gear_location",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "SInt32"
+        },
+        {
+          "name": "gear_location_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "gear_location_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "brake_switch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "brake_switch_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "brake_switch_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "parking_brake_switch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "parking_brake_switch_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "parking_brake_switch_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "motor_reference_torque",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "motor_reference_torque_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "motor_reference_torque_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "actual_motor_torque",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "actual_motor_torque_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "actual_motor_torque_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "engine_reference_torque",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "engine_reference_torque_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "engine_reference_torque_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "actual_engine_torque",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "actual_engine_torque_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "actual_engine_torque_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "gear_ratio",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "gear_ratio_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "gear_ratio_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "steering_angle",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "steering_angle_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "steering_angle_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "steering_angle_velocity",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "steering_angle_velocity_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "steering_angle_velocity_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "yaw_rate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "yaw_rate_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "yaw_rate_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "driver_hand_torque",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "driver_hand_torque_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "driver_hand_torque_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "left_turn_signal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "left_turn_signal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "left_turn_signal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "right_turn_signal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "right_turn_signal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "right_turn_signal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "auto_drving_main_swtich",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "auto_drving_main_swtich_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "auto_drving_main_swtich_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "high_beam_signal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "high_beam_signal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "high_beam_signal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "low_beam_signal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "low_beam_signal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "low_beam_signal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "ignition_position",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "ignition_position_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "ignition_position_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_ebs_normal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_ebs_normal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_ebs_normal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_eps_normal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_eps_normal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_eps_normal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_epb_normal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_epb_normal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_epb_normal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_vcu_normal",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_vcu_normal_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "is_vcu_normal_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "throttle_percentage",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "throttle_percentage_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "throttle_percentage_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "deflector_rod",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "deflector_rod_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "deflector_rod_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_fl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tire_pressure_fl_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_fl_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_fr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tire_pressure_fr_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_fr_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_rl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tire_pressure_rl_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_rl_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_rr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tire_pressure_rr_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_pressure_rr_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_angle_fl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tire_angle_fl_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_angle_fl_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_angle_fr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tire_angle_fr_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "tire_angle_fr_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wiper_switch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wiper_switch_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wiper_switch_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wiper_water_switch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wiper_water_switch_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "wiper_water_switch_dT",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "xbr_extacceldemand",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "tc1_transreqgear",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "SInt32"
+        },
+        {
+          "name": "eps_steerangreq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "SInt32",
+      "category": "VALUE",
+      "typeRef": "sint32"
+    },
+    {
+      "name": "ADMInfoMCU2SOC",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "Rolling_Count",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "adm_admode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "adm_2_pasv_diag",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "adm_2_err_diag",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        }
+      ]
+    },
+    {
+      "name": "CtrlInfoMCU2SOC",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "Rolling_Count",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "IDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_L",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "SDC_Time_H",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "latctrl_lat_dst_err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_hding_angl_err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_latctrl_status",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_proc_tar_str_whl_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_tar_str_whl_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_mpc_tar_yawrate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_fd_fwd_tar_yawrate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_tar_yawrate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_mpc_tar_yawrate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_fd_fwd_tar_yawrate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_tar_yawrate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_fd_str_whl_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_fd_fwd_str_whl_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_yawrate_cps",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_estm_mass_level",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_max_str_whl_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_str_whl_angl_rate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_road_bump_enable",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_yawrate_controller_p",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_fdbk_amplify_enable",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_equal_wheel_base",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_cur_lat_err_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_cur_hding_err_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_cur_u_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_cur_deltau_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_lat_err_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_hding_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_u_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_deltau_wght",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_fd_fwd_kappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_kappa_str_whl_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "latctrl_prv_fd_fwd_kappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_brake_reqd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_brake_accel_output",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_torque_command_output",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_accel_des",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_accel_limit_max",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_accel_limit_min",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_jerk_limit_max",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_jerk_limit_min",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_p_term_engine",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_i_term_engine",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_p_term_brake",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_i_term_brake",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctrl_long_acc_comp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "longctr_speed_comp_longerr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "vse_lat_tilt_estmd_angl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "vse_estmd_mass",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "vse_estmd_mass_reliab",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_lat_err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_hding_err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_ref_cur",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_long_err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_spd_err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_ref_accel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "crm_loc_num",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "crm_trj_num",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "crm_lat_ref_indx",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "crm_long_ref_indx",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "adm_admode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "adm_2_pasv_diag",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        },
+        {
+          "name": "adm_2_err_diag",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        }
+      ]
+    },
+    {
+      "name": "J6L_TxBus",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "ADU1_ADUBrakeSwitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU1_ADUStat",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU1_ADUTargetAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU1_ADUTargetSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_ADUToBCM",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_BackBrakeLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_DrvDoor1UnlockReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_FrontWasherSwitchCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_FrontWiperSwitchCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_HornCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "ADU_Cmd_PassengerDoor2UnlockReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_AutoDrvState",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_ExtApplyReqForEPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_ExtInhibitReqForPBApply",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_ExtInhibitReqForPBRelease",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_ExtPressDemandForEPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_ExtReleaseReqForEPB",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPB2_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI1_ExtCtrlModeReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI1_FBFTrqReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI1_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI1_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI1_MotorTrqReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI1_SteerAngReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI2_ActiveReturnWeightReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI2_AngCtrTrqLimReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI2_AngCtrlWeightReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI2_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "EPSI2_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_BackUpLightAndHornCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_HighBeamHeadLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_ImplementMarkerLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_LeftTurnSignalLightsCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_LowBeamHeadLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_RearFogLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_RightTurnSignalLightsCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_RunLightCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LC_ADU_TractorFrontFogLightsCmd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "Lcks_Cmd1_CmdFromExtController",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "Lcks_Cmd1_DesiredOperateMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "Lcks_Cmd1_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "Lcks_Cmd1_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TC1_ADU_TransReqGear",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_APCU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_DCDC2",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_PTU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPCM_VCU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_APCU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_DCDC2",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_PTU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TPDT_VCU",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_CtrlPurpose",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_EngOvrrdCtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_EngReqTrqHR",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_EngReqTrqOrTrqLim",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_OvrrdCtrlModePriority",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_ReqSpdCtrlConditions",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCDR_TransRate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_CtrlPurpose",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_EngOvrrdCtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_EngReqTrqHR",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_EngReqTrqOrTrqLim",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_OvrrdCtrlModePriority",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_ReqSpdCtrlConditions",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "TSC1_ACCE_TransRate",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR1_CtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR1_EBIMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR1_ExtAccelDemand",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR1_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR1_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR1_Priority",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR2_CtrlMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR2_EBIMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR2_ExtAccelDemand",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR2_MessageChecksum",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR2_MessageCounter",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "XBR2_Priority",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "BusLatCtrl",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "LatCtrl_TarStrWhlAngl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LatCtrl_StrWhlAnglCtrlActv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "Boolean",
+      "category": "VALUE",
+      "typeRef": "boolean"
+    },
+    {
+      "name": "BusEM",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "EM_Err",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Boolean"
+        },
+        {
+          "name": "EM_Diag",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt32"
+        }
+      ]
+    },
+    {
+      "name": "BusCRM",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "CRM_LatDstErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_HdingAnglErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_RefCrvt",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_LongDstErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_SpdErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_RefAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_RefSlope",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "CRM_RefSpd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "BusADM",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "ADM_ADMode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt8"
+        },
+        {
+          "name": "ADM_ADActv",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Boolean"
+        }
+      ]
+    },
+    {
+      "name": "UInt8",
+      "category": "VALUE",
+      "typeRef": "uint8"
+    },
+    {
+      "name": "BusLongCtrl",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "LongCtrl_FinalAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_AccelProTerm",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_AccelIntgTerm",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_TotalSpdErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_DistPropTerm",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_DistIntgTerm",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_LongErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_RefAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_SpdErr",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_RoadGrdAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_AccelLimitMax",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_AccelLimitMin",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_JerkLimitMax",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_JerkLimitMin",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_TorqueProTerm",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_TorqueIntgTerm",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_FeedForward",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_TorqueReq",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_BrakeAccel",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_SpdComp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "LongCtrl_BrakeReqd",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt8"
+        }
+      ]
+    },
+    {
+      "name": "BusVSE",
+      "category": "STRUCTURE",
+      "subElements": [
+        {
+          "name": "VSE_LatTiltEstmdAngl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VSE_EstmdMass",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "VSE_EstmdMassReliab",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Boolean"
+        },
+        {
+          "name": "VSE_LonTiltEstmdAngl",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        },
+        {
+          "name": "x",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "y",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "z",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "com_x",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "com_y",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "com_z",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "timestamp",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "roll",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "pitch",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "heading",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "kappa",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "linear_velocity",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "angular_velocity",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "linear_acceleration",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Double"
+        },
+        {
+          "name": "gear",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "SInt8"
+        },
+        {
+          "name": "driving_mode",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "UInt8"
+        }
+      ]
+    },
+    {
+      "name": "SInt8",
+      "category": "VALUE",
+      "typeRef": "sint8"
+    },
+    {
+      "name": "Double_const",
+      "category": "VALUE",
+      "typeRef": "float64"
+    },
+    {
+      "name": "Float_const",
+      "category": "VALUE",
+      "typeRef": "float32"
+    },
+    {
+      "name": "rt_Array_Float_22",
+      "category": "ARRAY",
+      "length": "22",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_22",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_22_const",
+      "category": "ARRAY",
+      "length": "22",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_22_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_292",
+      "category": "ARRAY",
+      "length": "292",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_292",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_292_const",
+      "category": "ARRAY",
+      "length": "292",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_292_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_25",
+      "category": "ARRAY",
+      "length": "25",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_25",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_25_const",
+      "category": "ARRAY",
+      "length": "25",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_25_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_7",
+      "category": "ARRAY",
+      "length": "7",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_7",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_7_const",
+      "category": "ARRAY",
+      "length": "7",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_7_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_5",
+      "category": "ARRAY",
+      "length": "5",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_5",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_5_const",
+      "category": "ARRAY",
+      "length": "5",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_5_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_2",
+      "category": "ARRAY",
+      "length": "2",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_2",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_2_const",
+      "category": "ARRAY",
+      "length": "2",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_2_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_9",
+      "category": "ARRAY",
+      "length": "9",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_9",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_9_const",
+      "category": "ARRAY",
+      "length": "9",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_9_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_8",
+      "category": "ARRAY",
+      "length": "8",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_8",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "rt_Array_Float_8_const",
+      "category": "ARRAY",
+      "length": "8",
+      "subElements": [
+        {
+          "name": "rt_Array_Float_8_const",
+          "category": "TYPE_REFERENCE",
+          "typeRef": "Float"
+        }
+      ]
+    },
+    {
+      "name": "UInt16",
+      "category": "VALUE",
+      "typeRef": "uint16"
+    },
+    {
+      "name": "UInt16_const",
+      "category": "VALUE",
+      "typeRef": "uint16"
+    },
+    {
+      "name": "Boolean_const",
+      "category": "VALUE",
+      "typeRef": "boolean"
+    },
+    {
+      "name": "UInt8_const",
+      "category": "VALUE",
+      "typeRef": "uint8"
+    }
+  ]

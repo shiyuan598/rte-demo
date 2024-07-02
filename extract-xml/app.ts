@@ -29,6 +29,7 @@ const swcs = extractSwcs([
 
 swcs.then(v => {
     // console.info(v[0].dataType);
+    writeFile("./out/swcs.json", JSON.stringify(v, null, 2));
     const codes = Rte_Type_h({dataTypes: v[0].dataType});
     console.info(codes);
     writeFile("./out/Rte_Type.h", codes);

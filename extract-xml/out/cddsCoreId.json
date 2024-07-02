@@ -1,0 +1,344 @@
+[
+  {
+    "name": "CddMsgUpd",
+    "appPorts": [
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "EM_20ms",
+        "portName": "ADMInfoSOC2MCU",
+        "portType": "P-PORT",
+        "dataElement": "ADMInfoSOC2MCU",
+        "dataType": "ADMInfoSOC2MCU",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "2"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "EM_20ms",
+        "portName": "J6LCANRxInp",
+        "portType": "P-PORT",
+        "dataElement": "J6LCANRxInp",
+        "dataType": "J6L_RxBus",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "2"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "EM_20ms",
+        "portName": "LocalizationInfo",
+        "portType": "P-PORT",
+        "dataElement": "LocalizationInfo",
+        "dataType": "LocalizationInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "2"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "EM_20ms",
+        "portName": "PlanningInfo",
+        "portType": "P-PORT",
+        "dataElement": "PlanningInfo",
+        "dataType": "PlanningInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "2"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "ADM_20ms",
+        "portName": "ADMInfoSOC2MCU",
+        "portType": "P-PORT",
+        "dataElement": "ADMInfoSOC2MCU",
+        "dataType": "ADMInfoSOC2MCU",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "ADM_20ms",
+        "portName": "ChassisInp",
+        "portType": "P-PORT",
+        "dataElement": "ChassisInp",
+        "dataType": "ChassisInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "ADM_20ms",
+        "portName": "J6LCANRxInp",
+        "portType": "P-PORT",
+        "dataElement": "J6LCANRxInp",
+        "dataType": "J6L_RxBus",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "ADM_20ms",
+        "portName": "PlanningInfo",
+        "portType": "P-PORT",
+        "dataElement": "PlanningInfo",
+        "dataType": "PlanningInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "VSE_20ms",
+        "portName": "ChassisInp",
+        "portType": "P-PORT",
+        "dataElement": "ChassisInp",
+        "dataType": "ChassisInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "VSE_20ms",
+        "portName": "LocalizationInfo",
+        "portType": "P-PORT",
+        "dataElement": "LocalizationInfo",
+        "dataType": "LocalizationInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "CRM_20ms",
+        "portName": "PlanningInfo",
+        "portType": "P-PORT",
+        "dataElement": "PlanningInfo",
+        "dataType": "PlanningInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "2"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "LongCtrl_20ms",
+        "portName": "ChassisInp",
+        "portType": "P-PORT",
+        "dataElement": "ChassisInp",
+        "dataType": "ChassisInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "3"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "LongCtrl_20ms",
+        "portName": "PlanningInfo",
+        "portType": "P-PORT",
+        "dataElement": "PlanningInfo",
+        "dataType": "PlanningInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "3"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "LatCtrl_20ms",
+        "portName": "PlanningInfo",
+        "portType": "P-PORT",
+        "dataElement": "PlanningInfo",
+        "dataType": "PlanningInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "3"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "Tx_20ms",
+        "portName": "PlanningInfo",
+        "portType": "P-PORT",
+        "dataElement": "PlanningInfo",
+        "dataType": "PlanningInfo",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "Tx_20ms",
+        "portName": "J6LCANTxOutp",
+        "portType": "R-PORT",
+        "dataElement": "J6LCANTxOutp",
+        "dataType": "J6L_TxBus",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "Tx_20ms",
+        "portName": "ADMInfoMCU2SOC",
+        "portType": "R-PORT",
+        "dataElement": "ADMInfoMCU2SOC",
+        "dataType": "ADMInfoMCU2SOC",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "6"
+      },
+      {
+        "swcName": "CddMsgUpd",
+        "runnable": "Tx_20ms",
+        "portName": "CtrlDebugInfoMCU2SOC",
+        "portType": "R-PORT",
+        "dataElement": "CtrlDebugInfoMCU2SOC",
+        "dataType": "CtrlInfoMCU2SOC",
+        "connections": [
+          {
+            "target": "control_swc_sweep",
+            "connected": true,
+            "coreId": "3"
+          }
+        ],
+        "coreId": "6"
+      }
+    ],
+    "runnableMapping": [
+      {
+        "name": "CddMsgUpd_Init",
+        "trigger": "Init",
+        "task": "Bsw_Init_Task_Core5"
+      },
+      {
+        "name": "EM_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P10ms_Task_Core2"
+      },
+      {
+        "name": "ADM_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P10ms_Task_Core5"
+      },
+      {
+        "name": "VSE_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P10ms_Task_Core5"
+      },
+      {
+        "name": "CRM_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P10ms_Task_Core5"
+      },
+      {
+        "name": "LongCtrl_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P100ms_Task_Core3"
+      },
+      {
+        "name": "LatCtrl_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P100ms_Task_Core3"
+      },
+      {
+        "name": "Tx_20ms",
+        "trigger": "Period",
+        "periodValue": "0.02",
+        "task": "Bsw_P10ms_Task_Core5"
+      }
+    ]
+  }
+]

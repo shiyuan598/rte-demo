@@ -488,7 +488,7 @@ const transformComponent = (data: any, dataTypeMeta: any) => {
                 portType: port.type,
                 dataElement,
                 dataType: dataTypeMeta[dataElement],
-                // initValue: initValues[dataElement],
+                initValue: initValues[dataElement],
                 connections: [
                     {
                         target: "",
@@ -511,6 +511,7 @@ const transformComponent = (data: any, dataTypeMeta: any) => {
         });
     });
     return {
+        name: swcName,
         appPorts,
         runnableMapping,
         IRVs

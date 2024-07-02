@@ -43,7 +43,7 @@ const getDateTime = () => {
 // 【4.1声明CDD访问Rte实体函数】-- 根据【1.5定义CDD中读写Rte变量的函数】
 
 /**
- * 生成Rte_OsApplication_Core[Id].c
+ * 1.生成Rte_OsApplication_Core[Id].c
  * desc: 1.定义Rte变量，2.定义访问的Rte变量，3.定义Irv变量，4.定义SWC中读写Rte变量的函数，5.定义CDD中读写Rte变量的函数
  */
 export const Rte_OsApplication_CoreX_c = ({
@@ -192,7 +192,7 @@ ${
 };
 
 /**
- * 生成Rte_Type.h
+ * 2.生成Rte_Type.h
  * desc: 1.定义所有类型，2.声明访问的Rte变量 -- 根据coreX确定是否需要声明
  */
 export const Rte_Type_h = ({ dataTypes = [], vRteVariables = [] }:{dataTypes?: any[];vRteVariables?:any[]}) => {
@@ -509,7 +509,7 @@ ${vRteVariables.map((item: any) => {
 };
 
 /**
- * 生成Rte_[SWC].h
+ * 3.生成Rte_[SWC].h
  * desc: 1.声明Rte变量，2.声明Irv变量，3.定义Rte变量读写接口，4.定义Irv变量读写接口
  */
 export const Rte_SWC_h = ({ swc = "control_swc_sweep", Rtes = [], IRVs = [] }) => {
@@ -584,7 +584,7 @@ ${IRVs.map((item: any) => {
 };
 
 /**
- * 生成Rte_[CDD].h
+ * 4.生成Rte_[CDD].h
  * desc: 声明CDD访问Rte实体函数
  */
 export const Rte_CDD_h = () => {

@@ -1,0 +1,369 @@
+{
+    "Task": {
+        "Bsw_P5ms_Task_Core0": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P5ms_Task_Core0",
+                "cpuId": "0",
+                "priority": 20,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P100ms_Task_Core2": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P100ms_Task_Core2",
+                "cpuId": "2",
+                "priority": 10,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P10ms_Task_Core2": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P10ms_Task_Core2",
+                "cpuId": "2",
+                "priority": 15,
+                "schedule": "FULL",
+                "size": 20480
+            }
+        },
+        "Bsw_P1ms_Task_Core2": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P1ms_Task_Core2",
+                "cpuId": "2",
+                "priority": 25,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P100ms_Task_Core1": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P100ms_Task_Core1",
+                "cpuId": "1",
+                "priority": 10,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P5ms_Task_Core1": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P5ms_Task_Core1",
+                "cpuId": "1",
+                "priority": 20,
+                "schedule": "FULL",
+                "size": 10240,
+                "resources": [
+                    "Res_Core1_0"
+                ]
+            }
+        },
+        "Bsw_P1ms_Task_Core1": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P1ms_Task_Core1",
+                "cpuId": "1",
+                "appSrc": "1",
+                "priority": 25,
+                "schedule": "FULL",
+                "size": 10240,
+                "resources": [
+                    "Res_Core1_0"
+                ]
+            }
+        },
+        "Bsw_P100ms_Task_Core3": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P100ms_Task_Core3",
+                "cpuId": "3",
+                "priority": 10,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P10ms_Task_Core3": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P10ms_Task_Core3",
+                "cpuId": "3",
+                "priority": 15,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P5ms_Task_Core3": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P5ms_Task_Core3",
+                "cpuId": "3",
+                "priority": 20,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P100ms_Task_Core4": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P100ms_Task_Core4",
+                "cpuId": "4",
+                "priority": 10,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P10ms_Task_Core4": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P10ms_Task_Core4",
+                "cpuId": "4",
+                "priority": 15,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P5ms_Task_Core4": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P5ms_Task_Core4",
+                "cpuId": "4",
+                "priority": 20,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P1ms_Task_Core4": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P1ms_Task_Core4",
+                "cpuId": "4",
+                "priority": 25,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P100ms_Task_Core5": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P100ms_Task_Core5",
+                "cpuId": "6",
+                "priority": 10,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P10ms_Task_Core5": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P10ms_Task_Core5",
+                "cpuId": "6",
+                "priority": 15,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P5ms_Task_Core5": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P5ms_Task_Core5",
+                "cpuId": "6",
+                "priority": 20,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P1ms_Task_Core5": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "name": "Bsw_P1ms_Task_Core5",
+                "cpuId": "6",
+                "priority": 25,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_Init_Task_Core4": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "name": "Bsw_Init_Task_Core4",
+                "cpuId": "4",
+                "priority": 250,
+                "schedule": "NON",
+                "size": 512
+            }
+        },
+        "Bsw_Init_Task_Core5": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "name": "Bsw_Init_Task_Core5",
+                "cpuId": "6",
+                "priority": 250,
+                "schedule": "NON",
+                "size": 512
+            }
+        },
+        "Bsw_P10ms_Task_Core0": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_P10ms_Task_Core0",
+                "cpuId": 1,
+                "priority": 15,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P10ms_Task_Core1": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_P10ms_Task_Core1",
+                "cpuId": 1,
+                "priority": 15,
+                "schedule": "FULL",
+                "size": 10240,
+                "resources": [
+                    "Res_Core1_0"
+                ]
+            }
+        },
+        "Bsw_Init_Task_Core0": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_Init_Task_Core0",
+                "cpuId": 1,
+                "priority": 250,
+                "schedule": "NON",
+                "size": 512
+            }
+        },
+        "Bsw_Init_Task_Core1": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_Init_Task_Core1",
+                "cpuId": 1,
+                "priority": 250,
+                "schedule": "NON",
+                "size": 20480
+            }
+        },
+        "Bsw_Init_Task_Core2": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_Init_Task_Core2",
+                "cpuId": 1,
+                "priority": 250,
+                "schedule": "NON",
+                "size": 512
+            }
+        },
+        "Bsw_Init_Task_Core3": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_Init_Task_Core3",
+                "cpuId": 1,
+                "priority": 250,
+                "schedule": "NON",
+                "size": 512
+            }
+        },
+        "Bsw_P100ms_Task_Core0": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_P100ms_Task_Core0",
+                "cpuId": 1,
+                "priority": 10,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_P1ms_Task_Core0": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_P1ms_Task_Core0",
+                "cpuId": 1,
+                "priority": 25,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_P25ms_Task_Core3": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_P25ms_Task_Core3",
+                "cpuId": 1,
+                "priority": 12,
+                "schedule": "FULL",
+                "size": 10240
+            }
+        },
+        "Bsw_Alarm_Task_Core0": {
+            "data": {
+                "autoStart": false,
+                "stack": "Private",
+                "sources": [
+                    "resource001"
+                ],
+                "name": "Bsw_Alarm_Task_Core0",
+                "cpuId": 1,
+                "priority": 5,
+                "schedule": "FULL",
+                "size": 1024
+            }
+        },
+        "Bsw_Event_Task_Core1": {
+            "data": {
+                "autoStart": true,
+                "stack": "Private",
+                "sources": [],
+                "name": "Bsw_Event_Task_Core1",
+                "cpuId": 1,
+                "priority": 50,
+                "activation": 1,
+                "schedule": "NON",
+                "size": 1024
+            }
+        }
+    }
+}
