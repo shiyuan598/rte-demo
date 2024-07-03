@@ -1,4 +1,4 @@
-import { Rte_CDD_h, Rte_SWC_h } from './template';
+import { Rte_CDD_h, Rte_SWC_h, Rte_OsApplication_CoreX_c } from './template';
 // @ts-ignore
 import swcJson from "../out/mock/swcs.json";
 import cddJson from "../out/mock/cdds.json";
@@ -65,7 +65,7 @@ const addCoreId = (swc: any, targetComps: any[]) => {
 };
 
 const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
-    // 1.每个组件中的ports及IRVs按照coreId分组，不用挂在runnable下
+    // 1.每个组件中的ports及IRVs增加coreId属性
     const swcsCoreId = swcs.map((item: any) => addCoreId(item, cdds));
     const cddsCoreId = cdds.map((item: any) => addCoreId(item, swcs));
 
@@ -75,22 +75,71 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
     // writeFile("../out/mock/cddsCoreId.json", JSON.stringify(cddsCoreId, null, 2));
 
     // 2.把所有组件的ports及IRVs按照coreId分组，不用挂在组件下
+    const coreMap: { [prop: string]: any } = {};
+    swcsCoreId.forEach((item: {appPorts: any[]; IRVs: any[];}) => {
+        const {appPorts, IRVs} = item;
+        appPorts.forEach((item:any) => {
+            const coreId = item.coreId;
+            if (coreMap[coreId]) {
+                if (coreMap[coreId].appPorts) {
+                    coreMap[coreId].appPorts.push(item);
+                } else {
+                    coreMap[coreId].appPorts = [item];
+                }
+            } else {
+                coreMap[coreId] = {
+                    appPorts: [item]
+                }
+            }
+        });
+        IRVs.forEach((item:any) => {
+            const coreId = item.coreId;
+            if (coreMap[coreId]) {
+                if (coreMap[coreId].IRVs) {
+                    coreMap[coreId].IRVs.push(item);
+                } else {
+                    coreMap[coreId].IRVs = [item];
+                }
+            } else {
+                coreMap[coreId] = {
+                    IRVs: [item]
+                }
+            }
+        });
+    });
+
+    cddsCoreId.forEach((item: {appPorts: any[];}) => {
+        const {appPorts} = item;
+        appPorts.forEach((item:any) => {
+            const coreId = item.coreId;
+            if (coreMap[coreId]) {
+                if (coreMap[coreId].cddPorts) {
+                    coreMap[coreId].cddPorts.push(item);
+                } else {
+                    coreMap[coreId].cddPorts = [item];
+                }
+            } else {
+                coreMap[coreId] = {
+                    cddPorts: [item]
+                }
+            }
+        });
+    });
+
+    writeFile("../out/mock/CoreMap.json", JSON.stringify(coreMap, null, 2));
 
     // 生成代码
     // 1.生成OsApplicaton_CoreX.c -- 所有组件共用
-    // {
-    //     "coreId1": {
-    //         "appPorts": [],
-    //         "IRVs": [],
-    //         "CDDPorts": []
-    //     },
-    //     "coreId2": {
-    //         "appPorts": [],
-    //         "IRVs": [],
-    //         "CDDPorts": []
-    //     }
-    // }
+    Object.keys(coreMap).forEach(key => {
+        const value = coreMap[key];
+        const codes = Rte_OsApplication_CoreX_c({
+            coreId: key,
+            ...value
+        });
+        writeFile(`../out/mock/Rte_OsApplication_Core${key}.h`, codes); 
+    })
 
+    // Done!
     // 2.生成Rte_Type.h -- 所有组件共用？
     const rteTypeCodes = Rte_Type_h({
         dataTypes,
