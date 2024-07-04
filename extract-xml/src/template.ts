@@ -66,12 +66,13 @@ ${`
 #include "Rte_${"CddMsgUpd"}.h"
 #include "ee_oo_api_osek.h"
 
-
 ${/*Rte变量定义*/ ""}
 ${appPorts.map((item: any) => {
-    const { dataType, swcName, portName, dataElement, initValue } = item;
-    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement} = ${initValue};\n`;
-}).join("\n")}
+    const { dataType, swcName, portName, portType, dataElement, initValue } = item;
+    if (portType === "P-PORT") {
+        return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement} = ${initValue};\n`;
+    }
+}).join("")}
 
 ${/*访问的Rte变量定义*/""}
 ${appPorts.map((item: any) => {
@@ -79,13 +80,15 @@ ${appPorts.map((item: any) => {
     if (connections.length && portType === "P-PORT") {
         return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement} = ${initValue};\n`;
     }
-}).join("\n")}
+}).join("")}
 
 ${/*IRV变量定义*/ ""}
 ${IRVs.map((item: any) => {
-    const { swcName, dataElement, dataType, initValue } = item;
-    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swcName}_${dataElement}_o${dataElement} = ${initValue};\n`;
-}).join("\n")}
+    const { swcName, type, dataElement, dataType, initValue } = item;
+    if (type === "W") {
+        return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swcName}_${dataElement}_o${dataElement} = ${initValue};\n`;
+    }
+}).join("")}
 
 ${/*SWC中读、写Rte变量*/ ""}
 ${appPorts.map((item: any) => {
@@ -126,8 +129,7 @@ ${
 }
   return ret;
 }\n`;
-    }
-    
+    }    
 }).join("")}
 
 ${/*CDD中读、写Rte变量*/ ""}
@@ -171,10 +173,8 @@ ${
 }
   return ret;
 }\n`;
-    }
-    
+    }    
 }).join("")}
-
 `;
 };
 
@@ -466,7 +466,6 @@ ${
             return `  ${typeMapping[typeRef]} ${name};`;
         } else {
             const match = dataTypes.filter(item => item.name === typeRef)[0];
-            console.info("match:", match, name);
             const {category, length, subElements} = match;
             if (category === "STRUCTURE") {
                 return `  ${typeRef} ${name};`;
@@ -488,7 +487,7 @@ ${
     appPorts.map((item: any) => {
         const { dataType, swcName, portName, portType, coreId, dataElement, connections } = item;
         const isLock = connections.some((conn: any) => conn.coreId !== coreId);
-        if (connections.length && isLock) {
+        if (connections.length && isLock && portType === "P-PORT") {
             return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
         }
     }).join("")
@@ -524,14 +523,18 @@ ${`
 
 ${/*Rte变量声明*/ ""}
 ${appPorts.map((item: any) => {
-    const { dataType, swcName, portName, dataElement } = item;
-    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
+    const { dataType, swcName, portName, portType, dataElement } = item;
+    if (portType === "P-PORT") {
+        return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
+    }
 }).join("")}
 
 ${/*IRV变量声明*/ ""}
 ${IRVs.map((item: any) => {
-    const { swcName, dataElement, dataType } = item;
-    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swcName}_${dataElement}_o${dataElement};\n`;
+    const { swcName, type, dataElement, dataType } = item;
+    if (type === "W") {
+        return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_Irv_${swcName}_${dataElement}_o${dataElement};\n`;
+    }
 }).join("")}
 
 ${/*定义Rte变量读写接口*/ ""}
@@ -592,9 +595,10 @@ ${`
 ${/*CDD组件使用的Rte函数实体*/ ""}
 ${
     appPorts.map((item: any) => {
-        const { dataType, swcName, portName, portType, dataElement, connections } = item;
+        const { dataType, swcName, portName, portType, coreId, dataElement, connections } = item;
         const connected = connections.some((conn: any) => conn.connected);
-        if (connected) {
+        const isLock = connections.some((conn: any) => conn.coreId !== coreId);
+        if (connected && isLock) {
             if (portType === "R-PORT") {
                 return `FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(${dataType}* data);\n`;
             } else {
@@ -603,6 +607,6 @@ ${
         }
     }).join("")
 }
-#endif        
+#endif
 `;
 };

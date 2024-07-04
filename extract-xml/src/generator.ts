@@ -136,7 +136,7 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
             coreId: key,
             ...value
         });
-        writeFile(`../out/mock/Rte_OsApplication_Core${key}.h`, codes); 
+        writeFile(`../out/mock/Rte_OsApplication_Core${key}.c`, codes); 
     })
 
     // Done!

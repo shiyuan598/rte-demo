@@ -74,6 +74,7 @@ export const parseXML = (xmlString: string): Promise<TransformedNode> => {
 
 export const readFile = (path: string): Promise<string> => {
     return new Promise((resolve, reject) => {
+        // @ts-ignore
         fs.readFile(path, "utf8", (err: Error, data: string) => {
             if (err) {
                 reject(err);
@@ -85,6 +86,7 @@ export const readFile = (path: string): Promise<string> => {
 
 export const writeFile = (path: string, data: string) => {
     return new Promise((resolve, reject) => {
+        // @ts-ignore
         fs.writeFile(path, data, "utf8", (err: Error, data: string) => {
             if (err) {
                 reject(err);
