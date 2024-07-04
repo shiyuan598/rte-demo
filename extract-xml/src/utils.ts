@@ -551,12 +551,10 @@ export const extractSwcs = async (
     return swcs;
 };
 
-export const noRepeat = (data: any[]) => {
+export const removeDuplicate = (data: any[]) => {
     const result: any[] = [];
-    console.info("data");
     data.forEach((item: any) => {
         if (result.find((v: any) => v.dataElement === item.dataElement)) {
-            
         } else {
             result.push(item);
         }

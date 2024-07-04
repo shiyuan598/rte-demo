@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { noRepeat } from "./utils";
+import { removeDuplicate } from "./utils";
 
 const getDateTime = () => {
     return dayjs().format("YYYY-MM-DD HH:mm:ss");
@@ -29,7 +29,6 @@ const getDateTime = () => {
 // 连接：swc - cdd
 // cdd - swc 以及cdd - cdd
 
-
 // 生成Rte_OsApplication_Core[Id].c时将Ports按照task-coreId分组 ！！
 
 // 四、datatype数据
@@ -47,7 +46,17 @@ const getDateTime = () => {
  * 1.生成Rte_OsApplication_Core[Id].c
  * desc: 1.定义Rte变量，2.定义访问的Rte变量，3.定义Irv变量，4.定义SWC中读写Rte变量的函数，5.定义CDD中读写Rte变量的函数
  */
-export const Rte_OsApplication_CoreX_c = ({coreId, appPorts=[], IRVs=[], cddPorts=[]}: {coreId:string;appPorts:any[];IRVs:any[];cddPorts:any[]}) => {
+export const Rte_OsApplication_CoreX_c = ({
+    coreId,
+    appPorts = [],
+    IRVs = [],
+    cddPorts = []
+}: {
+    coreId: string;
+    appPorts: any[];
+    IRVs: any[];
+    cddPorts: any[];
+}) => {
     return `
 ${`
 /**
@@ -68,18 +77,22 @@ ${`
 #include "ee_oo_api_osek.h"
 
 ${/*Rte变量定义*/ ""}
-${noRepeat(appPorts).map((item: any) => {
-    const { dataType, swcName, portName, portType, dataElement, initValue } = item;
-    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement} = ${initValue};\n`;
-}).join("")}
+${removeDuplicate(appPorts)
+    .map((item: any) => {
+        const { dataType, swcName, portName, portType, dataElement, initValue } = item;
+        return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement} = ${initValue};\n`;
+    })
+    .join("")}
 
-${/*访问的Rte变量定义*/""}
-${appPorts.map((item: any) => {
-    const { dataType, portName, portType, dataElement, initValue, connected, connections } = item;
-    if (connected && portType === "P-PORT") {
-        return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement} = ${initValue};\n`;
-    }
-}).join("")}
+${/*访问的Rte变量定义*/ ""}
+${[...appPorts, ...cddPorts]
+    .map((item: any) => {
+        const { dataType, portName, portType, dataElement, initValue, connected, connections } = item;
+        if (connected && portType === "P-PORT") {
+            return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement} = ${initValue};\n`;
+        }
+    })
+    .join("")}
 
 ${/*IRV变量定义*/ ""}
 ${IRVs.map((item: any) => {
@@ -90,12 +103,13 @@ ${IRVs.map((item: any) => {
 }).join("")}
 
 ${/*SWC中读、写Rte变量*/ ""}
-${appPorts.map((item: any) => {
-    const { dataType, swcName, portName, portType, dataElement, connected, connections } = item;
-    const isLock = connections.some((conn:any) => conn.coreId !== coreId);
-    if (connected) {
-        if (portType === "R-PORT") {
-            return `
+${appPorts
+    .map((item: any) => {
+        const { dataType, swcName, portName, portType, dataElement, connected, connections } = item;
+        const isLock = connections.some((conn: any) => conn.coreId !== coreId);
+        if (connected) {
+            if (portType === "R-PORT") {
+                return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(void)
 {
     Std_ReturnType ret = RTE_E_OK;
@@ -111,8 +125,8 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(v
     }
     return ret;
 }\n`;
-        } else {
-            return `
+            } else {
+                return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${portName}_o${dataElement}(void)
 {
     Std_ReturnType ret = RTE_E_OK;
@@ -128,17 +142,19 @@ ${
 }
     return ret;
 }\n`;
+            }
         }
-    }
-}).join("")}
+    })
+    .join("")}
 
 ${/*CDD中读、写Rte变量*/ ""}
-${cddPorts.map((item: any) => {
-    const { dataType, swcName, portName, portType, dataElement, connected, connections } = item;
-    const isLock = connections.some((conn:any) => conn.coreId !== coreId);
-    if (connected) {
-        if (portType === "R-PORT") {
-            return `
+${cddPorts
+    .map((item: any) => {
+        const { dataType, swcName, portName, portType, dataElement, connected, connections } = item;
+        const isLock = connections.some((conn: any) => conn.coreId !== coreId);
+        if (connected) {
+            if (portType === "R-PORT") {
+                return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(${dataType}* data)
 {
     Std_ReturnType ret = RTE_E_OK;
@@ -154,9 +170,9 @@ ${
         : `  (void)memcpy(data, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
 }
     return ret;
-}\n`;    
-        } else {
-            return `
+}\n`;
+            } else {
+                return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${portName}_o${dataElement}(${dataType}* data)
 {
     Std_ReturnType ret = RTE_E_OK;
@@ -173,9 +189,10 @@ ${
 }
     return ret;
 }\n`;
+            }
         }
-    }
-}).join("")}
+    })
+    .join("")}
 `;
 };
 
@@ -183,7 +200,7 @@ ${
  * 2.生成Rte_Type.h
  * desc: 1.定义所有类型，2.声明访问的Rte变量 -- 根据发送、接收方coreX确定是否需要声明
  */
-export const Rte_Type_h = ({ dataTypes = [], appPorts=[] }:{dataTypes?: any[];appPorts?:any[]}) => {
+export const Rte_Type_h = ({ dataTypes = [], appPorts = [] }: { dataTypes?: any[]; appPorts?: any[] }) => {
     return `
 ${`
 /**
@@ -425,74 +442,86 @@ typedef struct
 
 `}
 
-${dataTypes.map((item: any) => {
-    const {name, category, typeRef, length, subElements} = item;
-    const typeMapping: any = {
-        Boolean: "boolean",
-        UInt8: "uint8",
-        SInt8: "sint8",
-        UInt16: "uint16", 
-        SInt16: "sint16", 
-        UInt32: "uint32",
-        SInt32: "sint32",
-        Float: "float32",
-        Double: "float64"
-    };
-    
-    switch (category) {
-        case "VALUE":
-            const types = ["boolean", "uint8", "sint8", "uint16", "sint16", "uint32", "sint32", "float32", "float64"];
-            if (types.includes(typeRef)) {
-                return;
-            } else {
-                return `
+${dataTypes
+    .map((item: any) => {
+        const { name, category, typeRef, length, subElements } = item;
+        const typeMapping: any = {
+            Boolean: "boolean",
+            UInt8: "uint8",
+            SInt8: "sint8",
+            UInt16: "uint16",
+            SInt16: "sint16",
+            UInt32: "uint32",
+            SInt32: "sint32",
+            Float: "float32",
+            Double: "float64"
+        };
+
+        switch (category) {
+            case "VALUE":
+                const types = [
+                    "boolean",
+                    "uint8",
+                    "sint8",
+                    "uint16",
+                    "sint16",
+                    "uint32",
+                    "sint32",
+                    "float32",
+                    "float64"
+                ];
+                if (types.includes(typeRef)) {
+                    return;
+                } else {
+                    return `
 # define Rte_TypeDef_${name}
 typedef ${typeMapping[typeRef]} ${name};
 `;
-            }
-        case "ARRAY":
-            return `
+                }
+            case "ARRAY":
+                return `
 # define Rte_TypeDef_${name}
 typedef ${typeMapping[subElements[0].typeRef]} ${name}[${length}];
 `;
-        case "STRUCTURE":
-            return `
+            case "STRUCTURE":
+                return `
 # define Rte_TypeDef_${name}
 typedef struct
 {
-${
-    subElements.map((ele:any) => {
-        const {name, typeRef} = ele;
+${subElements
+    .map((ele: any) => {
+        const { name, typeRef } = ele;
         if (typeMapping[typeRef]) {
             return `  ${typeMapping[typeRef]} ${name};`;
         } else {
-            const match = dataTypes.filter(item => item.name === typeRef)[0];
-            const {category, length, subElements} = match;
+            const match = dataTypes.filter((item) => item.name === typeRef)[0];
+            const { category, length, subElements } = match;
             if (category === "STRUCTURE") {
                 return `  ${typeRef} ${name};`;
             } else {
                 return `  ${typeMapping[subElements[0].typeRef]} ${name}[${length}];`;
             }
         }
-    }).join("\n")
-}            
+    })
+    .join("\n")}            
 } ${name};
 `;
-        default:
-            break;
-    }
-}).join("")}
+            default:
+                break;
+        }
+    })
+    .join("")}
 
-${/*声明访问的Rte变量*/''}
-${
-    appPorts.map((item: any) => {
+${/*声明访问的Rte变量*/ ""}
+${appPorts
+    .map((item: any) => {
         const { dataType, swcName, portName, portType, coreId, dataElement, connected, connections } = item;
         const isLock = connections.some((conn: any) => conn.coreId !== coreId);
         if (connected && isLock && portType === "P-PORT") {
             return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
         }
-    }).join("")
-}
+    })
+    .join("")}
 
 #endif
 `;
@@ -502,8 +531,7 @@ ${
  * 3.生成Rte_[SWC].h
  * desc: 1.声明Rte变量，2.声明Irv变量，3.定义Rte变量读写接口，4.定义Irv变量读写接口
  */
-export const Rte_SWC_h = ({ 
-    name = "control_swc_sweep", appPorts = [], IRVs = [], cddPorts=[] }) => {
+export const Rte_SWC_h = ({ name = "control_swc_sweep", appPorts = [], IRVs = [], cddPorts = [] }) => {
     return `
 ${`
 /**
@@ -523,10 +551,12 @@ ${`
 #include "Rte_Type.h"
 
 ${/*Rte变量声明*/ ""}
-${noRepeat(appPorts).map((item: any) => {
-    const { dataType, swcName, portName, portType, dataElement } = item;
-    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
-}).join("")}
+${removeDuplicate(appPorts)
+    .map((item: any) => {
+        const { dataType, swcName, portName, portType, dataElement } = item;
+        return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
+    })
+    .join("")}
 
 ${/*IRV变量声明*/ ""}
 ${IRVs.map((item: any) => {
@@ -537,18 +567,20 @@ ${IRVs.map((item: any) => {
 }).join("")}
 
 ${/*定义Rte变量读写接口*/ ""}
-${appPorts.map((item: any) => {
-    const { swcName, runnable, portName, portType, dataElement } = item;
-    if (portType === "R-PORT") {
-        return `#define Rte_IRead_${runnable}_${dataElement}_o${dataElement}()  \\
+${appPorts
+    .map((item: any) => {
+        const { swcName, runnable, portName, portType, dataElement } = item;
+        if (portType === "R-PORT") {
+            return `#define Rte_IRead_${runnable}_${dataElement}_o${dataElement}()  \\
   (&Rte_Irv_${swcName}_${portName}_o${dataElement})\n`;
-    } else {
-        return `#define Rte_IWrite_${runnable}_${dataElement}_o${dataElement}(data)  \\
+        } else {
+            return `#define Rte_IWrite_${runnable}_${dataElement}_o${dataElement}(data)  \\
 ( \\
   Rte_Irv_${swcName}_${portName}_o${dataElement} = *(data) \\
 )\n`;
-    }
-}).join("\n")}
+        }
+    })
+    .join("\n")}
 
 ${/*定义IRV变量读写接口*/ ""}
 ${IRVs.map((item: any) => {
@@ -572,7 +604,7 @@ ${IRVs.map((item: any) => {
  * 4.生成Rte_[CDD].h
  * desc: 声明CDD访问Rte实体函数
  */
-export const Rte_CDD_h = ({name ="", appPorts=[] }:{name:string;appPorts:any[] }) => {
+export const Rte_CDD_h = ({ name = "", appPorts = [] }: { name: string; appPorts: any[] }) => {
     return `
 ${`
 /**
@@ -592,8 +624,8 @@ ${`
 #include "Rte_Type.h"
 
 ${/*CDD组件使用的Rte函数实体*/ ""}
-${
-    appPorts.map((item: any) => {
+${appPorts
+    .map((item: any) => {
         const { dataType, swcName, portName, portType, coreId, dataElement, connected, connections } = item;
         const isLock = connections.some((conn: any) => conn.coreId !== coreId);
         if (connected && isLock) {
@@ -603,8 +635,8 @@ ${
                 return `FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${portName}_o${dataElement}(${dataType}* data);\n`;
             }
         }
-    }).join("")
-}
+    })
+    .join("")}
 #endif
 `;
 };
