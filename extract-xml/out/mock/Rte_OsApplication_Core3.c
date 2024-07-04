@@ -6,7 +6,7 @@
  * @brief Rte Interface for OsApplication_Core3
  * @author zhito 
  * @version 1.0.0
- * @date 2024-07-04 17:20:52
+ * @date 2024-07-04 17:31:50
  * @copyright Copyright (c) Zhito Co., Ltd. 2020-2035. All rights reserved.
  * ********************************************************************************************************************
  */
@@ -178,14 +178,14 @@ VAR(BusVSE, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_VSEOutp_oVSEOutp = {
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU(void)
 {
     Std_ReturnType ret = RTE_E_OK;
-      (void)memcpy(&Rte_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU, &Rte_ADMInfoSOC2MCU_oADMInfoSOC2MCU, sizeof(ADMInfoSOC2MCU));
+    (void)memcpy(&Rte_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU, &Rte_ADMInfoSOC2MCU_oADMInfoSOC2MCU, sizeof(ADMInfoSOC2MCU));
     return ret;
 }
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_control_swc_sweep_LocalizationInfo_oLocalizationInfo(void)
 {
     Std_ReturnType ret = RTE_E_OK;
-      (void)memcpy(&Rte_control_swc_sweep_LocalizationInfo_oLocalizationInfo, &Rte_LocalizationInfo_oLocalizationInfo, sizeof(LocalizationInfo));
+    (void)memcpy(&Rte_control_swc_sweep_LocalizationInfo_oLocalizationInfo, &Rte_LocalizationInfo_oLocalizationInfo, sizeof(LocalizationInfo));
     return ret;
 }
 
@@ -219,14 +219,14 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_control_swc_sweep_LocalizationInfo_oLoca
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_IDC_ADMInfoSOC2MCU_oADMInfoSOC2MCU(ADMInfoSOC2MCU* data)
 {
     Std_ReturnType ret = RTE_E_OK;
-  (void)memcpy(&Rte_ADMInfoSOC2MCU_oADMInfoSOC2MCU, data, sizeof(ADMInfoSOC2MCU));
+(void)memcpy(&Rte_ADMInfoSOC2MCU_oADMInfoSOC2MCU, data, sizeof(ADMInfoSOC2MCU));
     return ret;
 }
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_IDC_LocalizationInfo_oLocalizationInfo(LocalizationInfo* data)
 {
     Std_ReturnType ret = RTE_E_OK;
-  (void)memcpy(&Rte_LocalizationInfo_oLocalizationInfo, data, sizeof(LocalizationInfo));
+(void)memcpy(&Rte_LocalizationInfo_oLocalizationInfo, data, sizeof(LocalizationInfo));
     return ret;
 }
 

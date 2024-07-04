@@ -121,7 +121,7 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(v
     (void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));
     (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
     Rte_EnableOSInterrupts();`
-            : `  (void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
+            : `(void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
     }
     return ret;
 }\n`;
@@ -138,7 +138,7 @@ ${
     (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swcName}_${portName}_o${dataElement}, sizeof(${dataType}));
     (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
     Rte_EnableOSInterrupts();`
-        : `  (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swcName}_${portName}_o${dataElement}, sizeof(${dataType}));`
+        : `(void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swcName}_${portName}_o${dataElement}, sizeof(${dataType}));`
 }
     return ret;
 }\n`;
@@ -167,7 +167,7 @@ ${
     *(data) = Rte_${portName}_o${dataElement};
     (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
     Rte_EnableOSInterrupts();`
-        : `  (void)memcpy(data, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
+    : `(void)memcpy(data, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
 }
     return ret;
 }\n`;
@@ -183,9 +183,8 @@ ${
     (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
     Rte_${portName}_o${dataElement} = *(data);
     (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-    Rte_EnableOSInterrupts();
-    `
-        : `  (void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));`
+    Rte_EnableOSInterrupts();`
+    : `(void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));`
 }
     return ret;
 }\n`;
