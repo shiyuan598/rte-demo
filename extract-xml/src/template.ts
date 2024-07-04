@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { noRepeat } from "./utils";
 
 const getDateTime = () => {
     return dayjs().format("YYYY-MM-DD HH:mm:ss");
@@ -67,17 +68,15 @@ ${`
 #include "ee_oo_api_osek.h"
 
 ${/*Rte变量定义*/ ""}
-${appPorts.map((item: any) => {
+${noRepeat(appPorts).map((item: any) => {
     const { dataType, swcName, portName, portType, dataElement, initValue } = item;
-    if (portType === "P-PORT") {
-        return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement} = ${initValue};\n`;
-    }
+    return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement} = ${initValue};\n`;
 }).join("")}
 
 ${/*访问的Rte变量定义*/""}
 ${appPorts.map((item: any) => {
-    const { dataType, portName, portType, dataElement, initValue, connections } = item;
-    if (connections.length && portType === "P-PORT") {
+    const { dataType, portName, portType, dataElement, initValue, connected, connections } = item;
+    if (connected && portType === "P-PORT") {
         return `VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement} = ${initValue};\n`;
     }
 }).join("")}
@@ -92,88 +91,90 @@ ${IRVs.map((item: any) => {
 
 ${/*SWC中读、写Rte变量*/ ""}
 ${appPorts.map((item: any) => {
-    const { dataType, swcName, portName, portType, dataElement, connections } = item;
+    const { dataType, swcName, portName, portType, dataElement, connected, connections } = item;
     const isLock = connections.some((conn:any) => conn.coreId !== coreId);
-    if (portType === "R-PORT") {
-        return `
+    if (connected) {
+        if (portType === "R-PORT") {
+            return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(void)
 {
-  Std_ReturnType ret = RTE_E_OK;
-${
-    isLock
-        ? `
-  Rte_DisableOSInterrupts();
-  (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  (void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));
-  (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  Rte_EnableOSInterrupts();`
-        : `  (void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
-}
-  return ret;
+    Std_ReturnType ret = RTE_E_OK;
+    ${
+        isLock
+            ? `
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    (void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();`
+            : `  (void)memcpy(&Rte_${swcName}_${portName}_o${dataElement}, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
+    }
+    return ret;
 }\n`;
-
-    } else {
-        return `
+        } else {
+            return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${portName}_o${dataElement}(void)
 {
-  Std_ReturnType ret = RTE_E_OK;
+    Std_ReturnType ret = RTE_E_OK;
 ${
     isLock
         ? `
-  Rte_DisableOSInterrupts();
-  (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swcName}_${portName}_o${dataElement}, sizeof(${dataType}));
-  (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  Rte_EnableOSInterrupts();`
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swcName}_${portName}_o${dataElement}, sizeof(${dataType}));
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();`
         : `  (void)memcpy(&Rte_${portName}_o${dataElement}, &Rte_${swcName}_${portName}_o${dataElement}, sizeof(${dataType}));`
 }
-  return ret;
+    return ret;
 }\n`;
-    }    
+        }
+    }
 }).join("")}
 
 ${/*CDD中读、写Rte变量*/ ""}
 ${cddPorts.map((item: any) => {
-    const { dataType, swcName, portName, portType, dataElement, connections } = item;
+    const { dataType, swcName, portName, portType, dataElement, connected, connections } = item;
     const isLock = connections.some((conn:any) => conn.coreId !== coreId);
-    if (portType === "R-PORT") {
-        return `
+    if (connected) {
+        if (portType === "R-PORT") {
+            return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_${swcName}_${portName}_o${dataElement}(${dataType}* data)
 {
-  Std_ReturnType ret = RTE_E_OK;
+    Std_ReturnType ret = RTE_E_OK;
 ${
     isLock
         ? `
-  Rte_DisableOSInterrupts();
-  (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  (void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));
-  *(data) = Rte_${portName}_o${dataElement};
-  (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  Rte_EnableOSInterrupts();`
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    (void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));
+    *(data) = Rte_${portName}_o${dataElement};
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();`
         : `  (void)memcpy(data, &Rte_${portName}_o${dataElement}, sizeof(${dataType}));`
 }
-  return ret;
-}\n`;
-
-    } else {
-        return `
+    return ret;
+}\n`;    
+        } else {
+            return `
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_${swcName}_${portName}_o${dataElement}(${dataType}* data)
 {
-  Std_ReturnType ret = RTE_E_OK;
+    Std_ReturnType ret = RTE_E_OK;
 ${
     isLock
         ? `
-  Rte_DisableOSInterrupts();
-  (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  Rte_${portName}_o${dataElement} = *(data);
-  (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
-  Rte_EnableOSInterrupts();
+    Rte_DisableOSInterrupts();
+    (void)GetSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_${portName}_o${dataElement} = *(data);
+    (void)ReleaseSpinlock(Rte_Spinlock_${portName}_o${dataElement});
+    Rte_EnableOSInterrupts();
     `
         : `  (void)memcpy(&Rte_${portName}_o${dataElement}, data, sizeof(${dataType}));`
 }
-  return ret;
+    return ret;
 }\n`;
-    }    
+        }
+    }
 }).join("")}
 `;
 };
@@ -485,9 +486,9 @@ ${
 ${/*声明访问的Rte变量*/''}
 ${
     appPorts.map((item: any) => {
-        const { dataType, swcName, portName, portType, coreId, dataElement, connections } = item;
+        const { dataType, swcName, portName, portType, coreId, dataElement, connected, connections } = item;
         const isLock = connections.some((conn: any) => conn.coreId !== coreId);
-        if (connections.length && isLock && portType === "P-PORT") {
+        if (connected && isLock && portType === "P-PORT") {
             return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${portName}_o${dataElement};\n`;
         }
     }).join("")
@@ -502,7 +503,7 @@ ${
  * desc: 1.声明Rte变量，2.声明Irv变量，3.定义Rte变量读写接口，4.定义Irv变量读写接口
  */
 export const Rte_SWC_h = ({ 
-    name = "control_swc_sweep", appPorts = [], IRVs = [] }) => {
+    name = "control_swc_sweep", appPorts = [], IRVs = [], cddPorts=[] }) => {
     return `
 ${`
 /**
@@ -522,11 +523,9 @@ ${`
 #include "Rte_Type.h"
 
 ${/*Rte变量声明*/ ""}
-${appPorts.map((item: any) => {
+${noRepeat(appPorts).map((item: any) => {
     const { dataType, swcName, portName, portType, dataElement } = item;
-    if (portType === "P-PORT") {
-        return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
-    }
+    return `extern VAR(${dataType}, RTE_VAR_INIT_NOCACHE) Rte_${swcName}_${portName}_o${dataElement};\n`;
 }).join("")}
 
 ${/*IRV变量声明*/ ""}
@@ -595,8 +594,7 @@ ${`
 ${/*CDD组件使用的Rte函数实体*/ ""}
 ${
     appPorts.map((item: any) => {
-        const { dataType, swcName, portName, portType, coreId, dataElement, connections } = item;
-        const connected = connections.some((conn: any) => conn.connected);
+        const { dataType, swcName, portName, portType, coreId, dataElement, connected, connections } = item;
         const isLock = connections.some((conn: any) => conn.coreId !== coreId);
         if (connected && isLock) {
             if (portType === "R-PORT") {

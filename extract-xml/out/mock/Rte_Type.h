@@ -6,7 +6,7 @@
  * @brief Rte Type define
  * @author zhito 
  * @version 1.0.0
- * @date 2024-07-02 10:42:31
+ * @date 2024-07-04 17:06:50
  * @copyright Copyright (c) Zhito Co., Ltd. 2020-2035. All rights reserved.
  * ********************************************************************************************************************
  */
@@ -1195,8 +1195,6 @@ typedef float32 rt_Array_Float_8[8];
 
 # define Rte_TypeDef_rt_Array_Float_8_const
 typedef float32 rt_Array_Float_8_const[8];
-
-
 
 
 

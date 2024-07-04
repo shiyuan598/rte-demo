@@ -529,22 +529,37 @@ export const extractSwcs = async (
         }
     ]
 ) => {
-    const swcs = await Promise.all(paths.map(async (pathGroup) => {
-        const { interfaceFile, dataTypeFile: datatypeFile, componentFile } = pathGroup;
-        const jsonDatas = await Promise.all([
-            readFile(interfaceFile).then(parseXML),
-            readFile(datatypeFile).then(parseXML),
-            readFile(componentFile).then(parseXML)
-        ]);
-        const [interfaceJson, dataTypeJson, componentJson] = jsonDatas;
-        const dataTypeMeta = extractDataTypeMeta(interfaceJson);
-        const dataType = extractDataType(dataTypeJson);
-        const component = extractComponent(componentJson);
-        const swc = transformComponent(component, dataTypeMeta);
-        return {
-            dataType,
-            swc
-        };
-    }));
+    const swcs = await Promise.all(
+        paths.map(async (pathGroup) => {
+            const { interfaceFile, dataTypeFile: datatypeFile, componentFile } = pathGroup;
+            const jsonDatas = await Promise.all([
+                readFile(interfaceFile).then(parseXML),
+                readFile(datatypeFile).then(parseXML),
+                readFile(componentFile).then(parseXML)
+            ]);
+            const [interfaceJson, dataTypeJson, componentJson] = jsonDatas;
+            const dataTypeMeta = extractDataTypeMeta(interfaceJson);
+            const dataType = extractDataType(dataTypeJson);
+            const component = extractComponent(componentJson);
+            const swc = transformComponent(component, dataTypeMeta);
+            return {
+                dataType,
+                swc
+            };
+        })
+    );
     return swcs;
+};
+
+export const noRepeat = (data: any[]) => {
+    const result: any[] = [];
+    console.info("data");
+    data.forEach((item: any) => {
+        if (result.find((v: any) => v.dataElement === item.dataElement)) {
+            
+        } else {
+            result.push(item);
+        }
+    });
+    return result;
 };

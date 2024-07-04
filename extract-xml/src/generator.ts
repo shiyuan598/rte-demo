@@ -1,4 +1,4 @@
-import { Rte_CDD_h, Rte_SWC_h, Rte_OsApplication_CoreX_c } from './template';
+import { Rte_CDD_h, Rte_SWC_h, Rte_OsApplication_CoreX_c } from "./template";
 // @ts-ignore
 import swcJson from "../out/mock/swcs.json";
 import cddJson from "../out/mock/cdds.json";
@@ -36,7 +36,11 @@ const addCoreId = (swc: any, targetComps: any[]) => {
             conn["coreId"] = findCoreIdByRunnable(item.runnable, target.runnableMapping);
             return { ...conn };
         });
-        return {...item}
+        if (coreId) {
+            return { ...item };
+        } else {
+            return null;
+        }
         // if (newAppPorts[coreId]) {
         //     newAppPorts[coreId].push({ ...item });
         // } else {
@@ -48,7 +52,9 @@ const addCoreId = (swc: any, targetComps: any[]) => {
     const newIRVs = IRVs?.map((item: any) => {
         const coreId = findCoreIdByRunnable(item.runnable, runnableMapping);
         item["coreId"] = coreId;
-        return { ...item }
+        if (coreId) {
+            return { ...item };
+        } else return null;
         // if (newIRVs[coreId]) {
         //     newIRVs[coreId].push({ ...item });
         // } else {
@@ -58,8 +64,8 @@ const addCoreId = (swc: any, targetComps: any[]) => {
 
     return {
         name,
-        appPorts: newAppPorts,
-        IRVs: newIRVs,
+        appPorts: newAppPorts.filter((item: any) => !!item),
+        IRVs: newIRVs?.filter((item: any) => !!item),
         runnableMapping
     };
 };
@@ -76,9 +82,9 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
 
     // 2.把所有组件的ports及IRVs按照coreId分组，不用挂在组件下
     const coreMap: { [prop: string]: any } = {};
-    swcsCoreId.forEach((item: {appPorts: any[]; IRVs: any[];}) => {
-        const {appPorts, IRVs} = item;
-        appPorts.forEach((item:any) => {
+    swcsCoreId.forEach((item: { appPorts: any[]; IRVs: any[] }) => {
+        const { appPorts, IRVs } = item;
+        appPorts.forEach((item: any) => {
             const coreId = item.coreId;
             if (coreMap[coreId]) {
                 if (coreMap[coreId].appPorts) {
@@ -89,10 +95,10 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
             } else {
                 coreMap[coreId] = {
                     appPorts: [item]
-                }
+                };
             }
         });
-        IRVs.forEach((item:any) => {
+        IRVs.forEach((item: any) => {
             const coreId = item.coreId;
             if (coreMap[coreId]) {
                 if (coreMap[coreId].IRVs) {
@@ -103,14 +109,14 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
             } else {
                 coreMap[coreId] = {
                     IRVs: [item]
-                }
+                };
             }
         });
     });
 
-    cddsCoreId.forEach((item: {appPorts: any[];}) => {
-        const {appPorts} = item;
-        appPorts.forEach((item:any) => {
+    cddsCoreId.forEach((item: { appPorts: any[] }) => {
+        const { appPorts } = item;
+        appPorts.forEach((item: any) => {
             const coreId = item.coreId;
             if (coreMap[coreId]) {
                 if (coreMap[coreId].cddPorts) {
@@ -121,7 +127,7 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
             } else {
                 coreMap[coreId] = {
                     cddPorts: [item]
-                }
+                };
             }
         });
     });
@@ -130,20 +136,20 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
 
     // 生成代码
     // 1.生成OsApplicaton_CoreX.c -- 所有组件共用
-    Object.keys(coreMap).forEach(key => {
+    Object.keys(coreMap).forEach((key) => {
         const value = coreMap[key];
         const codes = Rte_OsApplication_CoreX_c({
             coreId: key,
             ...value
         });
-        writeFile(`../out/mock/Rte_OsApplication_Core${key}.c`, codes); 
-    })
+        writeFile(`../out/mock/Rte_OsApplication_Core${key}.c`, codes);
+    });
 
     // Done!
-    // 2.生成Rte_Type.h -- 所有组件共用？
+    // 2.生成Rte_Type.h
     const rteTypeCodes = Rte_Type_h({
         dataTypes,
-        appPorts: swcsCoreId.reduce((pre:any[], cur: {appPorts:any}) => {
+        appPorts: swcsCoreId.reduce((pre: any[], cur: { appPorts: any }) => {
             pre.push(...cur.appPorts);
             return pre;
         }, [])
@@ -152,7 +158,7 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
 
     // Done!
     // 3.生成Rte_SWC.h -- 根据组件名称会生成多个文件
-    swcsCoreId.forEach((swc:any) => {
+    swcsCoreId.forEach((swc: any) => {
         const codes = Rte_SWC_h(swc);
         // console.info(codes);
         writeFile(`../out/mock/Rte_${swc.name}.h`, codes);
@@ -160,15 +166,11 @@ const prepare = (swcs: any, cdds: any, task: any, dataTypes: any) => {
 
     // Done!
     // 4.生成Rte_CDD.h -- 根据组件名称会生成多个文件
-    cddsCoreId.forEach((cdd:any) => {
+    cddsCoreId.forEach((cdd: any) => {
         const codes = Rte_CDD_h(cdd);
         // console.info(codes);
         writeFile(`../out/mock/Rte_${cdd.name}.h`, codes);
     });
-
-
-    
-
 };
 
 prepare(swcJson, cddJson, taskJson, dataTypeJson);
