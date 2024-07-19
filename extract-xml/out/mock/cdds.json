@@ -19,7 +19,7 @@
       },
       {
         "swcName": "IDC",
-        "runnable": "EM_20ms",
+        "runnable": "VSE_20ms",
         "portName": "LocalizationInfo",
         "portType": "P-PORT",
         "dataElement": "LocalizationInfo",

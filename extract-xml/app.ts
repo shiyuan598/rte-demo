@@ -11,7 +11,8 @@ import {
     orderDataType,
     parseXML,
     readFile,
-    writeFile
+    writeFile,
+    deepMerge
 } from "./src/utils";
 
 const swcs = extractSwcs([
@@ -27,7 +28,57 @@ const swcs = extractSwcs([
 // console.info(d);
 // writeFile("./out/datatype2.json", JSON.stringify(d, null, 2));
 
-swcs.then(v => {
+swcs.then((v) => {
     // console.info(v[0].dataType);
     writeFile("./out/swcs.json", JSON.stringify(v, null, 2));
-})
+});
+
+const newObj = {
+    d: [
+        {
+            name: "rt_Array_Float_3",
+            category: "ARRAY",
+            length: "4",
+            a: "32",
+            subElements: [
+                {
+                    name: "rt_Array_Float_3",
+                    category: "TYPE_REFERENCE",
+                    typeRef: "Float"
+                }
+            ],
+            subElements2: [
+                {
+                    name: "rt_Array_Float_3",
+                    category: "TYPE_REFERENCE",
+                    typeRef: "Float"
+                }
+            ]
+        }
+    ]
+};
+
+const oldObj = {
+    d: [
+        {
+            name: "rt_Array_Float_3",
+            category: "ARRAY",
+            length: "5",
+            b: "433",
+            subElements: [
+                {
+                    name: "rt_Array_Float_3",
+                    category: "TYPE_REFERENCE",
+                    typeRef: "Float"
+                }
+            ]
+        }
+    ]
+};
+
+// 1.同样的属性取新值
+// 2.新增加的属性要保留
+// 3.相比旧对象，没有的属性，也就是用户添加的属性要保留 -- 
+
+const res = deepMerge(newObj, oldObj);
+console.info(JSON.stringify(res, null, 4));

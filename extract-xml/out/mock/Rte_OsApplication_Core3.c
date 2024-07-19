@@ -6,7 +6,7 @@
  * @brief Rte Interface for OsApplication_Core3
  * @author zhito 
  * @version 1.0.0
- * @date 2024-07-04 17:31:50
+ * @date 2024-07-04 19:18:06
  * @copyright Copyright (c) Zhito Co., Ltd. 2020-2035. All rights reserved.
  * ********************************************************************************************************************
  */
@@ -158,21 +158,12 @@ VAR(ChassisInfo, RTE_VAR_INIT_NOCACHE) Rte_control_swc_sweep_ChassisInp_oChassis
 };
 
 
-
 VAR(ADMInfoSOC2MCU, RTE_VAR_INIT_NOCACHE) Rte_ADMInfoSOC2MCU_oADMInfoSOC2MCU = {0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U};
-VAR(LocalizationInfo, RTE_VAR_INIT_NOCACHE) Rte_LocalizationInfo_oLocalizationInfo = {
-  0U, 0U, 0U, 0U, 0U, 0.0, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F},
-  {0.0F, 0.0F, 0.0F}, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, 0.0, 0U, {0.0,
-  0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, 0.0, 0.0, 0.0
-};
-
 
 
 VAR(BusEM, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_EMOutp_oEMOutp = {FALSE, 0U};
 VAR(BusADM, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_ADMOutp_oADMOutp = {0U, FALSE};
 VAR(BusVSE, RTE_VAR_INIT_NOCACHE) Rte_Irv_control_swc_sweep_VSEOutp_oVSEOutp = {0.0F, 0.0F, FALSE, 0.0F, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0U};
-
-
 
 
 FUNC(Std_ReturnType, RTE_CODE) Rte_Read_control_swc_sweep_ADMInfoSOC2MCU_oADMInfoSOC2MCU(void)
@@ -213,20 +204,10 @@ FUNC(Std_ReturnType, RTE_CODE) Rte_Read_control_swc_sweep_LocalizationInfo_oLoca
     return ret;
 }
 
-
-
-
 FUNC(Std_ReturnType, RTE_CODE) Rte_Write_IDC_ADMInfoSOC2MCU_oADMInfoSOC2MCU(ADMInfoSOC2MCU* data)
 {
     Std_ReturnType ret = RTE_E_OK;
 (void)memcpy(&Rte_ADMInfoSOC2MCU_oADMInfoSOC2MCU, data, sizeof(ADMInfoSOC2MCU));
-    return ret;
-}
-
-FUNC(Std_ReturnType, RTE_CODE) Rte_Write_IDC_LocalizationInfo_oLocalizationInfo(LocalizationInfo* data)
-{
-    Std_ReturnType ret = RTE_E_OK;
-(void)memcpy(&Rte_LocalizationInfo_oLocalizationInfo, data, sizeof(LocalizationInfo));
     return ret;
 }
 

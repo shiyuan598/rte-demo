@@ -561,3 +561,36 @@ export const removeDuplicate = (data: any[]) => {
     });
     return result;
 };
+
+
+type AnyObject = { [key: string]: any }
+export const deepMerge = (newObj: AnyObject, oldObj: AnyObject): AnyObject => {
+  if (typeof newObj !== 'object' || newObj === null) {
+    return oldObj !== null ? oldObj : newObj
+  }
+
+  const mergedObject: AnyObject = { ...newObj }
+
+  for (const key in oldObj) {
+    if (oldObj.hasOwnProperty(key)) {
+      const valueB = oldObj[key]
+
+      if (key in mergedObject) {
+        if (
+          typeof mergedObject[key] === 'object' &&
+          typeof valueB === 'object' &&
+          !Array.isArray(mergedObject[key]) &&
+          !Array.isArray(valueB)
+        ) {
+          mergedObject[key] = deepMerge(mergedObject[key], valueB)
+        } else {
+          mergedObject[key] = valueB
+        }
+      } else {
+        mergedObject[key] = valueB
+      }
+    }
+  }
+
+  return mergedObject
+}

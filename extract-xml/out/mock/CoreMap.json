@@ -190,10 +190,14 @@
           }
         ],
         "coreId": "3"
-      },
+      }
+    ]
+  },
+  "4": {
+    "cddPorts": [
       {
         "swcName": "IDC",
-        "runnable": "EM_20ms",
+        "runnable": "VSE_20ms",
         "portName": "LocalizationInfo",
         "portType": "P-PORT",
         "dataElement": "LocalizationInfo",
@@ -206,7 +210,7 @@
             "coreId": "3"
           }
         ],
-        "coreId": "3"
+        "coreId": "4"
       }
     ]
   }
