@@ -12,7 +12,8 @@ import {
     parseXML,
     readFile,
     writeFile,
-    deepMerge
+    deepMerge,
+    extractMember
 } from "./src/utils";
 
 const swcs = extractSwcs([
@@ -82,3 +83,14 @@ const oldObj = {
 
 const res = deepMerge(newObj, oldObj);
 console.info(JSON.stringify(res, null, 4));
+
+// const values = "{0U, 0U, 0U, 0U, 0U, 0.0, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, 0.0F, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, {0.0F, 0.0F, 0.0F}, 0.0, 0U, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, 0.0, 0.0, 0.0}"
+const values = "{0.0, 0.0F, {0.0F, 0.0F, 0.0F}, 0U, {0.0, 0.0, 0U, {0.0, 0U}}, 0.0}"
+const members = extractMember(values)
+console.info("members:", members);
+
+// "{0.0, 0.0F, {0.0F, 0.0F, 0.0F}, 0U}" 转换为
+// ['0.0', "0.0F", "{0.0F, 0.0F, 0.0F}", "0U"]
+
+// "{0.0, 0.0F, {0.0F, 0.0F, 0.0F}, 0U, {0.0, 0.0, 0U, {0.0, 0U}}, 0.0}"转换为
+// ['0.0', "0.0F", "{0.0F, 0.0F, 0.0F}", "0U", "{0.0, 0.0, 0U, {0.0, 0U}}", "0.0"]

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn">计算</button><br/>
+        <input id="num1" type="text" placeholder="数字一" />
+        <select name="opt" id="opt">
+            <option selected value="*">x</option>
+            <option value="/">÷</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+        </select>
+        <input id="num2" type="text" placeholder="数字二" />
+        <span>=</span>
+        <input id="res" type="text" placeholder="结果" />
+    </body>
+    <script>
+        document.getElementById("res").value = Math.PI
+        document.getElementById("btn").addEventListener("click", () => {
+            console.info("chamge");
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            const opt = document.getElementById("opt").value;
+            console.info(num1, num2, opt);
+            if (!Number.isNaN(num1) && !Number.isNaN(num2)) {
+                let result = "";
+                switch (opt) {
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        break;
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+
+                    default:
+                        break;
+                }
+
+                document.getElementById("res").value = result;
+            }
+        });
+    </script>
+</html>

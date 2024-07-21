@@ -562,35 +562,62 @@ export const removeDuplicate = (data: any[]) => {
     return result;
 };
 
-
-type AnyObject = { [key: string]: any }
+type AnyObject = { [key: string]: any };
 export const deepMerge = (newObj: AnyObject, oldObj: AnyObject): AnyObject => {
-  if (typeof newObj !== 'object' || newObj === null) {
-    return oldObj !== null ? oldObj : newObj
-  }
-
-  const mergedObject: AnyObject = { ...newObj }
-
-  for (const key in oldObj) {
-    if (oldObj.hasOwnProperty(key)) {
-      const valueB = oldObj[key]
-
-      if (key in mergedObject) {
-        if (
-          typeof mergedObject[key] === 'object' &&
-          typeof valueB === 'object' &&
-          !Array.isArray(mergedObject[key]) &&
-          !Array.isArray(valueB)
-        ) {
-          mergedObject[key] = deepMerge(mergedObject[key], valueB)
-        } else {
-          mergedObject[key] = valueB
-        }
-      } else {
-        mergedObject[key] = valueB
-      }
+    if (typeof newObj !== "object" || newObj === null) {
+        return oldObj !== null ? oldObj : newObj;
     }
-  }
 
-  return mergedObject
-}
+    const mergedObject: AnyObject = { ...newObj };
+
+    for (const key in oldObj) {
+        if (oldObj.hasOwnProperty(key)) {
+            const valueB = oldObj[key];
+
+            if (key in mergedObject) {
+                if (
+                    typeof mergedObject[key] === "object" &&
+                    typeof valueB === "object" &&
+                    !Array.isArray(mergedObject[key]) &&
+                    !Array.isArray(valueB)
+                ) {
+                    mergedObject[key] = deepMerge(mergedObject[key], valueB);
+                } else {
+                    mergedObject[key] = valueB;
+                }
+            } else {
+                mergedObject[key] = valueB;
+            }
+        }
+    }
+
+    return mergedObject;
+};
+
+export const extractMember = (values: string) => {
+    const trimmedValues = values.slice(1, -1); // 去掉最外层的大括号
+    const result = [];
+    let current = "";
+    let braceCount = 0;
+
+    for (let char of trimmedValues) {
+        if (char === "{") {
+            braceCount++;
+        } else if (char === "}") {
+            braceCount--;
+        }
+
+        if (char === "," && braceCount === 0) {
+            result.push(current.trim());
+            current = "";
+        } else {
+            current += char;
+        }
+    }
+
+    if (current.trim()) {
+        result.push(current.trim());
+    }
+
+    return result;
+};
